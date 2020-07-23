@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>WojciechMikołajewicz.AdvancedList</RootNamespace>
+    <Company>Wojciech Mikołajewicz</Company>
+    <Authors>Wojciech Mikołajewicz</Authors>
+  </PropertyGroup>
+
+</Project>
