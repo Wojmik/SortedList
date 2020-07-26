@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 
@@ -8,41 +9,32 @@ namespace WojciechMikołajewicz.AdvancedList
 {
 	public class OrderedReadOnlyList<T, K1> : OrderedReadOnlyList<T>
 	{
-		private protected readonly Internal.KeyData<T, K1> _K1;
+		private const int KeyIndex = 1;
+
+		public Func<T, K1> Key1Getter { get; }
+
+		public Comparison<K1> Key1Comparison { get; }
+
+		protected override int KeysCount { get => KeyIndex; }
 
 		public OrderedReadOnlyList(IEnumerable<T> collection
 			, KeyData<T, K1> keyData1
 			)
-			: base(collection, new KeyData<T>[] { keyData1 })
-		{
-			this._K1=keyData1;
-		}
+			: this(collection, new KeyData<T>[] { keyData1, })
+		{ }
 
-		public OrderedReadOnlyList(IEnumerable<T> collection, IEnumerable<KeyData<T>> keyData)
-			: base(collection, keyData)
+		public OrderedReadOnlyList(IEnumerable<T> collection, IEnumerable<KeyData<T>> keysData)
+			: base(collection, keysData)
 		{
-			const int keys = 1;
-			int i = 0;
-
 			try
 			{
-				foreach(var kd in keyData)
-				{
-					this._K1=(KeyData<T, K1>)kd;
-					i++;
-				}
+				this.Key1Getter=((KeyData<T, K1>)this.KeysData[KeyIndex-1]).GetMember;
+				this.Key1Comparison=((KeyData<T, K1>)this.KeysData[KeyIndex-1]).Comparison;
 			}
 			catch(InvalidCastException)
 			{
-				throw new InvalidCastException($"{nameof(keyData)}[{i}] cannot be cast to KeyData<T, K{i+1}>");
+				throw new InvalidCastException($"{nameof(keysData)}[{KeyIndex-1}] cannot be cast to KeyData<T, K{KeyIndex}>");
 			}
-			catch(IndexOutOfRangeException)
-			{
-				throw new ArgumentException($"{nameof(keyData)} argument should be {keys} length", nameof(keyData));
-			}
-
-			if(i!=keys)
-				throw new ArgumentException($"{nameof(keyData)} argument should be {keys} length", nameof(keyData));
 		}
 	}
 }

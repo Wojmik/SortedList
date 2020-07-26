@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using WojciechMikołajewicz.AdvancedList.OrderedReadOnlyList.Internal;
 
@@ -10,15 +11,24 @@ namespace WojciechMikołajewicz.AdvancedList
 	{
 		private protected T[] _Array;
 
+		protected abstract int KeysCount { get; }
+
+		public IReadOnlyList<KeyData<T>> KeysData { get; }
+
 		public T this[int index] { get => this._Array[index]; }
 
 		public int Count { get => this._Array.Length; }
 
-		public OrderedReadOnlyList(IEnumerable<T> collection, IEnumerable<KeyData<T>> keyData)
+		protected OrderedReadOnlyList(IEnumerable<T> collection, IEnumerable<KeyData<T>> keysData)
 		{
 			const int startChunk = 256;
 			bool shouldSort = false;
-			ItemComparer<T> itemComparer = new ItemComparer<T>(keyData);
+			ItemComparer<T> itemComparer = new ItemComparer<T>(keysData);
+
+			this.KeysData=keysData.ToArray();
+
+			if(this.KeysData.Count!=KeysCount)
+				throw new ArgumentException($"{nameof(keysData)} argument should be {KeysCount} length", nameof(keysData));
 
 			if(collection is IReadOnlyCollection<T> roColl)
 			{
@@ -79,6 +89,11 @@ namespace WojciechMikołajewicz.AdvancedList
 			//Sort array if required
 			if(shouldSort)
 				Array.Sort(this._Array, itemComparer);
+		}
+
+		public ReadOnlyMemory<T> AsMemory()
+		{
+			return new ReadOnlyMemory<T>(this._Array);
 		}
 
 		public IEnumerator<T> GetEnumerator()
