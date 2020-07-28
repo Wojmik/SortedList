@@ -7,7 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace WojciechMikołajewicz.AdvancedList
 {
-	public class OrderedReadOnlyList<T, K1, K2, K3, K4> : OrderedReadOnlyList<T, K1, K2, K3>
+	public class SortedReadOnlyList<T, K1, K2, K3, K4> : SortedReadOnlyList<T, K1, K2, K3>
 	{
 		private const int KeyIndex = 4;
 
@@ -17,7 +17,7 @@ namespace WojciechMikołajewicz.AdvancedList
 
 		protected override int KeysCount { get => KeyIndex; }
 
-		public OrderedReadOnlyList(IEnumerable<T> collection
+		public SortedReadOnlyList(IEnumerable<T> collection
 			, KeyData<T, K1> keyData1
 			, KeyData<T, K2> keyData2
 			, KeyData<T, K3> keyData3
@@ -26,7 +26,7 @@ namespace WojciechMikołajewicz.AdvancedList
 			: this(collection, new KeyData<T>[] { keyData1, keyData2, keyData3, keyData4, })
 		{ }
 
-		public OrderedReadOnlyList(IEnumerable<T> collection, IEnumerable<KeyData<T>> keyData)
+		public SortedReadOnlyList(IEnumerable<T> collection, IEnumerable<KeyData<T>> keyData)
 			: base(collection, keyData)
 		{
 			try

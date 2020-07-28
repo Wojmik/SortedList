@@ -7,9 +7,9 @@ using WojciechMikołajewicz.AdvancedList.OrderedReadOnlyList.Internal;
 
 namespace WojciechMikołajewicz.AdvancedList
 {
-	public abstract class OrderedReadOnlyList<T> : IReadOnlyList<T>
+	public abstract class SortedReadOnlyList<T> : IReadOnlyList<T>
 	{
-		private protected T[] _Array;
+		internal readonly protected T[] _Array;
 
 		protected abstract int KeysCount { get; }
 
@@ -19,7 +19,7 @@ namespace WojciechMikołajewicz.AdvancedList
 
 		public int Count { get => this._Array.Length; }
 
-		protected OrderedReadOnlyList(IEnumerable<T> collection, IEnumerable<KeyData<T>> keysData)
+		protected SortedReadOnlyList(IEnumerable<T> collection, IEnumerable<KeyData<T>> keysData)
 		{
 			const int startChunk = 256;
 			bool shouldSort = false;
@@ -79,7 +79,21 @@ namespace WojciechMikołajewicz.AdvancedList
 							}
 							currentChunk[i]=enumerator.Current;
 						}
+
+						//Create array of proper size and copy items to it
 						this._Array=new T[-startChunk*(1-(int)Math.Pow(2, chunksList.Count-1))+i];
+
+						//Copy full nodes
+						var node = chunksList.First;
+						int j=0;
+						while(!object.ReferenceEquals(node, chunksList.Last))
+						{
+							Array.Copy(node.Value, 0, this._Array, j, node.Value.Length);
+							j+=node.Value.Length;
+							node=node.Next;
+						}
+						//Copy last, incomplete node
+						Array.Copy(node.Value, 0, this._Array, j, i);
 					}
 					else
 						this._Array=new T[0];

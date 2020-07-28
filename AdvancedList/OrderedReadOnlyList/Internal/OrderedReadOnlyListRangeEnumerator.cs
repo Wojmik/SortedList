@@ -15,9 +15,9 @@ namespace WojciechMikołajewicz.AdvancedList.OrderedReadOnlyList.Internal
 
 		object IEnumerator.Current { get => this.Current; }
 
-		public OrderedReadOnlyListRangeEnumerator(OrderedReadOnlyListRange<T> orderedReadOnlyListRange)
+		public OrderedReadOnlyListRangeEnumerator(in ReadOnlyMemory<T> memory)
 		{
-			this.Memory=orderedReadOnlyListRange.AsMemory();
+			this.Memory=memory;
 			this.Index=-1;
 		}
 

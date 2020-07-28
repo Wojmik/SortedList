@@ -23,7 +23,7 @@ namespace System
 			end=this.End;
 		}
 
-		(int Offset, int Length) GetOffsetAndLength(int length)
+		public (int Offset, int Length) GetOffsetAndLength(int length)
 		{
 			int startOffset = this.Start.GetOffset(length);
 			return (Offset: startOffset, Length: this.End.GetOffset(length)-startOffset);

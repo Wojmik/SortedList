@@ -34,9 +34,9 @@ namespace WojciechMikołajewicz.AdvancedList
 			return this.Comparison(this.GetMember(x), this.GetMember(y));
 		}
 
-		//protected internal int Compare(T x, K value)
-		//{
-		//	return this.Comparison(this.GetMember(x), value);
-		//}
+		public int Compare(T x, K value)
+		{
+			return this.Comparison(this.GetMember(x), value);
+		}
 	}
 }
