@@ -92,7 +92,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//LessOrEquals
-			var range2=Datas.BinaryFindLessOrEqual(range: range1, comparison: data => LessOrEquals.CompareTo(data.Number));
+			var range2=Datas.BinaryFindLessOrEqual(range: range1, comparison: data => data.Number.CompareTo(LessOrEquals));
 			Test(firstExpected: dCodeFirst, lastExpected: dLast, lengthExpected: (LessOrEquals+1)*Divider, datas: Datas, range: range2);
 		}
 
@@ -108,7 +108,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//LessOrEquals
-			var range2 = Datas.BinaryFindLessOrEqual(range: range1, comparison: data => LessOrEquals.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindLessOrEqual(range: range1, comparison: data => data.Number.CompareTo(LessOrEquals));
 			Test(firstExpected: dCodeFirst, lastExpected: dLast, lengthExpected: (LessOrEquals+1)*Divider, datas: Datas, range: range2);
 		}
 
@@ -124,7 +124,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//LessOrEquals
-			var range2 = Datas.BinaryFindLessOrEqual(range: range1, comparison: data => LessOrEquals.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindLessOrEqual(range: range1, comparison: data => data.Number.CompareTo(LessOrEquals));
 			Test(firstExpected: dCodeFirst, lastExpected: dLast, lengthExpected: NumberCount, datas: Datas, range: range2);
 		}
 
@@ -140,7 +140,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//LessOrEquals
-			var range2 = Datas.BinaryFindLessOrEqual(range: range1, comparison: data => LessOrEquals.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindLessOrEqual(range: range1, comparison: data => data.Number.CompareTo(LessOrEquals));
 			Test(firstExpected: dCodeFirst, lastExpected: dLast, lengthExpected: (LessOrEquals+1)*Divider, datas: Datas, range: range2);
 		}
 
@@ -156,7 +156,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//LessOrEquals
-			var range2 = Datas.BinaryFindLessOrEqual(range: range1, comparison: data => LessOrEquals.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindLessOrEqual(range: range1, comparison: data => data.Number.CompareTo(LessOrEquals));
 			Test(firstExpected: dCodeFirst, lastExpected: dLast, lengthExpected: NumberCount, datas: Datas, range: range2);
 		}
 
@@ -172,7 +172,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//LessOrEquals
-			var range2 = Datas.BinaryFindLessOrEqual(range: range1, comparison: data => LessOrEquals.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindLessOrEqual(range: range1, comparison: data => data.Number.CompareTo(LessOrEquals));
 			(_, int length)=range2.GetOffsetAndLength(Datas.Count);
 			Assert.AreEqual(0, length, "{0} should be zero, and is: {1}", nameof(length), length);
 		}
@@ -188,7 +188,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//LessOrEquals
-			var range2 = Datas.BinaryFindLessOrEqual(range: range1, comparison: data => LessOrEquals.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindLessOrEqual(range: range1, comparison: data => data.Number.CompareTo(LessOrEquals));
 			(_, int length)=range2.GetOffsetAndLength(Datas.Count);
 			Assert.AreEqual(0, length, "{0} should be zero, and is: {1}", nameof(length), length);
 		}
@@ -207,7 +207,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//Less
-			var range2 = Datas.BinaryFindLess(range: range1, comparison: data => Less.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindLess(range: range1, comparison: data => data.Number.CompareTo(Less));
 			Test(firstExpected: dCodeFirst, lastExpected: dLast, lengthExpected: Less*Divider, datas: Datas, range: range2);
 		}
 		[TestMethod]
@@ -222,7 +222,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//LessOrEquals
-			var range2 = Datas.BinaryFindLess(range: range1, comparison: data => Less.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindLess(range: range1, comparison: data => data.Number.CompareTo(Less));
 			Test(firstExpected: dCodeFirst, lastExpected: dLast, lengthExpected: NumberCount, datas: Datas, range: range2);
 		}
 		[TestMethod]
@@ -237,7 +237,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//Less
-			var range2 = Datas.BinaryFindLess(range: range1, comparison: data => Less.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindLess(range: range1, comparison: data => data.Number.CompareTo(Less));
 			Test(firstExpected: dCodeFirst, lastExpected: dLast, lengthExpected: NumberCount, datas: Datas, range: range2);
 		}
 		[TestMethod]
@@ -252,7 +252,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//Less
-			var range2 = Datas.BinaryFindLess(range: range1, comparison: data => Less.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindLess(range: range1, comparison: data => data.Number.CompareTo(Less));
 			(_, int length)=range2.GetOffsetAndLength(Datas.Count);
 			Assert.AreEqual(0, length, "{0} should be zero, and is: {1}", nameof(length), length);
 		}
@@ -268,7 +268,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//Less
-			var range2 = Datas.BinaryFindLess(range: range1, comparison: data => Less.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindLess(range: range1, comparison: data => data.Number.CompareTo(Less));
 			(_, int length)=range2.GetOffsetAndLength(Datas.Count);
 			Assert.AreEqual(0, length, "{0} should be zero, and is: {1}", nameof(length), length);
 		}
@@ -287,7 +287,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//GreaterOrEquals
-			var range2 = Datas.BinaryFindGreaterOrEqual(range: range1, comparison: data => GreaterOrEquals.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindGreaterOrEqual(range: range1, comparison: data => data.Number.CompareTo(GreaterOrEquals));
 			Test(firstExpected: dFirst, lastExpected: dCodeLast, lengthExpected: NumberCount-GreaterOrEquals*Divider, datas: Datas, range: range2);
 		}
 		[TestMethod]
@@ -302,7 +302,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//GreaterOrEquals
-			var range2 = Datas.BinaryFindGreaterOrEqual(range: range1, comparison: data => GreaterOrEquals.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindGreaterOrEqual(range: range1, comparison: data => data.Number.CompareTo(GreaterOrEquals));
 			Test(firstExpected: dFirst, lastExpected: dCodeLast, lengthExpected: NumberCount-GreaterOrEquals*Divider, datas: Datas, range: range2);
 		}
 		[TestMethod]
@@ -317,7 +317,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//GreaterOrEquals
-			var range2 = Datas.BinaryFindGreaterOrEqual(range: range1, comparison: data => GreaterOrEquals.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindGreaterOrEqual(range: range1, comparison: data => data.Number.CompareTo(GreaterOrEquals));
 			Test(firstExpected: dFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range2);
 		}
 		[TestMethod]
@@ -332,7 +332,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//GreaterOrEquals
-			var range2 = Datas.BinaryFindGreaterOrEqual(range: range1, comparison: data => GreaterOrEquals.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindGreaterOrEqual(range: range1, comparison: data => data.Number.CompareTo(GreaterOrEquals));
 			Test(firstExpected: dFirst, lastExpected: dCodeLast, lengthExpected: NumberCount-GreaterOrEquals*Divider, datas: Datas, range: range2);
 		}
 		[TestMethod]
@@ -347,7 +347,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//GreaterOrEquals
-			var range2 = Datas.BinaryFindGreaterOrEqual(range: range1, comparison: data => GreaterOrEquals.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindGreaterOrEqual(range: range1, comparison: data => data.Number.CompareTo(GreaterOrEquals));
 			Test(firstExpected: dFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range2);
 		}
 		[TestMethod]
@@ -362,7 +362,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//GreaterOrEquals
-			var range2 = Datas.BinaryFindGreaterOrEqual(range: range1, comparison: data => GreaterOrEquals.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindGreaterOrEqual(range: range1, comparison: data => data.Number.CompareTo(GreaterOrEquals));
 			(_, int length)=range2.GetOffsetAndLength(Datas.Count);
 			Assert.AreEqual(0, length, "{0} should be zero, and is: {1}", nameof(length), length);
 		}
@@ -378,7 +378,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//GreaterOrEquals
-			var range2 = Datas.BinaryFindGreaterOrEqual(range: range1, comparison: data => GreaterOrEquals.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindGreaterOrEqual(range: range1, comparison: data => data.Number.CompareTo(GreaterOrEquals));
 			(_, int length)=range2.GetOffsetAndLength(Datas.Count);
 			Assert.AreEqual(0, length, "{0} should be zero, and is: {1}", nameof(length), length);
 		}
@@ -397,7 +397,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//Greater
-			var range2 = Datas.BinaryFindGreater(range: range1, comparison: data => Greater.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindGreater(range: range1, comparison: data => data.Number.CompareTo(Greater));
 			Test(firstExpected: dFirst, lastExpected: dCodeLast, lengthExpected: NumberCount-(Greater+1)*Divider, datas: Datas, range: range2);
 		}
 		[TestMethod]
@@ -412,7 +412,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//Greater
-			var range2 = Datas.BinaryFindGreater(range: range1, comparison: data => Greater.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindGreater(range: range1, comparison: data => data.Number.CompareTo(Greater));
 			Test(firstExpected: dFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range2);
 		}
 		[TestMethod]
@@ -427,7 +427,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//Greater
-			var range2 = Datas.BinaryFindGreater(range: range1, comparison: data => Greater.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindGreater(range: range1, comparison: data => data.Number.CompareTo(Greater));
 			Test(firstExpected: dFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range2);
 		}
 		[TestMethod]
@@ -442,7 +442,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//Greater
-			var range2 = Datas.BinaryFindGreater(range: range1, comparison: data => Greater.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindGreater(range: range1, comparison: data => data.Number.CompareTo(Greater));
 			(_, int length)=range2.GetOffsetAndLength(Datas.Count);
 			Assert.AreEqual(0, length, "{0} should be zero, and is: {1}", nameof(length), length);
 		}
@@ -458,7 +458,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, datas: Datas, range: range1);
 
 			//Greater
-			var range2 = Datas.BinaryFindGreater(range: range1, comparison: data => Greater.CompareTo(data.Number));
+			var range2 = Datas.BinaryFindGreater(range: range1, comparison: data => data.Number.CompareTo(Greater));
 			(_, int length)=range2.GetOffsetAndLength(Datas.Count);
 			Assert.AreEqual(0, length, "{0} should be zero, and is: {1}", nameof(length), length);
 		}
@@ -497,7 +497,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 
 		protected Range FindCode(string seekCode)
 		{
-			return Datas.BinaryFindEqual(range: Range.All, comparison: data => string.Compare(seekCode, data.Code, StringComparison.InvariantCultureIgnoreCase));
+			return Datas.BinaryFindEqual(range: Range.All, comparison: data => string.Compare(data.Code, seekCode, StringComparison.InvariantCultureIgnoreCase));
 		}
 
 		private int DataCodeCompare(Data x, Data y)

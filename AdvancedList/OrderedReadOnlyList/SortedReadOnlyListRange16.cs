@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using WojciechMikołajewicz.AdvancedList.OrderedReadOnlyList.Internal.Comparer;
 
 namespace WojciechMikołajewicz.AdvancedList
 {
@@ -30,10 +31,11 @@ namespace WojciechMikołajewicz.AdvancedList
 			this.Start=start;
 		}
 
-		public ReadOnlyMemory<T> AsMemory()
-		{
-			return this.Memory;
-		}
+		//private SortedReadOnlyListRange(SortedReadOnlyList<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> orderedList, ReadOnlyMemory<T> memory)
+		//{
+		//	this.OrderedList=orderedList;
+		//	this.Memory=memory;
+		//}
 
 		public IEnumerator<T> GetEnumerator()
 		{
@@ -44,283 +46,1134 @@ namespace WojciechMikołajewicz.AdvancedList
 		{
 			return this.GetEnumerator();
 		}
-#endregion
+		#endregion
 
 		#region Equal
-		public SortedReadOnlyListRange<T, K1> BinaryFindEqual(K1 key1)
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1)
 		{
-			var k1Comparison = this.OrderedList.Key1Comparison;
-			var k1Getter = this.OrderedList.Key1Getter;
+			var orderedList = this.OrderedList;
 
-			var range = this.OrderedList._Array.BinaryFindEqual(new Range(this.Start, this.Count), Comparison);
+			var range = orderedList._Array.BinaryFindEqual(new Range(this.Start, this.Count), Comparison);
 
-			return new SortedReadOnlyListRange<T, K1>(this.OrderedList, range);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
 
 			int Comparison(T item)
 			{
-				int cmp;
-
-				cmp=k1Comparison(key1, k1Getter(item));
-
-				return cmp;
+				return orderedList.Compare(item, key1);
 			}
 		}
 
-		public SortedReadOnlyListRange<T, K1, K2> BinaryFindEqual(K1 key1, K2 key2)
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2)
 		{
-			var k1Comparison = this.OrderedList.Key1Comparison;
-			var k1Getter = this.OrderedList.Key1Getter;
-			var k2Comparison = this.OrderedList.Key2Comparison;
-			var k2Getter = this.OrderedList.Key2Getter;
+			var orderedList = this.OrderedList;
 
-			var range = this.OrderedList._Array.BinaryFindEqual(new Range(this.Start, this.Count), Comparison);
+			var range = orderedList._Array.BinaryFindEqual(new Range(this.Start, this.Count), Comparison);
 
-			return new SortedReadOnlyListRange<T, K1, K2>(this.OrderedList, range);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
 
 			int Comparison(T item)
 			{
-				int cmp;
+				return orderedList.Compare(item, key1, key2);
+			}
+		}
 
-				if(0==(cmp=k1Comparison(key1, k1Getter(item))))
-					cmp=k2Comparison(key2, k2Getter(item));
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3)
+		{
+			var orderedList = this.OrderedList;
 
-				return cmp;
+			var range = orderedList._Array.BinaryFindEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15);
 			}
 		}
 
 		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15, K16 key16)
 		{
-			var k1Comparison = this.OrderedList.Key1Comparison;
-			var k1Getter = this.OrderedList.Key1Getter;
-			var k2Comparison = this.OrderedList.Key2Comparison;
-			var k2Getter = this.OrderedList.Key2Getter;
-			var k3Comparison = this.OrderedList.Key3Comparison;
-			var k3Getter = this.OrderedList.Key3Getter;
-			var k4Comparison = this.OrderedList.Key4Comparison;
-			var k4Getter = this.OrderedList.Key4Getter;
-			var k5Comparison = this.OrderedList.Key5Comparison;
-			var k5Getter = this.OrderedList.Key5Getter;
-			var k6Comparison = this.OrderedList.Key6Comparison;
-			var k6Getter = this.OrderedList.Key6Getter;
-			var k7Comparison = this.OrderedList.Key7Comparison;
-			var k7Getter = this.OrderedList.Key7Getter;
-			var k8Comparison = this.OrderedList.Key8Comparison;
-			var k8Getter = this.OrderedList.Key8Getter;
-			var k9Comparison = this.OrderedList.Key9Comparison;
-			var k9Getter = this.OrderedList.Key9Getter;
-			var k10Comparison = this.OrderedList.Key10Comparison;
-			var k10Getter = this.OrderedList.Key10Getter;
-			var k11Comparison = this.OrderedList.Key11Comparison;
-			var k11Getter = this.OrderedList.Key11Getter;
-			var k12Comparison = this.OrderedList.Key12Comparison;
-			var k12Getter = this.OrderedList.Key12Getter;
-			var k13Comparison = this.OrderedList.Key13Comparison;
-			var k13Getter = this.OrderedList.Key13Getter;
-			var k14Comparison = this.OrderedList.Key14Comparison;
-			var k14Getter = this.OrderedList.Key14Getter;
-			var k15Comparison = this.OrderedList.Key15Comparison;
-			var k15Getter = this.OrderedList.Key15Getter;
-			var k16Comparison = this.OrderedList.Key16Comparison;
-			var k16Getter = this.OrderedList.Key16Getter;
+			var orderedList = this.OrderedList;
 
-			var range = this.OrderedList._Array.BinaryFindEqual(new Range(this.Start, this.Count), Comparison);
+			var range = orderedList._Array.BinaryFindEqual(new Range(this.Start, this.Count), Comparison);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(this.OrderedList, range);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
 
 			int Comparison(T item)
 			{
-				int cmp;
-
-				if(0==(cmp=k1Comparison(key1, k1Getter(item))))
-					if(0==(cmp=k2Comparison(key1, k2Getter(item))))
-						if(0==(cmp=k3Comparison(key1, k3Getter(item))))
-							if(0==(cmp=k4Comparison(key1, k4Getter(item))))
-								if(0==(cmp=k5Comparison(key1, k5Getter(item))))
-									if(0==(cmp=k6Comparison(key1, k6Getter(item))))
-										if(0==(cmp=k7Comparison(key1, k7Getter(item))))
-											if(0==(cmp=k8Comparison(key1, k8Getter(item))))
-												if(0==(cmp=k9Comparison(key1, k9Getter(item))))
-													if(0==(cmp=k10Comparison(key1, k10Getter(item))))
-														if(0==(cmp=k11Comparison(key1, k11Getter(item))))
-															if(0==(cmp=k12Comparison(key1, k12Getter(item))))
-																if(0==(cmp=k13Comparison(key1, k13Getter(item))))
-																	if(0==(cmp=k14Comparison(key1, k14Getter(item))))
-																		if(0==(cmp=k15Comparison(key1, k15Getter(item))))
-																			cmp=k2Comparison(key16, k16Getter(item));
-
-				return cmp;
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15, key16);
 			}
 		}
 		#endregion
 
 		#region LessOrEqual
-		public SortedReadOnlyListRange<T, K1> BinaryFindLessOrEqual(K1 key1)
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLessOrEqual(K1 key1)
 		{
-			var k1Comparison = this.OrderedList.Key1Comparison;
-			var k1Getter = this.OrderedList.Key1Getter;
+			var orderedList = this.OrderedList;
 
-			var range = this.OrderedList._Array.BinaryFindLessOrEqual(new Range(this.Start, this.Count), Comparison);
+			var range = orderedList._Array.BinaryFindLessOrEqual(new Range(this.Start, this.Count), Comparison);
 
-			return new SortedReadOnlyListRange<T, K1>(this.OrderedList, range);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
 
 			int Comparison(T item)
 			{
-				int cmp;
-
-				cmp=k1Comparison(key1, k1Getter(item));
-
-				return cmp;
+				return orderedList.Compare(item, key1);
 			}
 		}
 
-		public SortedReadOnlyListRange<T, K1, K2> BinaryFindLessOrEqual(K1 key1, K2 key2)
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLessOrEqual(K1 key1, K2 key2)
 		{
-			var k1Comparison = this.OrderedList.Key1Comparison;
-			var k1Getter = this.OrderedList.Key1Getter;
-			var k2Comparison = this.OrderedList.Key2Comparison;
-			var k2Getter = this.OrderedList.Key2Getter;
+			var orderedList = this.OrderedList;
 
-			var range = this.OrderedList._Array.BinaryFindLessOrEqual(new Range(this.Start, this.Count), Comparison);
+			var range = orderedList._Array.BinaryFindLessOrEqual(new Range(this.Start, this.Count), Comparison);
 
-			return new SortedReadOnlyListRange<T, K1, K2>(this.OrderedList, range);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
 
 			int Comparison(T item)
 			{
-				int cmp;
+				return orderedList.Compare(item, key1, key2);
+			}
+		}
 
-				if(0==(cmp=k1Comparison(key1, k1Getter(item))))
-					cmp=k2Comparison(key2, k2Getter(item));
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLessOrEqual(K1 key1, K2 key2, K3 key3)
+		{
+			var orderedList = this.OrderedList;
 
-				return cmp;
+			var range = orderedList._Array.BinaryFindLessOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLessOrEqual(K1 key1, K2 key2, K3 key3, K4 key4)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLessOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLessOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLessOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLessOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLessOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLessOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLessOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLessOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLessOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLessOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLessOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLessOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLessOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLessOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLessOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLessOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLessOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLessOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLessOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLessOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLessOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLessOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLessOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLessOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15, K16 key16)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLessOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15, key16);
 			}
 		}
 		#endregion
 
 		#region Less
-		public SortedReadOnlyListRange<T, K1> BinaryFindLess(K1 key1)
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1)
 		{
-			var k1Comparison = this.OrderedList.Key1Comparison;
-			var k1Getter = this.OrderedList.Key1Getter;
+			var orderedList = this.OrderedList;
 
-			var range = this.OrderedList._Array.BinaryFindLess(new Range(this.Start, this.Count), Comparison);
+			var range = orderedList._Array.BinaryFindLess(new Range(this.Start, this.Count), Comparison);
 
-			return new SortedReadOnlyListRange<T, K1>(this.OrderedList, range);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
 
 			int Comparison(T item)
 			{
-				int cmp;
-
-				cmp=k1Comparison(key1, k1Getter(item));
-
-				return cmp;
+				return orderedList.Compare(item, key1);
 			}
 		}
 
-		public SortedReadOnlyListRange<T, K1, K2> BinaryFindLess(K1 key1, K2 key2)
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2)
 		{
-			var k1Comparison = this.OrderedList.Key1Comparison;
-			var k1Getter = this.OrderedList.Key1Getter;
-			var k2Comparison = this.OrderedList.Key2Comparison;
-			var k2Getter = this.OrderedList.Key2Getter;
+			var orderedList = this.OrderedList;
 
-			var range = this.OrderedList._Array.BinaryFindLess(new Range(this.Start, this.Count), Comparison);
+			var range = orderedList._Array.BinaryFindLess(new Range(this.Start, this.Count), Comparison);
 
-			return new SortedReadOnlyListRange<T, K1, K2>(this.OrderedList, range);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
 
 			int Comparison(T item)
 			{
-				int cmp;
+				return orderedList.Compare(item, key1, key2);
+			}
+		}
 
-				if(0==(cmp=k1Comparison(key1, k1Getter(item))))
-					cmp=k2Comparison(key2, k2Getter(item));
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3)
+		{
+			var orderedList = this.OrderedList;
 
-				return cmp;
+			var range = orderedList._Array.BinaryFindLess(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLess(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLess(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLess(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLess(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLess(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLess(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLess(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLess(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLess(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLess(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLess(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLess(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15, K16 key16)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindLess(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15, key16);
 			}
 		}
 		#endregion
 
 		#region GreaterOrEqual
-		public SortedReadOnlyListRange<T, K1> BinaryFindGreaterOrEqual(K1 key1)
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1)
 		{
-			var k1Comparison = this.OrderedList.Key1Comparison;
-			var k1Getter = this.OrderedList.Key1Getter;
+			var orderedList = this.OrderedList;
 
-			var range = this.OrderedList._Array.BinaryFindGreaterOrEqual(new Range(this.Start, this.Count), Comparison);
+			var range = orderedList._Array.BinaryFindGreaterOrEqual(new Range(this.Start, this.Count), Comparison);
 
-			return new SortedReadOnlyListRange<T, K1>(this.OrderedList, range);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
 
 			int Comparison(T item)
 			{
-				int cmp;
-
-				cmp=k1Comparison(key1, k1Getter(item));
-
-				return cmp;
+				return orderedList.Compare(item, key1);
 			}
 		}
 
-		public SortedReadOnlyListRange<T, K1, K2> BinaryFindGreaterOrEqual(K1 key1, K2 key2)
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2)
 		{
-			var k1Comparison = this.OrderedList.Key1Comparison;
-			var k1Getter = this.OrderedList.Key1Getter;
-			var k2Comparison = this.OrderedList.Key2Comparison;
-			var k2Getter = this.OrderedList.Key2Getter;
+			var orderedList = this.OrderedList;
 
-			var range = this.OrderedList._Array.BinaryFindGreaterOrEqual(new Range(this.Start, this.Count), Comparison);
+			var range = orderedList._Array.BinaryFindGreaterOrEqual(new Range(this.Start, this.Count), Comparison);
 
-			return new SortedReadOnlyListRange<T, K1, K2>(this.OrderedList, range);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
 
 			int Comparison(T item)
 			{
-				int cmp;
+				return orderedList.Compare(item, key1, key2);
+			}
+		}
 
-				if(0==(cmp=k1Comparison(key1, k1Getter(item))))
-					cmp=k2Comparison(key2, k2Getter(item));
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3)
+		{
+			var orderedList = this.OrderedList;
 
-				return cmp;
+			var range = orderedList._Array.BinaryFindGreaterOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreaterOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreaterOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreaterOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreaterOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreaterOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreaterOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreaterOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreaterOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreaterOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreaterOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreaterOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreaterOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15, K16 key16)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreaterOrEqual(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15, key16);
 			}
 		}
 		#endregion
 
 		#region Greater
-		public SortedReadOnlyListRange<T, K1> BinaryFindGreater(K1 key1)
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1)
 		{
-			var k1Comparison = this.OrderedList.Key1Comparison;
-			var k1Getter = this.OrderedList.Key1Getter;
+			var orderedList = this.OrderedList;
 
-			var range = this.OrderedList._Array.BinaryFindGreater(new Range(this.Start, this.Count), Comparison);
+			var range = orderedList._Array.BinaryFindGreater(new Range(this.Start, this.Count), Comparison);
 
-			return new SortedReadOnlyListRange<T, K1>(this.OrderedList, range);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
 
 			int Comparison(T item)
 			{
-				int cmp;
-
-				cmp=k1Comparison(key1, k1Getter(item));
-
-				return cmp;
+				return orderedList.Compare(item, key1);
 			}
 		}
 
-		public SortedReadOnlyListRange<T, K1, K2> BinaryFindGreater(K1 key1, K2 key2)
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2)
 		{
-			var k1Comparison = this.OrderedList.Key1Comparison;
-			var k1Getter = this.OrderedList.Key1Getter;
-			var k2Comparison = this.OrderedList.Key2Comparison;
-			var k2Getter = this.OrderedList.Key2Getter;
+			var orderedList = this.OrderedList;
 
-			var range = this.OrderedList._Array.BinaryFindGreater(new Range(this.Start, this.Count), Comparison);
+			var range = orderedList._Array.BinaryFindGreater(new Range(this.Start, this.Count), Comparison);
 
-			return new SortedReadOnlyListRange<T, K1, K2>(this.OrderedList, range);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
 
 			int Comparison(T item)
 			{
-				int cmp;
+				return orderedList.Compare(item, key1, key2);
+			}
+		}
 
-				if(0==(cmp=k1Comparison(key1, k1Getter(item))))
-					cmp=k2Comparison(key2, k2Getter(item));
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3)
+		{
+			var orderedList = this.OrderedList;
 
-				return cmp;
+			var range = orderedList._Array.BinaryFindGreater(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreater(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreater(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreater(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreater(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreater(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreater(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreater(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreater(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreater(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreater(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreater(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreater(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15);
+			}
+		}
+
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15, K16 key16)
+		{
+			var orderedList = this.OrderedList;
+
+			var range = orderedList._Array.BinaryFindGreater(new Range(this.Start, this.Count), Comparison);
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, range);
+
+			int Comparison(T item)
+			{
+				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15, key16);
 			}
 		}
 		#endregion

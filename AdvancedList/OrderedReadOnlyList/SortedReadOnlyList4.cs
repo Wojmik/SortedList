@@ -4,18 +4,18 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using WojciechMikołajewicz.AdvancedList.OrderedReadOnlyList;
+using WojciechMikołajewicz.AdvancedList.OrderedReadOnlyList.KeysData;
 
 namespace WojciechMikołajewicz.AdvancedList
 {
-	public class SortedReadOnlyList<T, K1, K2, K3, K4> : SortedReadOnlyList<T, K1, K2, K3>
+	public class SortedReadOnlyList<T, K1, K2, K3, K4> : KeysData<T, K1, K2, K3, K4>, IReadOnlyList<T>
 	{
-		private const int KeyIndex = 4;
+		internal readonly T[] _Array;
 
-		public Func<T, K4> Key4Getter { get; }
+		public T this[int index] { get => this._Array[index]; }
 
-		public Comparison<K4> Key4Comparison { get; }
-
-		protected override int KeysCount { get => KeyIndex; }
+		public int Count { get => this._Array.Length; }
 
 		public SortedReadOnlyList(IEnumerable<T> collection
 			, KeyData<T, K1> keyData1
@@ -23,21 +23,33 @@ namespace WojciechMikołajewicz.AdvancedList
 			, KeyData<T, K3> keyData3
 			, KeyData<T, K4> keyData4
 			)
-			: this(collection, new KeyData<T>[] { keyData1, keyData2, keyData3, keyData4, })
+			: base(keyData1, keyData2, keyData3, keyData4)
+		{
+			this._Array=CreateSortedArray(collection: collection, keysData: this);
+		}
+
+		public SortedReadOnlyList(IEnumerable<T> collection, KeysData<T, K1, K2, K3, K4> keysData)
+			: this(collection,
+				  keysData.Key1Data,
+				  keysData.Key2Data,
+				  keysData.Key3Data,
+				  keysData.Key4Data
+				  )
 		{ }
 
-		public SortedReadOnlyList(IEnumerable<T> collection, IEnumerable<KeyData<T>> keyData)
-			: base(collection, keyData)
+		public ReadOnlyMemory<T> AsMemory()
 		{
-			try
-			{
-				this.Key4Getter=((KeyData<T, K4>)this.KeysData[KeyIndex-1]).GetMember;
-				this.Key4Comparison=((KeyData<T, K4>)this.KeysData[KeyIndex-1]).Comparison;
-			}
-			catch(InvalidCastException)
-			{
-				throw new InvalidCastException($"{nameof(keyData)}[{KeyIndex-1}] cannot be cast to KeyData<T, K{KeyIndex}>");
-			}
+			return new ReadOnlyMemory<T>(this._Array);
+		}
+
+		public IEnumerator<T> GetEnumerator()
+		{
+			return ((IEnumerable<T>)this._Array).GetEnumerator();
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return this.GetEnumerator();
 		}
 	}
 }

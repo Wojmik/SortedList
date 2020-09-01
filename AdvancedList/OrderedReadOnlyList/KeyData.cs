@@ -1,35 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Text;
 
-namespace WojciechMikołajewicz.AdvancedList
+namespace WojciechMikołajewicz.AdvancedList.OrderedReadOnlyList
 {
-	public abstract class KeyData<T> : IComparer<T>
+	public readonly struct KeyData<T, K> : IKeyData<T>
 	{
-		public static KeyData<T> Create<K>(Func<T, K> getMember, Comparison<K> comparison = null)
-		{
-			return new KeyData<T, K>(getMember: getMember, comparison: comparison);
-		}
-
-		public abstract int Compare(T x, T y);
-	}
-
-	public class KeyData<T, K> : KeyData<T>
-	{
-		public static implicit operator KeyData<T, K>(Func<T, K> func) => new KeyData<T, K>(func);
-
 		public Func<T, K> GetMember { get; }
 
 		public Comparison<K> Comparison { get; }
 
-		public KeyData(Func<T, K> getMember, Comparison<K> comparison = null)
+		public KeyData(Func<T, K> getMember, Comparison<K> comparison)
 		{
-			this.GetMember=getMember;
-			this.Comparison=comparison??Comparer<K>.Default.Compare;
+			this.GetMember = getMember;
+			this.Comparison = comparison;
 		}
 
-		public override int Compare(T x, T y)
+		public KeyData(Func<T, K> getMember, Comparer<K> comparer)
+		{
+			this.GetMember = getMember;
+			this.Comparison = comparer.Compare;
+		}
+
+		public KeyData(Func<T, K> getMember)
+		{
+			this.GetMember = getMember;
+			this.Comparison = Comparer<K>.Default.Compare;
+		}
+
+		public void Deconstruct(out Func<T, K> getMember, out Comparison<K> comparison)
+		{
+			getMember=this.GetMember;
+			comparison=this.Comparison;
+		}
+
+		public int Compare(T x, T y)
 		{
 			return this.Comparison(this.GetMember(x), this.GetMember(y));
 		}
@@ -37,6 +42,11 @@ namespace WojciechMikołajewicz.AdvancedList
 		public int Compare(T x, K value)
 		{
 			return this.Comparison(this.GetMember(x), value);
+		}
+
+		int IKeyData<T>.Compare(T x, object value)
+		{
+			return this.Comparison(this.GetMember(x), (K)value);
 		}
 	}
 }

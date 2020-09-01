@@ -4,37 +4,46 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using WojciechMikołajewicz.AdvancedList.OrderedReadOnlyList;
+using WojciechMikołajewicz.AdvancedList.OrderedReadOnlyList.KeysData;
 
 namespace WojciechMikołajewicz.AdvancedList
 {
-	public class SortedReadOnlyList<T, K1> : SortedReadOnlyList<T>
+	public class SortedReadOnlyList<T, K1> : KeysData<T, K1>, IReadOnlyList<T>
 	{
-		private const int KeyIndex = 1;
+		internal readonly T[] _Array;
 
-		public Func<T, K1> Key1Getter { get; }
+		public T this[int index] { get => this._Array[index]; }
 
-		public Comparison<K1> Key1Comparison { get; }
+		public int Count { get => this._Array.Length; }
 
-		protected override int KeysCount { get => KeyIndex; }
-
-		public SortedReadOnlyList(IEnumerable<T> collection
-			, KeyData<T, K1> keyData1
+		public SortedReadOnlyList(IEnumerable<T> collection,
+			in KeyData<T, K1> keyData1
 			)
-			: this(collection, new KeyData<T>[] { keyData1, })
+			: base(keyData1)
+		{
+			this._Array=CreateSortedArray(collection: collection, keysData: this);
+		}
+
+		public SortedReadOnlyList(IEnumerable<T> collection, KeysData<T, K1> keysData)
+			: this(collection,
+				  keysData.Key1Data
+				  )
 		{ }
 
-		public SortedReadOnlyList(IEnumerable<T> collection, IEnumerable<KeyData<T>> keysData)
-			: base(collection, keysData)
+		public ReadOnlyMemory<T> AsMemory()
 		{
-			try
-			{
-				this.Key1Getter=((KeyData<T, K1>)this.KeysData[KeyIndex-1]).GetMember;
-				this.Key1Comparison=((KeyData<T, K1>)this.KeysData[KeyIndex-1]).Comparison;
-			}
-			catch(InvalidCastException)
-			{
-				throw new InvalidCastException($"{nameof(keysData)}[{KeyIndex-1}] cannot be cast to KeyData<T, K{KeyIndex}>");
-			}
+			return new ReadOnlyMemory<T>(this._Array);
+		}
+
+		public IEnumerator<T> GetEnumerator()
+		{
+			return ((IEnumerable<T>)this._Array).GetEnumerator();
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return this.GetEnumerator();
 		}
 	}
 }

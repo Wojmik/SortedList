@@ -4,38 +4,48 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using WojciechMikołajewicz.AdvancedList.OrderedReadOnlyList;
+using WojciechMikołajewicz.AdvancedList.OrderedReadOnlyList.KeysData;
 
 namespace WojciechMikołajewicz.AdvancedList
 {
-	public class SortedReadOnlyList<T, K1, K2> : SortedReadOnlyList<T, K1>
+	public class SortedReadOnlyList<T, K1, K2> : KeysData<T, K1, K2>, IReadOnlyList<T>
 	{
-		private const int KeyIndex = 2;
+		internal readonly T[] _Array;
 
-		public Func<T, K2> Key2Getter { get; }
+		public T this[int index] { get => this._Array[index]; }
 
-		public Comparison<K2> Key2Comparison { get; }
+		public int Count { get => this._Array.Length; }
 
-		protected override int KeysCount { get => KeyIndex; }
-
-		public SortedReadOnlyList(IEnumerable<T> collection
-			, KeyData<T, K1> keyData1
-			, KeyData<T, K2> keyData2
+		public SortedReadOnlyList(IEnumerable<T> collection,
+			in KeyData<T, K1> keyData1,
+			in KeyData<T, K2> keyData2
 			)
-			: this(collection, new KeyData<T>[] { keyData1, keyData2, })
+			: base(keyData1, keyData2)
+		{
+			this._Array=CreateSortedArray(collection: collection, keysData: this);
+		}
+
+		public SortedReadOnlyList(IEnumerable<T> collection, KeysData<T, K1, K2> keysData)
+			: this(collection,
+				  keysData.Key1Data,
+				  keysData.Key2Data
+				  )
 		{ }
 
-		public SortedReadOnlyList(IEnumerable<T> collection, IEnumerable<KeyData<T>> keyData)
-			: base(collection, keyData)
+		public ReadOnlyMemory<T> AsMemory()
 		{
-			try
-			{
-				this.Key2Getter=((KeyData<T, K2>)this.KeysData[KeyIndex-1]).GetMember;
-				this.Key2Comparison=((KeyData<T, K2>)this.KeysData[KeyIndex-1]).Comparison;
-			}
-			catch(InvalidCastException)
-			{
-				throw new InvalidCastException($"{nameof(keyData)}[{KeyIndex-1}] cannot be cast to KeyData<T, K{KeyIndex}>");
-			}
+			return new ReadOnlyMemory<T>(this._Array);
+		}
+
+		public IEnumerator<T> GetEnumerator()
+		{
+			return ((IEnumerable<T>)this._Array).GetEnumerator();
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return this.GetEnumerator();
 		}
 	}
 }
