@@ -179,7 +179,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		#region Example items
 		public static SortedListItem ExistingItemExample { get; } = new SortedListItem
 		{
-			Key1="UUU",
+			Key1="PPP",
 			Key2=4,
 			Key3=4.1,
 			Key4=8.11m,

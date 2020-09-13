@@ -5,10 +5,44 @@ using WojciechMikołajewicz.AdvancedList.OrderedReadOnlyList.Internal;
 
 namespace WojciechMikołajewicz.AdvancedList.OrderedReadOnlyList.KeysData
 {
+	/// <summary>
+	/// Keys data
+	/// </summary>
+	/// <typeparam name="T">Type of items</typeparam>
+	/// <typeparam name="K1">Key1 type</typeparam>
+	/// <typeparam name="K2">Key2 type</typeparam>
+	/// <typeparam name="K3">Key3 type</typeparam>
+	/// <typeparam name="K4">Key4 type</typeparam>
+	/// <typeparam name="K5">Key5 type</typeparam>
+	/// <typeparam name="K6">Key6 type</typeparam>
+	/// <typeparam name="K7">Key7 type</typeparam>
+	/// <typeparam name="K8">Key8 type</typeparam>
+	/// <typeparam name="K9">Key9 type</typeparam>
+	/// <typeparam name="K10">Key10 type</typeparam>
+	/// <typeparam name="K11">Key11 type</typeparam>
+	/// <typeparam name="K12">Key12 type</typeparam>
 	public class KeysData<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12> : KeysData<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11>
 	{
+		/// <summary>
+		/// Key12 data
+		/// </summary>
 		public KeyData<T, K12> Key12Data { get; }
 
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="key1Data">Key1 data</param>
+		/// <param name="key2Data">Key2 data</param>
+		/// <param name="key3Data">Key3 data</param>
+		/// <param name="key4Data">Key4 data</param>
+		/// <param name="key5Data">Key5 data</param>
+		/// <param name="key6Data">Key6 data</param>
+		/// <param name="key7Data">Key7 data</param>
+		/// <param name="key8Data">Key8 data</param>
+		/// <param name="key9Data">Key9 data</param>
+		/// <param name="key10Data">Key10 data</param>
+		/// <param name="key11Data">Key11 data</param>
+		/// <param name="key12Data">Key12 data</param>
 		public KeysData(
 			in KeyData<T, K1> key1Data,
 			in KeyData<T, K2> key2Data,
@@ -40,6 +74,12 @@ namespace WojciechMikołajewicz.AdvancedList.OrderedReadOnlyList.KeysData
 			this.Key12Data = key12Data;
 		}
 
+		/// <summary>
+		/// Compare items
+		/// </summary>
+		/// <param name="x">Item to compare</param>
+		/// <param name="y">Item to compare</param>
+		/// <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
 		public override int Compare(T x, T y)
 		{
 			int cmp;
@@ -60,6 +100,23 @@ namespace WojciechMikołajewicz.AdvancedList.OrderedReadOnlyList.KeysData
 			return cmp;
 		}
 
+		/// <summary>
+		/// Compare item with keys values
+		/// </summary>
+		/// <param name="item">Item to compare</param>
+		/// <param name="key1">Key1 to compare</param>
+		/// <param name="key2">Key2 to compare</param>
+		/// <param name="key3">Key3 to compare</param>
+		/// <param name="key4">Key4 to compare</param>
+		/// <param name="key5">Key5 to compare</param>
+		/// <param name="key6">Key6 to compare</param>
+		/// <param name="key7">Key7 to compare</param>
+		/// <param name="key8">Key8 to compare</param>
+		/// <param name="key9">Key9 to compare</param>
+		/// <param name="key10">Key10 to compare</param>
+		/// <param name="key11">Key11 to compare</param>
+		/// <param name="key12">Key12 to compare</param>
+		/// <returns>Compare result: -1 if <paramref name="item"/> is less than keys, 1 if <paramref name="item"/> is greater than keys, 0 if <paramref name="item"/> is equal to keys</returns>
 		public int Compare(T item, K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12)
 		{
 			int cmp;

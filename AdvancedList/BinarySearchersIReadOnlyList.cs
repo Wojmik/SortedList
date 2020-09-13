@@ -5,7 +5,7 @@ using System.Text;
 namespace WojciechMikołajewicz.AdvancedList
 {
 	/// <summary>
-	/// Extension of IReadOnlyList<T>, ReadOnlySpan<T>, Span<T>, ReadOnlyMemory<T>, Memory<T> allowing binary search in sorted lists
+	/// Extension of IReadOnlyList&lt;T&gt;, ReadOnlySpan&lt;T&gt;, Span&lt;T&gt;, ReadOnlyMemory&lt;T&gt;, Memory&lt;T&gt; allowing binary search in sorted lists
 	/// </summary>
 	public static partial class BinarySearchers
 	{
