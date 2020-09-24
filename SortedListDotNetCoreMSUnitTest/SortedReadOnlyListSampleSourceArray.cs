@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using WojciechMikołajewicz.SortedList;
-using WojciechMikołajewicz.SortedList.OrderedReadOnlyList;
-using WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData;
+using WojciechMikołajewicz.SortedList.KeysData;
 
 namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 {

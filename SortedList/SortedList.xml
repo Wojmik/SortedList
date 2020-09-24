@@ -264,13 +264,13 @@
             <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
             <returns>Span of items in <paramref name="span"/> greater than serched one</returns>
         </member>
-        <member name="T:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.IKeyData`1">
+        <member name="T:WojciechMikołajewicz.SortedList.IKeyData`1">
             <summary>
             Key data interface
             </summary>
             <typeparam name="T">Type of item</typeparam>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.IKeyData`1.Compare(`0,`0)">
+        <member name="M:WojciechMikołajewicz.SortedList.IKeyData`1.Compare(`0,`0)">
             <summary>
             Compare item's keys
             </summary>
@@ -278,7 +278,7 @@
             <param name="y">Item to compare its key</param>
             <returns>Compare result: -1 if key of <paramref name="x"/> is less than key of <paramref name="y"/>, 1 if key of <paramref name="x"/> is greater than key of <paramref name="y"/>, 0 if key of <paramref name="x"/> is equal to key of <paramref name="y"/></returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.IKeyData`1.Compare(`0,System.Object)">
+        <member name="M:WojciechMikołajewicz.SortedList.IKeyData`1.Compare(`0,System.Object)">
             <summary>
             Compare item's key to <paramref name="value"/>
             </summary>
@@ -286,51 +286,51 @@
             <param name="value">Key value to compare</param>
             <returns>Compare result: -1 if key of <paramref name="x"/> is less than <paramref name="value"/>, 1 if key of <paramref name="x"/> is greater than <paramref name="value"/>, 0 if key of <paramref name="x"/> is equal to <paramref name="value"/></returns>
         </member>
-        <member name="T:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData`2">
+        <member name="T:WojciechMikołajewicz.SortedList.KeyData`2">
             <summary>
             Key data
             </summary>
             <typeparam name="T">Type of item</typeparam>
             <typeparam name="K">Type of key</typeparam>
         </member>
-        <member name="P:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData`2.GetMember">
+        <member name="P:WojciechMikołajewicz.SortedList.KeyData`2.GetMember">
             <summary>
             Gets key member of item
             </summary>
         </member>
-        <member name="P:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData`2.Comparison">
+        <member name="P:WojciechMikołajewicz.SortedList.KeyData`2.Comparison">
             <summary>
             Key comparison
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData`2.#ctor(System.Func{`0,`1},System.Comparison{`1})">
+        <member name="M:WojciechMikołajewicz.SortedList.KeyData`2.#ctor(System.Func{`0,`1},System.Comparison{`1})">
             <summary>
             Constructor
             </summary>
             <param name="getMember">Gets key member of item</param>
             <param name="comparison">Key comparison</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData`2.#ctor(System.Func{`0,`1},System.Collections.Generic.Comparer{`1})">
+        <member name="M:WojciechMikołajewicz.SortedList.KeyData`2.#ctor(System.Func{`0,`1},System.Collections.Generic.Comparer{`1})">
             <summary>
             Constructor
             </summary>
             <param name="getMember">Gets key member of item</param>
             <param name="comparer">Key comparer</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData`2.#ctor(System.Func{`0,`1})">
+        <member name="M:WojciechMikołajewicz.SortedList.KeyData`2.#ctor(System.Func{`0,`1})">
             <summary>
             Constructor with default key comparer
             </summary>
             <param name="getMember">Gets key member of item</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData`2.Deconstruct(System.Func{`0,`1}@,System.Comparison{`1}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeyData`2.Deconstruct(System.Func{`0,`1}@,System.Comparison{`1}@)">
             <summary>
             Deconstruct
             </summary>
             <param name="getMember">Gets key member of item</param>
             <param name="comparison">Key comparison</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData`2.Compare(`0,`0)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeyData`2.Compare(`0,`0)">
             <summary>
             Compare item's keys
             </summary>
@@ -338,7 +338,7 @@
             <param name="y">Item to compare its key</param>
             <returns>Compare result: -1 if key of <paramref name="x"/> is less than key of <paramref name="y"/>, 1 if key of <paramref name="x"/> is greater than key of <paramref name="y"/>, 0 if key of <paramref name="x"/> is equal to key of <paramref name="y"/></returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData`2.Compare(`0,`1)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeyData`2.Compare(`0,`1)">
             <summary>
             Compare item's key to <paramref name="value"/>
             </summary>
@@ -346,7 +346,7 @@
             <param name="value">Key value to compare</param>
             <returns>Compare result: -1 if key of <paramref name="x"/> is less than <paramref name="value"/>, 1 if key of <paramref name="x"/> is greater than <paramref name="value"/>, 0 if key of <paramref name="x"/> is equal to <paramref name="value"/></returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData`2.WojciechMikołajewicz#SortedList#OrderedReadOnlyList#IKeyData{T}#Compare(`0,System.Object)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeyData`2.WojciechMikołajewicz#SortedList#IKeyData{T}#Compare(`0,System.Object)">
             <summary>
             Compare item's key to <paramref name="value"/>
             </summary>
@@ -354,13 +354,13 @@
             <param name="value">Key value to compare</param>
             <returns>Compare result: -1 if key of <paramref name="x"/> is less than <paramref name="value"/>, 1 if key of <paramref name="x"/> is greater than <paramref name="value"/>, 0 if key of <paramref name="x"/> is equal to <paramref name="value"/></returns>
         </member>
-        <member name="T:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`1">
+        <member name="T:WojciechMikołajewicz.SortedList.KeysData.KeysData`1">
             <summary>
             Keys data
             </summary>
             <typeparam name="T">Type of items</typeparam>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`1.Compare(`0,`0)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`1.Compare(`0,`0)">
             <summary>
             Compare items
             </summary>
@@ -368,7 +368,7 @@
             <param name="y">Item to compare</param>
             <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`1.CreateSortedArray(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0})">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`1.CreateSortedArray(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeysData.KeysData{`0})">
             <summary>
             Create array from <paramref name="collection"/>, sorted by keys defined in <paramref name="keysData"/>
             </summary>
@@ -376,25 +376,25 @@
             <param name="keysData">Keys definition</param>
             <returns>Sorted array</returns>
         </member>
-        <member name="T:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`2">
+        <member name="T:WojciechMikołajewicz.SortedList.KeysData.KeysData`2">
             <summary>
             Keys data
             </summary>
             <typeparam name="T">Type of items</typeparam>
             <typeparam name="K1">Key1 type</typeparam>
         </member>
-        <member name="P:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`2.Key1Data">
+        <member name="P:WojciechMikołajewicz.SortedList.KeysData.KeysData`2.Key1Data">
             <summary>
             Key1 data
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`2.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`2.#ctor(WojciechMikołajewicz.SortedList.KeyData{`0,`1}@)">
             <summary>
             Constructor
             </summary>
             <param name="key1Data">Key1 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`2.Compare(`0,`0)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`2.Compare(`0,`0)">
             <summary>
             Compare items
             </summary>
@@ -402,7 +402,7 @@
             <param name="y">Item to compare</param>
             <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`2.Compare(`0,`1)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`2.Compare(`0,`1)">
             <summary>
             Compare item with keys values
             </summary>
@@ -410,7 +410,7 @@
             <param name="key1">Key1 to compare</param>
             <returns>Compare result: -1 if <paramref name="item"/> is less than keys, 1 if <paramref name="item"/> is greater than keys, 0 if <paramref name="item"/> is equal to keys</returns>
         </member>
-        <member name="T:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`3">
+        <member name="T:WojciechMikołajewicz.SortedList.KeysData.KeysData`3">
             <summary>
             Keys data
             </summary>
@@ -418,19 +418,19 @@
             <typeparam name="K1">Key1 type</typeparam>
             <typeparam name="K2">Key2 type</typeparam>
         </member>
-        <member name="P:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`3.Key2Data">
+        <member name="P:WojciechMikołajewicz.SortedList.KeysData.KeysData`3.Key2Data">
             <summary>
             Key2 data
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`3.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`3.#ctor(WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@)">
             <summary>
             Constructor
             </summary>
             <param name="key1Data">Key1 data</param>
             <param name="key2Data">Key2 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`3.Compare(`0,`0)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`3.Compare(`0,`0)">
             <summary>
             Compare items
             </summary>
@@ -438,7 +438,7 @@
             <param name="y">Item to compare</param>
             <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`3.Compare(`0,`1,`2)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`3.Compare(`0,`1,`2)">
             <summary>
             Compare item with keys values
             </summary>
@@ -447,7 +447,7 @@
             <param name="key2">Key2 to compare</param>
             <returns>Compare result: -1 if <paramref name="item"/> is less than keys, 1 if <paramref name="item"/> is greater than keys, 0 if <paramref name="item"/> is equal to keys</returns>
         </member>
-        <member name="T:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`4">
+        <member name="T:WojciechMikołajewicz.SortedList.KeysData.KeysData`4">
             <summary>
             Keys data
             </summary>
@@ -456,12 +456,12 @@
             <typeparam name="K2">Key2 type</typeparam>
             <typeparam name="K3">Key3 type</typeparam>
         </member>
-        <member name="P:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`4.Key3Data">
+        <member name="P:WojciechMikołajewicz.SortedList.KeysData.KeysData`4.Key3Data">
             <summary>
             Key3 data
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`4.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`4.#ctor(WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@)">
             <summary>
             Constructor
             </summary>
@@ -469,7 +469,7 @@
             <param name="key2Data">Key2 data</param>
             <param name="key3Data">Key3 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`4.Compare(`0,`0)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`4.Compare(`0,`0)">
             <summary>
             Compare items
             </summary>
@@ -477,7 +477,7 @@
             <param name="y">Item to compare</param>
             <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`4.Compare(`0,`1,`2,`3)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`4.Compare(`0,`1,`2,`3)">
             <summary>
             Compare item with keys values
             </summary>
@@ -487,7 +487,7 @@
             <param name="key3">Key3 to compare</param>
             <returns>Compare result: -1 if <paramref name="item"/> is less than keys, 1 if <paramref name="item"/> is greater than keys, 0 if <paramref name="item"/> is equal to keys</returns>
         </member>
-        <member name="T:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`5">
+        <member name="T:WojciechMikołajewicz.SortedList.KeysData.KeysData`5">
             <summary>
             Keys data
             </summary>
@@ -497,12 +497,12 @@
             <typeparam name="K3">Key3 type</typeparam>
             <typeparam name="K4">Key4 type</typeparam>
         </member>
-        <member name="P:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`5.Key4Data">
+        <member name="P:WojciechMikołajewicz.SortedList.KeysData.KeysData`5.Key4Data">
             <summary>
             Key4 data
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`5.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`5.#ctor(WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@)">
             <summary>
             Constructor
             </summary>
@@ -511,7 +511,7 @@
             <param name="key3Data">Key3 data</param>
             <param name="key4Data">Key4 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`5.Compare(`0,`0)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`5.Compare(`0,`0)">
             <summary>
             Compare items
             </summary>
@@ -519,7 +519,7 @@
             <param name="y">Item to compare</param>
             <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`5.Compare(`0,`1,`2,`3,`4)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`5.Compare(`0,`1,`2,`3,`4)">
             <summary>
             Compare item with keys values
             </summary>
@@ -530,7 +530,7 @@
             <param name="key4">Key4 to compare</param>
             <returns>Compare result: -1 if <paramref name="item"/> is less than keys, 1 if <paramref name="item"/> is greater than keys, 0 if <paramref name="item"/> is equal to keys</returns>
         </member>
-        <member name="T:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`6">
+        <member name="T:WojciechMikołajewicz.SortedList.KeysData.KeysData`6">
             <summary>
             Keys data
             </summary>
@@ -541,12 +541,12 @@
             <typeparam name="K4">Key4 type</typeparam>
             <typeparam name="K5">Key5 type</typeparam>
         </member>
-        <member name="P:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`6.Key5Data">
+        <member name="P:WojciechMikołajewicz.SortedList.KeysData.KeysData`6.Key5Data">
             <summary>
             Key5 data
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`6.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`6.#ctor(WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@)">
             <summary>
             Constructor
             </summary>
@@ -556,7 +556,7 @@
             <param name="key4Data">Key4 data</param>
             <param name="key5Data">Key5 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`6.Compare(`0,`0)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`6.Compare(`0,`0)">
             <summary>
             Compare items
             </summary>
@@ -564,7 +564,7 @@
             <param name="y">Item to compare</param>
             <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`6.Compare(`0,`1,`2,`3,`4,`5)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`6.Compare(`0,`1,`2,`3,`4,`5)">
             <summary>
             Compare item with keys values
             </summary>
@@ -576,7 +576,7 @@
             <param name="key5">Key5 to compare</param>
             <returns>Compare result: -1 if <paramref name="item"/> is less than keys, 1 if <paramref name="item"/> is greater than keys, 0 if <paramref name="item"/> is equal to keys</returns>
         </member>
-        <member name="T:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`7">
+        <member name="T:WojciechMikołajewicz.SortedList.KeysData.KeysData`7">
             <summary>
             Keys data
             </summary>
@@ -588,12 +588,12 @@
             <typeparam name="K5">Key5 type</typeparam>
             <typeparam name="K6">Key6 type</typeparam>
         </member>
-        <member name="P:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`7.Key6Data">
+        <member name="P:WojciechMikołajewicz.SortedList.KeysData.KeysData`7.Key6Data">
             <summary>
             Key6 data
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`7.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`7.#ctor(WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@)">
             <summary>
             Constructor
             </summary>
@@ -604,7 +604,7 @@
             <param name="key5Data">Key5 data</param>
             <param name="key6Data">Key6 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`7.Compare(`0,`0)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`7.Compare(`0,`0)">
             <summary>
             Compare items
             </summary>
@@ -612,7 +612,7 @@
             <param name="y">Item to compare</param>
             <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`7.Compare(`0,`1,`2,`3,`4,`5,`6)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`7.Compare(`0,`1,`2,`3,`4,`5,`6)">
             <summary>
             Compare item with keys values
             </summary>
@@ -625,7 +625,7 @@
             <param name="key6">Key6 to compare</param>
             <returns>Compare result: -1 if <paramref name="item"/> is less than keys, 1 if <paramref name="item"/> is greater than keys, 0 if <paramref name="item"/> is equal to keys</returns>
         </member>
-        <member name="T:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`8">
+        <member name="T:WojciechMikołajewicz.SortedList.KeysData.KeysData`8">
             <summary>
             Keys data
             </summary>
@@ -638,12 +638,12 @@
             <typeparam name="K6">Key6 type</typeparam>
             <typeparam name="K7">Key7 type</typeparam>
         </member>
-        <member name="P:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`8.Key7Data">
+        <member name="P:WojciechMikołajewicz.SortedList.KeysData.KeysData`8.Key7Data">
             <summary>
             Key7 data
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`8.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`7}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`8.#ctor(WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@)">
             <summary>
             Constructor
             </summary>
@@ -655,7 +655,7 @@
             <param name="key6Data">Key6 data</param>
             <param name="key7Data">Key7 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`8.Compare(`0,`0)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`8.Compare(`0,`0)">
             <summary>
             Compare items
             </summary>
@@ -663,7 +663,7 @@
             <param name="y">Item to compare</param>
             <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`8.Compare(`0,`1,`2,`3,`4,`5,`6,`7)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`8.Compare(`0,`1,`2,`3,`4,`5,`6,`7)">
             <summary>
             Compare item with keys values
             </summary>
@@ -677,7 +677,7 @@
             <param name="key7">Key7 to compare</param>
             <returns>Compare result: -1 if <paramref name="item"/> is less than keys, 1 if <paramref name="item"/> is greater than keys, 0 if <paramref name="item"/> is equal to keys</returns>
         </member>
-        <member name="T:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`9">
+        <member name="T:WojciechMikołajewicz.SortedList.KeysData.KeysData`9">
             <summary>
             Keys data
             </summary>
@@ -691,12 +691,12 @@
             <typeparam name="K7">Key7 type</typeparam>
             <typeparam name="K8">Key8 type</typeparam>
         </member>
-        <member name="P:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`9.Key8Data">
+        <member name="P:WojciechMikołajewicz.SortedList.KeysData.KeysData`9.Key8Data">
             <summary>
             Key8 data
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`9.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`8}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`9.#ctor(WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@)">
             <summary>
             Constructor
             </summary>
@@ -709,7 +709,7 @@
             <param name="key7Data">Key7 data</param>
             <param name="key8Data">Key8 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`9.Compare(`0,`0)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`9.Compare(`0,`0)">
             <summary>
             Compare items
             </summary>
@@ -717,7 +717,7 @@
             <param name="y">Item to compare</param>
             <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`9.Compare(`0,`1,`2,`3,`4,`5,`6,`7,`8)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`9.Compare(`0,`1,`2,`3,`4,`5,`6,`7,`8)">
             <summary>
             Compare item with keys values
             </summary>
@@ -732,7 +732,7 @@
             <param name="key8">Key8 to compare</param>
             <returns>Compare result: -1 if <paramref name="item"/> is less than keys, 1 if <paramref name="item"/> is greater than keys, 0 if <paramref name="item"/> is equal to keys</returns>
         </member>
-        <member name="T:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`10">
+        <member name="T:WojciechMikołajewicz.SortedList.KeysData.KeysData`10">
             <summary>
             Keys data
             </summary>
@@ -747,12 +747,12 @@
             <typeparam name="K8">Key8 type</typeparam>
             <typeparam name="K9">Key9 type</typeparam>
         </member>
-        <member name="P:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`10.Key9Data">
+        <member name="P:WojciechMikołajewicz.SortedList.KeysData.KeysData`10.Key9Data">
             <summary>
             Key9 data
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`10.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`9}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`10.#ctor(WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@)">
             <summary>
             Constructor
             </summary>
@@ -766,7 +766,7 @@
             <param name="key8Data">Key8 data</param>
             <param name="key9Data">Key9 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`10.Compare(`0,`0)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`10.Compare(`0,`0)">
             <summary>
             Compare items
             </summary>
@@ -774,7 +774,7 @@
             <param name="y">Item to compare</param>
             <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`10.Compare(`0,`1,`2,`3,`4,`5,`6,`7,`8,`9)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`10.Compare(`0,`1,`2,`3,`4,`5,`6,`7,`8,`9)">
             <summary>
             Compare item with keys values
             </summary>
@@ -790,7 +790,7 @@
             <param name="key9">Key9 to compare</param>
             <returns>Compare result: -1 if <paramref name="item"/> is less than keys, 1 if <paramref name="item"/> is greater than keys, 0 if <paramref name="item"/> is equal to keys</returns>
         </member>
-        <member name="T:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`11">
+        <member name="T:WojciechMikołajewicz.SortedList.KeysData.KeysData`11">
             <summary>
             Keys data
             </summary>
@@ -806,12 +806,12 @@
             <typeparam name="K9">Key9 type</typeparam>
             <typeparam name="K10">Key10 type</typeparam>
         </member>
-        <member name="P:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`11.Key10Data">
+        <member name="P:WojciechMikołajewicz.SortedList.KeysData.KeysData`11.Key10Data">
             <summary>
             Key10 data
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`11.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`10}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`11.#ctor(WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.KeyData{`0,`10}@)">
             <summary>
             Constructor
             </summary>
@@ -826,7 +826,7 @@
             <param name="key9Data">Key9 data</param>
             <param name="key10Data">Key10 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`11.Compare(`0,`0)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`11.Compare(`0,`0)">
             <summary>
             Compare items
             </summary>
@@ -834,7 +834,7 @@
             <param name="y">Item to compare</param>
             <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`11.Compare(`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`11.Compare(`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10)">
             <summary>
             Compare item with keys values
             </summary>
@@ -851,7 +851,7 @@
             <param name="key10">Key10 to compare</param>
             <returns>Compare result: -1 if <paramref name="item"/> is less than keys, 1 if <paramref name="item"/> is greater than keys, 0 if <paramref name="item"/> is equal to keys</returns>
         </member>
-        <member name="T:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`12">
+        <member name="T:WojciechMikołajewicz.SortedList.KeysData.KeysData`12">
             <summary>
             Keys data
             </summary>
@@ -868,12 +868,12 @@
             <typeparam name="K10">Key10 type</typeparam>
             <typeparam name="K11">Key11 type</typeparam>
         </member>
-        <member name="P:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`12.Key11Data">
+        <member name="P:WojciechMikołajewicz.SortedList.KeysData.KeysData`12.Key11Data">
             <summary>
             Key11 data
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`12.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`11}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`12.#ctor(WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.KeyData{`0,`11}@)">
             <summary>
             Constructor
             </summary>
@@ -889,7 +889,7 @@
             <param name="key10Data">Key10 data</param>
             <param name="key11Data">Key11 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`12.Compare(`0,`0)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`12.Compare(`0,`0)">
             <summary>
             Compare items
             </summary>
@@ -897,7 +897,7 @@
             <param name="y">Item to compare</param>
             <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`12.Compare(`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`12.Compare(`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11)">
             <summary>
             Compare item with keys values
             </summary>
@@ -915,7 +915,7 @@
             <param name="key11">Key11 to compare</param>
             <returns>Compare result: -1 if <paramref name="item"/> is less than keys, 1 if <paramref name="item"/> is greater than keys, 0 if <paramref name="item"/> is equal to keys</returns>
         </member>
-        <member name="T:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`13">
+        <member name="T:WojciechMikołajewicz.SortedList.KeysData.KeysData`13">
             <summary>
             Keys data
             </summary>
@@ -933,12 +933,12 @@
             <typeparam name="K11">Key11 type</typeparam>
             <typeparam name="K12">Key12 type</typeparam>
         </member>
-        <member name="P:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`13.Key12Data">
+        <member name="P:WojciechMikołajewicz.SortedList.KeysData.KeysData`13.Key12Data">
             <summary>
             Key12 data
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`13.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`12}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`13.#ctor(WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.KeyData{`0,`12}@)">
             <summary>
             Constructor
             </summary>
@@ -955,7 +955,7 @@
             <param name="key11Data">Key11 data</param>
             <param name="key12Data">Key12 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`13.Compare(`0,`0)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`13.Compare(`0,`0)">
             <summary>
             Compare items
             </summary>
@@ -963,7 +963,7 @@
             <param name="y">Item to compare</param>
             <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`13.Compare(`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`13.Compare(`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12)">
             <summary>
             Compare item with keys values
             </summary>
@@ -982,7 +982,7 @@
             <param name="key12">Key12 to compare</param>
             <returns>Compare result: -1 if <paramref name="item"/> is less than keys, 1 if <paramref name="item"/> is greater than keys, 0 if <paramref name="item"/> is equal to keys</returns>
         </member>
-        <member name="T:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`14">
+        <member name="T:WojciechMikołajewicz.SortedList.KeysData.KeysData`14">
             <summary>
             Keys data
             </summary>
@@ -1001,12 +1001,12 @@
             <typeparam name="K12">Key12 type</typeparam>
             <typeparam name="K13">Key13 type</typeparam>
         </member>
-        <member name="P:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`14.Key13Data">
+        <member name="P:WojciechMikołajewicz.SortedList.KeysData.KeysData`14.Key13Data">
             <summary>
             Key13 data
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`14.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`12}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`13}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`14.#ctor(WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.KeyData{`0,`12}@,WojciechMikołajewicz.SortedList.KeyData{`0,`13}@)">
             <summary>
             Constructor
             </summary>
@@ -1024,7 +1024,7 @@
             <param name="key12Data">Key12 data</param>
             <param name="key13Data">Key13 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`14.Compare(`0,`0)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`14.Compare(`0,`0)">
             <summary>
             Compare items
             </summary>
@@ -1032,7 +1032,7 @@
             <param name="y">Item to compare</param>
             <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`14.Compare(`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`14.Compare(`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13)">
             <summary>
             Compare item with keys values
             </summary>
@@ -1052,7 +1052,7 @@
             <param name="key13">Key13 to compare</param>
             <returns>Compare result: -1 if <paramref name="item"/> is less than keys, 1 if <paramref name="item"/> is greater than keys, 0 if <paramref name="item"/> is equal to keys</returns>
         </member>
-        <member name="T:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`15">
+        <member name="T:WojciechMikołajewicz.SortedList.KeysData.KeysData`15">
             <summary>
             Keys data
             </summary>
@@ -1072,12 +1072,12 @@
             <typeparam name="K13">Key13 type</typeparam>
             <typeparam name="K14">Key14 type</typeparam>
         </member>
-        <member name="P:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`15.Key14Data">
+        <member name="P:WojciechMikołajewicz.SortedList.KeysData.KeysData`15.Key14Data">
             <summary>
             Key14 data
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`15.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`12}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`13}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`14}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`15.#ctor(WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.KeyData{`0,`12}@,WojciechMikołajewicz.SortedList.KeyData{`0,`13}@,WojciechMikołajewicz.SortedList.KeyData{`0,`14}@)">
             <summary>
             Constructor
             </summary>
@@ -1096,7 +1096,7 @@
             <param name="key13Data">Key13 data</param>
             <param name="key14Data">Key14 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`15.Compare(`0,`0)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`15.Compare(`0,`0)">
             <summary>
             Compare items
             </summary>
@@ -1104,7 +1104,7 @@
             <param name="y">Item to compare</param>
             <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`15.Compare(`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13,`14)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`15.Compare(`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13,`14)">
             <summary>
             Compare item with keys values
             </summary>
@@ -1125,7 +1125,7 @@
             <param name="key14">Key14 to compare</param>
             <returns>Compare result: -1 if <paramref name="item"/> is less than keys, 1 if <paramref name="item"/> is greater than keys, 0 if <paramref name="item"/> is equal to keys</returns>
         </member>
-        <member name="T:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`16">
+        <member name="T:WojciechMikołajewicz.SortedList.KeysData.KeysData`16">
             <summary>
             Keys data
             </summary>
@@ -1146,12 +1146,12 @@
             <typeparam name="K14">Key14 type</typeparam>
             <typeparam name="K15">Key15 type</typeparam>
         </member>
-        <member name="P:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`16.Key15Data">
+        <member name="P:WojciechMikołajewicz.SortedList.KeysData.KeysData`16.Key15Data">
             <summary>
             Key15 data
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`16.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`12}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`13}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`14}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`15}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`16.#ctor(WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.KeyData{`0,`12}@,WojciechMikołajewicz.SortedList.KeyData{`0,`13}@,WojciechMikołajewicz.SortedList.KeyData{`0,`14}@,WojciechMikołajewicz.SortedList.KeyData{`0,`15}@)">
             <summary>
             Constructor
             </summary>
@@ -1171,7 +1171,7 @@
             <param name="key14Data">Key14 data</param>
             <param name="key15Data">Key15 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`16.Compare(`0,`0)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`16.Compare(`0,`0)">
             <summary>
             Compare items
             </summary>
@@ -1179,7 +1179,7 @@
             <param name="y">Item to compare</param>
             <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`16.Compare(`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13,`14,`15)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`16.Compare(`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13,`14,`15)">
             <summary>
             Compare item with keys values
             </summary>
@@ -1201,7 +1201,7 @@
             <param name="key15">Key15 to compare</param>
             <returns>Compare result: -1 if <paramref name="item"/> is less than keys, 1 if <paramref name="item"/> is greater than keys, 0 if <paramref name="item"/> is equal to keys</returns>
         </member>
-        <member name="T:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`17">
+        <member name="T:WojciechMikołajewicz.SortedList.KeysData.KeysData`17">
             <summary>
             Keys data
             </summary>
@@ -1223,12 +1223,12 @@
             <typeparam name="K15">Key15 type</typeparam>
             <typeparam name="K16">Key16 type</typeparam>
         </member>
-        <member name="P:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`17.Key16Data">
+        <member name="P:WojciechMikołajewicz.SortedList.KeysData.KeysData`17.Key16Data">
             <summary>
             Key16 data
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`17.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`12}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`13}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`14}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`15}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`16}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`17.#ctor(WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.KeyData{`0,`12}@,WojciechMikołajewicz.SortedList.KeyData{`0,`13}@,WojciechMikołajewicz.SortedList.KeyData{`0,`14}@,WojciechMikołajewicz.SortedList.KeyData{`0,`15}@,WojciechMikołajewicz.SortedList.KeyData{`0,`16}@)">
             <summary>
             Constructor
             </summary>
@@ -1249,7 +1249,7 @@
             <param name="key15Data">Key15 data</param>
             <param name="key16Data">Key16 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`17.Compare(`0,`0)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`17.Compare(`0,`0)">
             <summary>
             Compare items
             </summary>
@@ -1257,7 +1257,7 @@
             <param name="y">Item to compare</param>
             <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData`17.Compare(`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13,`14,`15,`16)">
+        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`17.Compare(`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13,`14,`15,`16)">
             <summary>
             Compare item with keys values
             </summary>
@@ -1327,7 +1327,7 @@
             <param name="orderedList">Source sorted read only list</param>
             <param name="range">Range in the <paramref name="orderedList"/></param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`2.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1},System.ReadOnlyMemory{`0})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`2.#ctor(WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1},System.ReadOnlyMemory{`0})">
             <summary>
             Constructor
             </summary>
@@ -1429,7 +1429,7 @@
             <param name="orderedList">Source sorted read only list</param>
             <param name="range">Range in the <paramref name="orderedList"/></param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`3.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2},System.ReadOnlyMemory{`0})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`3.#ctor(WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2},System.ReadOnlyMemory{`0})">
             <summary>
             Constructor
             </summary>
@@ -1572,7 +1572,7 @@
             <param name="orderedList">Source sorted read only list</param>
             <param name="range">Range in the <paramref name="orderedList"/></param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`4.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3},System.ReadOnlyMemory{`0})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`4.#ctor(WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3},System.ReadOnlyMemory{`0})">
             <summary>
             Constructor
             </summary>
@@ -1761,7 +1761,7 @@
             <param name="orderedList">Source sorted read only list</param>
             <param name="range">Range in the <paramref name="orderedList"/></param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`5.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4},System.ReadOnlyMemory{`0})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`5.#ctor(WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4},System.ReadOnlyMemory{`0})">
             <summary>
             Constructor
             </summary>
@@ -2001,7 +2001,7 @@
             <param name="orderedList">Source sorted read only list</param>
             <param name="range">Range in the <paramref name="orderedList"/></param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`6.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5},System.ReadOnlyMemory{`0})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`6.#ctor(WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5},System.ReadOnlyMemory{`0})">
             <summary>
             Constructor
             </summary>
@@ -2297,7 +2297,7 @@
             <param name="orderedList">Source sorted read only list</param>
             <param name="range">Range in the <paramref name="orderedList"/></param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`7.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6},System.ReadOnlyMemory{`0})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`7.#ctor(WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6},System.ReadOnlyMemory{`0})">
             <summary>
             Constructor
             </summary>
@@ -2654,7 +2654,7 @@
             <param name="orderedList">Source sorted read only list</param>
             <param name="range">Range in the <paramref name="orderedList"/></param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`8.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7},System.ReadOnlyMemory{`0})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`8.#ctor(WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7},System.ReadOnlyMemory{`0})">
             <summary>
             Constructor
             </summary>
@@ -3077,7 +3077,7 @@
             <param name="orderedList">Source sorted read only list</param>
             <param name="range">Range in the <paramref name="orderedList"/></param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`9.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8},System.ReadOnlyMemory{`0})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`9.#ctor(WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8},System.ReadOnlyMemory{`0})">
             <summary>
             Constructor
             </summary>
@@ -3571,7 +3571,7 @@
             <param name="orderedList">Source sorted read only list</param>
             <param name="range">Range in the <paramref name="orderedList"/></param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`10.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9},System.ReadOnlyMemory{`0})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`10.#ctor(WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9},System.ReadOnlyMemory{`0})">
             <summary>
             Constructor
             </summary>
@@ -4141,7 +4141,7 @@
             <param name="orderedList">Source sorted read only list</param>
             <param name="range">Range in the <paramref name="orderedList"/></param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`11.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10},System.ReadOnlyMemory{`0})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`11.#ctor(WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10},System.ReadOnlyMemory{`0})">
             <summary>
             Constructor
             </summary>
@@ -4792,7 +4792,7 @@
             <param name="orderedList">Source sorted read only list</param>
             <param name="range">Range in the <paramref name="orderedList"/></param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`12.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11},System.ReadOnlyMemory{`0})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`12.#ctor(WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11},System.ReadOnlyMemory{`0})">
             <summary>
             Constructor
             </summary>
@@ -5529,7 +5529,7 @@
             <param name="orderedList">Source sorted read only list</param>
             <param name="range">Range in the <paramref name="orderedList"/></param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`13.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12},System.ReadOnlyMemory{`0})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`13.#ctor(WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12},System.ReadOnlyMemory{`0})">
             <summary>
             Constructor
             </summary>
@@ -6357,7 +6357,7 @@
             <param name="orderedList">Source sorted read only list</param>
             <param name="range">Range in the <paramref name="orderedList"/></param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`14.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13},System.ReadOnlyMemory{`0})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`14.#ctor(WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13},System.ReadOnlyMemory{`0})">
             <summary>
             Constructor
             </summary>
@@ -7281,7 +7281,7 @@
             <param name="orderedList">Source sorted read only list</param>
             <param name="range">Range in the <paramref name="orderedList"/></param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`15.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13,`14},System.ReadOnlyMemory{`0})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`15.#ctor(WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13,`14},System.ReadOnlyMemory{`0})">
             <summary>
             Constructor
             </summary>
@@ -8306,7 +8306,7 @@
             <param name="orderedList">Source sorted read only list</param>
             <param name="range">Range in the <paramref name="orderedList"/></param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`16.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13,`14,`15},System.ReadOnlyMemory{`0})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`16.#ctor(WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13,`14,`15},System.ReadOnlyMemory{`0})">
             <summary>
             Constructor
             </summary>
@@ -9437,7 +9437,7 @@
             <param name="orderedList">Source sorted read only list</param>
             <param name="range">Range in the <paramref name="orderedList"/></param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`17.#ctor(WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13,`14,`15,`16},System.ReadOnlyMemory{`0})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`17.#ctor(WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13,`14,`15,`16},System.ReadOnlyMemory{`0})">
             <summary>
             Constructor
             </summary>
@@ -10640,14 +10640,14 @@
             Number of items
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`2.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`2.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@)">
             <summary>
             Constructor
             </summary>
             <param name="collection">Collection base on which array is created</param>
             <param name="keyData1">Key 1 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`2.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`2.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1})">
             <summary>
             Constructor
             </summary>
@@ -10772,7 +10772,7 @@
             Number of items
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`3.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`3.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@)">
             <summary>
             Constructor
             </summary>
@@ -10780,7 +10780,7 @@
             <param name="keyData1">Key 1 data</param>
             <param name="keyData2">Key 2 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`3.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`3.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2})">
             <summary>
             Constructor
             </summary>
@@ -10991,7 +10991,7 @@
             Number of items
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`4.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`4.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@)">
             <summary>
             Constructor
             </summary>
@@ -11000,7 +11000,7 @@
             <param name="keyData2">Key 2 data</param>
             <param name="keyData3">Key 3 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`4.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`4.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3})">
             <summary>
             Constructor
             </summary>
@@ -11307,7 +11307,7 @@
             Number of items
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`5.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`5.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@)">
             <summary>
             Constructor
             </summary>
@@ -11317,7 +11317,7 @@
             <param name="keyData3">Key 3 data</param>
             <param name="keyData4">Key 4 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`5.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`5.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4})">
             <summary>
             Constructor
             </summary>
@@ -11730,7 +11730,7 @@
             Number of items
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`6.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`6.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@)">
             <summary>
             Constructor
             </summary>
@@ -11741,7 +11741,7 @@
             <param name="keyData4">Key 4 data</param>
             <param name="keyData5">Key 5 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`6.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`6.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5})">
             <summary>
             Constructor
             </summary>
@@ -12270,7 +12270,7 @@
             Number of items
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`7.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`7.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@)">
             <summary>
             Constructor
             </summary>
@@ -12282,7 +12282,7 @@
             <param name="keyData5">Key 5 data</param>
             <param name="keyData6">Key 6 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`7.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`7.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6})">
             <summary>
             Constructor
             </summary>
@@ -12937,7 +12937,7 @@
             Number of items
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`8.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`7}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`8.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@)">
             <summary>
             Constructor
             </summary>
@@ -12950,7 +12950,7 @@
             <param name="keyData6">Key 6 data</param>
             <param name="keyData7">Key 7 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`8.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`8.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7})">
             <summary>
             Constructor
             </summary>
@@ -13741,7 +13741,7 @@
             Number of items
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`9.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`8}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`9.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@)">
             <summary>
             Constructor
             </summary>
@@ -13755,7 +13755,7 @@
             <param name="keyData7">Key 7 data</param>
             <param name="keyData8">Key 8 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`9.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`9.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8})">
             <summary>
             Constructor
             </summary>
@@ -14692,7 +14692,7 @@
             Number of items
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`10.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`9}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`10.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@)">
             <summary>
             Constructor
             </summary>
@@ -14707,7 +14707,7 @@
             <param name="keyData8">Key 8 data</param>
             <param name="keyData9">Key 9 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`10.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`10.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9})">
             <summary>
             Constructor
             </summary>
@@ -15800,7 +15800,7 @@
             Number of items
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`11.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`10}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`11.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.KeyData{`0,`10}@)">
             <summary>
             Constructor
             </summary>
@@ -15816,7 +15816,7 @@
             <param name="keyData9">Key 9 data</param>
             <param name="keyData10">Key 10 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`11.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`11.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10})">
             <summary>
             Constructor
             </summary>
@@ -17075,7 +17075,7 @@
             Number of items
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`12.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`11}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`12.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.KeyData{`0,`11}@)">
             <summary>
             Constructor
             </summary>
@@ -17092,7 +17092,7 @@
             <param name="keyData10">Key 10 data</param>
             <param name="keyData11">Key 11 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`12.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`12.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11})">
             <summary>
             Constructor
             </summary>
@@ -18527,7 +18527,7 @@
             Number of items
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`13.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`12}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`13.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.KeyData{`0,`12}@)">
             <summary>
             Constructor
             </summary>
@@ -18545,7 +18545,7 @@
             <param name="keyData11">Key 11 data</param>
             <param name="keyData12">Key 12 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`13.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`13.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12})">
             <summary>
             Constructor
             </summary>
@@ -20166,7 +20166,7 @@
             Number of items
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`14.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`12}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`13}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`14.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.KeyData{`0,`12}@,WojciechMikołajewicz.SortedList.KeyData{`0,`13}@)">
             <summary>
             Constructor
             </summary>
@@ -20185,7 +20185,7 @@
             <param name="keyData12">Key 12 data</param>
             <param name="keyData13">Key 13 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`14.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`14.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13})">
             <summary>
             Constructor
             </summary>
@@ -22002,7 +22002,7 @@
             Number of items
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`15.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`12}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`13}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`14}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`15.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.KeyData{`0,`12}@,WojciechMikołajewicz.SortedList.KeyData{`0,`13}@,WojciechMikołajewicz.SortedList.KeyData{`0,`14}@)">
             <summary>
             Constructor
             </summary>
@@ -22022,7 +22022,7 @@
             <param name="keyData13">Key 13 data</param>
             <param name="keyData14">Key 14 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`15.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13,`14})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`15.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13,`14})">
             <summary>
             Constructor
             </summary>
@@ -24045,7 +24045,7 @@
             Number of items
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`16.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`12}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`13}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`14}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`15}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`16.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.KeyData{`0,`12}@,WojciechMikołajewicz.SortedList.KeyData{`0,`13}@,WojciechMikołajewicz.SortedList.KeyData{`0,`14}@,WojciechMikołajewicz.SortedList.KeyData{`0,`15}@)">
             <summary>
             Constructor
             </summary>
@@ -24066,7 +24066,7 @@
             <param name="keyData14">Key 14 data</param>
             <param name="keyData15">Key 15 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`16.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13,`14,`15})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`16.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13,`14,`15})">
             <summary>
             Constructor
             </summary>
@@ -26305,7 +26305,7 @@
             Number of items
             </summary>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`17.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`12}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`13}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`14}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`15}@,WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeyData{`0,`16}@)">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`17.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.KeyData{`0,`12}@,WojciechMikołajewicz.SortedList.KeyData{`0,`13}@,WojciechMikołajewicz.SortedList.KeyData{`0,`14}@,WojciechMikołajewicz.SortedList.KeyData{`0,`15}@,WojciechMikołajewicz.SortedList.KeyData{`0,`16}@)">
             <summary>
             Constructor
             </summary>
@@ -26327,7 +26327,7 @@
             <param name="keyData15">Key 15 data</param>
             <param name="keyData16">Key 16 data</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`17.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.OrderedReadOnlyList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13,`14,`15,`16})">
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`17.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeysData.KeysData{`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11,`12,`13,`14,`15,`16})">
             <summary>
             Constructor
             </summary>
