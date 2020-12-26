@@ -37,7 +37,7 @@ namespace WojciechMikołajewicz.SortedList
 		/// </summary>
 		/// <param name="getMember">Gets key member of item</param>
 		/// <param name="comparer">Key comparer</param>
-		public KeyData(Func<T, K> getMember, Comparer<K> comparer)
+		public KeyData(Func<T, K> getMember, IComparer<K> comparer)
 		{
 			this.GetMember = getMember;
 			this.Comparison = comparer.Compare;

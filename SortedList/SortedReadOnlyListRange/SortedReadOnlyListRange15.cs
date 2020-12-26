@@ -101,6 +101,16 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			return this.GetEnumerator();
 		}
+
+		/// <summary>
+		/// Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+		/// </summary>
+		/// <param name="index">The zero-based index of the element to get a reference to</param>
+		/// <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
+		public ref readonly T ItemRef(int index)
+		{
+			return ref this.Memory.Span[index];
+		}
 		#endregion
 
 		#region Equal

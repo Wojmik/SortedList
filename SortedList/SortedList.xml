@@ -310,7 +310,7 @@
             <param name="getMember">Gets key member of item</param>
             <param name="comparison">Key comparison</param>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.KeyData`2.#ctor(System.Func{`0,`1},System.Collections.Generic.Comparer{`1})">
+        <member name="M:WojciechMikołajewicz.SortedList.KeyData`2.#ctor(System.Func{`0,`1},System.Collections.Generic.IComparer{`1})">
             <summary>
             Constructor
             </summary>
@@ -1346,6 +1346,13 @@
             </summary>
             <returns>Enumerator</returns>
         </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`2.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
+        </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`2.BinaryFindEqual(`1)">
             <summary>
             Get part of the list of elements equal to specified keys values
@@ -1447,6 +1454,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`3.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`3.BinaryFindEqual(`1)">
             <summary>
@@ -1590,6 +1604,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`4.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`4.BinaryFindEqual(`1)">
             <summary>
@@ -1779,6 +1800,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`5.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`5.BinaryFindEqual(`1)">
             <summary>
@@ -2019,6 +2047,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`6.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`6.BinaryFindEqual(`1)">
             <summary>
@@ -2315,6 +2350,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`7.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`7.BinaryFindEqual(`1)">
             <summary>
@@ -2672,6 +2714,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`8.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`8.BinaryFindEqual(`1)">
             <summary>
@@ -3095,6 +3144,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`9.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`9.BinaryFindEqual(`1)">
             <summary>
@@ -3589,6 +3645,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`10.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`10.BinaryFindEqual(`1)">
             <summary>
@@ -4159,6 +4222,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`11.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`11.BinaryFindEqual(`1)">
             <summary>
@@ -4810,6 +4880,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`12.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`12.BinaryFindEqual(`1)">
             <summary>
@@ -5547,6 +5624,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`13.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`13.BinaryFindEqual(`1)">
             <summary>
@@ -6375,6 +6459,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`14.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`14.BinaryFindEqual(`1)">
             <summary>
@@ -7299,6 +7390,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`15.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`15.BinaryFindEqual(`1)">
             <summary>
@@ -8324,6 +8422,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`16.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`16.BinaryFindEqual(`1)">
             <summary>
@@ -9455,6 +9560,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`17.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`17.BinaryFindEqual(`1)">
             <summary>
@@ -10672,6 +10784,13 @@
             </summary>
             <returns>Enumerator</returns>
         </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`2.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
+        </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`2.BinaryFindEqual(`1)">
             <summary>
             Get part of the list of elements equal to specified keys values
@@ -10804,6 +10923,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`3.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`3.BinaryFindEqual(`1)">
             <summary>
@@ -11024,6 +11150,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`4.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`4.BinaryFindEqual(`1)">
             <summary>
@@ -11341,6 +11474,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`5.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`5.BinaryFindEqual(`1)">
             <summary>
@@ -11765,6 +11905,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`6.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`6.BinaryFindEqual(`1)">
             <summary>
@@ -12306,6 +12453,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`7.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`7.BinaryFindEqual(`1)">
             <summary>
@@ -12974,6 +13128,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`8.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`8.BinaryFindEqual(`1)">
             <summary>
@@ -13779,6 +13940,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`9.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`9.BinaryFindEqual(`1)">
             <summary>
@@ -14731,6 +14899,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`10.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`10.BinaryFindEqual(`1)">
             <summary>
@@ -15840,6 +16015,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`11.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`11.BinaryFindEqual(`1)">
             <summary>
@@ -17116,6 +17298,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`12.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`12.BinaryFindEqual(`1)">
             <summary>
@@ -18569,6 +18758,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`13.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`13.BinaryFindEqual(`1)">
             <summary>
@@ -20209,6 +20405,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`14.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`14.BinaryFindEqual(`1)">
             <summary>
@@ -22046,6 +22249,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`15.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`15.BinaryFindEqual(`1)">
             <summary>
@@ -24090,6 +24300,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`16.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`16.BinaryFindEqual(`1)">
             <summary>
@@ -26351,6 +26568,13 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`17.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`17.BinaryFindEqual(`1)">
             <summary>
