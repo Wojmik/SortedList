@@ -368,14 +368,6 @@
             <param name="y">Item to compare</param>
             <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.KeysData.KeysData`1.CreateSortedArray(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeysData.KeysData{`0})">
-            <summary>
-            Create array from <paramref name="collection"/>, sorted by keys defined in <paramref name="keysData"/>
-            </summary>
-            <param name="collection">Collection base on which array is created</param>
-            <param name="keysData">Keys definition</param>
-            <returns>Sorted array</returns>
-        </member>
         <member name="T:WojciechMikołajewicz.SortedList.KeysData.KeysData`2">
             <summary>
             Keys data
@@ -1279,6 +1271,192 @@
             <param name="key15">Key15 to compare</param>
             <param name="key16">Key16 to compare</param>
             <returns>Compare result: -1 if <paramref name="item"/> is less than keys, 1 if <paramref name="item"/> is greater than keys, 0 if <paramref name="item"/> is equal to keys</returns>
+        </member>
+        <member name="T:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`1">
+            <summary>
+            Base class for all sorted readonly arrays
+            </summary>
+            <typeparam name="T">Items type</typeparam>
+        </member>
+        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`1._Array">
+            <summary>
+            Internal sorted array
+            </summary>
+        </member>
+        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`1.Item(System.Int32)">
+            <summary>
+            Returns an item of <paramref name="index"/>
+            </summary>
+            <param name="index">Index of the item to return</param>
+            <returns>Item of specified <paramref name="index"/></returns>
+        </member>
+        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`1.Count">
+            <summary>
+            Number of items
+            </summary>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`1.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`1.CreateArray(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Method used in derived classes constructors to create and sort internal array
+            </summary>
+            <param name="collection">Collection</param>
+            <returns>Array created from <paramref name="collection"/> and sorted</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`1.InternalCompare(`0,`0)">
+            <summary>
+            Compare items by all keys
+            </summary>
+            <param name="x">Item to compare</param>
+            <param name="y">Item to compare</param>
+            <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`1.Compare(`0,`0)">
+            <summary>
+            Compare items by all keys
+            </summary>
+            <param name="x">Item to compare</param>
+            <param name="y">Item to compare</param>
+            <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`1.AsMemory">
+            <summary>
+            Get ReadOnlyMemory from internal array
+            </summary>
+            <returns>ReadOnlyMemory from internal array</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`1.GetEnumerator">
+            <summary>
+            Get enumerator
+            </summary>
+            <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Get enumerator
+            </summary>
+            <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`1.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
+        </member>
+        <member name="T:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`2">
+            <summary>
+            Base class for sorted readonly array
+            </summary>
+            <typeparam name="T">Items type</typeparam>
+            <typeparam name="K1">Key1 type </typeparam>
+        </member>
+        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`2._Array">
+            <summary>
+            Internal sorted array
+            </summary>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`2.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`2.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="collection">Collection base on which array is created</param>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`2.GetK1(`0)">
+            <summary>
+            Get key 1 member from item
+            </summary>
+            <param name="item">Item</param>
+            <returns>Key 1 extracted from item</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`2.K1Compare(`1,`1)">
+            <summary>
+            Compare first keys
+            </summary>
+            <param name="x">Key to compare</param>
+            <param name="y">Key to compare</param>
+            <returns>Compare result: -1 if key <paramref name="x"/> is less than key <paramref name="y"/>, 1 if key <paramref name="x"/> is greater than key <paramref name="y"/>, 0 if key <paramref name="x"/> is equal to key <paramref name="y"/></returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`2.Compare(`0,`1)">
+            <summary>
+            Compare item's key to <paramref name="k1"/>
+            </summary>
+            <param name="item">Item to compare its key with <paramref name="k1"/></param>
+            <param name="k1">Key 1 value to compare</param>
+            <returns>Compare result: -1 if key of <paramref name="item"/> is less than key, 1 if key of <paramref name="item"/> is greater than key, 0 if key of <paramref name="item"/> is equal to key</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`2.InternalCompare(`0,`0)">
+            <summary>
+            Compare items by all keys
+            </summary>
+            <param name="x">Item to compare</param>
+            <param name="y">Item to compare</param>
+            <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
+        </member>
+        <member name="T:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`3">
+            <summary>
+            Base class for sorted readonly array
+            </summary>
+            <typeparam name="T">Items type</typeparam>
+            <typeparam name="K1">Key1 type </typeparam>
+            <typeparam name="K2">Key2 type </typeparam>
+        </member>
+        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`3._Array">
+            <summary>
+            Internal sorted array
+            </summary>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`3.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`3.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="collection">Collection base on which array is created</param>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`3.GetK2(`0)">
+            <summary>
+            Get key 2 member from item
+            </summary>
+            <param name="item">Item</param>
+            <returns>Key 2 extracted from item</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`3.K2Compare(`2,`2)">
+            <summary>
+            Compare second keys
+            </summary>
+            <param name="x">Key to compare</param>
+            <param name="y">Key to compare</param>
+            <returns>Compare result: -1 if key <paramref name="x"/> is less than key <paramref name="y"/>, 1 if key <paramref name="x"/> is greater than key <paramref name="y"/>, 0 if key <paramref name="x"/> is equal to key <paramref name="y"/></returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`3.Compare(`0,`1,`2)">
+            <summary>
+            Compare item's key to <paramref name="k1"/>
+            </summary>
+            <param name="item">Item to compare its key with <paramref name="k1"/></param>
+            <param name="k1">Key 1 value to compare</param>
+            <param name="k2">Key 2 value to compare</param>
+            <returns>Compare result: -1 if key of <paramref name="item"/> is less than keys, 1 if key of <paramref name="item"/> is greater than keys, 0 if key of <paramref name="item"/> is equal to keys</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList.SortedReadOnlyArrayBase`3.InternalCompare(`0,`0)">
+            <summary>
+            Compare items by all keys
+            </summary>
+            <param name="x">Item to compare</param>
+            <param name="y">Item to compare</param>
+            <returns>Compare result: -1 if <paramref name="x"/> is less than <paramref name="y"/>, 1 if <paramref name="x"/> is greater than <paramref name="y"/>, 0 if <paramref name="x"/> is equal to <paramref name="y"/></returns>
         </member>
         <member name="T:WojciechMikołajewicz.SortedList.SortedReadOnlyListRange`2">
             <summary>
@@ -10735,23 +10913,6 @@
             <typeparam name="T">Items type</typeparam>
             <typeparam name="K1">Key1 type</typeparam>
         </member>
-        <member name="F:WojciechMikołajewicz.SortedList.SortedReadOnlyList`2._Array">
-            <summary>
-            Internal sorted array
-            </summary>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`2.Item(System.Int32)">
-            <summary>
-            Returns an item of <paramref name="index"/>
-            </summary>
-            <param name="index">Index of the item to return</param>
-            <returns>Item of specified <paramref name="index"/></returns>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`2.Count">
-            <summary>
-            Number of items
-            </summary>
-        </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`2.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@)">
             <summary>
             Constructor
@@ -10765,31 +10926,6 @@
             </summary>
             <param name="collection">Collection base on which array is created</param>
             <param name="keysData">Keys data</param>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`2.AsMemory">
-            <summary>
-            Get ReadOnlyMemory from internal array
-            </summary>
-            <returns>ReadOnlyMemory from internal array</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`2.GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`2.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`2.ItemRef(System.Int32)">
-            <summary>
-            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
-            </summary>
-            <param name="index">The zero-based index of the element to get a reference to</param>
-            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`2.BinaryFindEqual(`1)">
             <summary>
@@ -10874,23 +11010,6 @@
             <typeparam name="K1">Key1 type</typeparam>
             <typeparam name="K2">Key2 type</typeparam>
         </member>
-        <member name="F:WojciechMikołajewicz.SortedList.SortedReadOnlyList`3._Array">
-            <summary>
-            Internal sorted array
-            </summary>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`3.Item(System.Int32)">
-            <summary>
-            Returns an item of <paramref name="index"/>
-            </summary>
-            <param name="index">Index of the item to return</param>
-            <returns>Item of specified <paramref name="index"/></returns>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`3.Count">
-            <summary>
-            Number of items
-            </summary>
-        </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`3.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@)">
             <summary>
             Constructor
@@ -10905,31 +11024,6 @@
             </summary>
             <param name="collection">Collection base on which array is created</param>
             <param name="keysData">Keys data</param>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`3.AsMemory">
-            <summary>
-            Get ReadOnlyMemory from internal array
-            </summary>
-            <returns>ReadOnlyMemory from internal array</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`3.GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`3.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`3.ItemRef(System.Int32)">
-            <summary>
-            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
-            </summary>
-            <param name="index">The zero-based index of the element to get a reference to</param>
-            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`3.BinaryFindEqual(`1)">
             <summary>
@@ -11100,23 +11194,6 @@
             <typeparam name="K2">Key2 type</typeparam>
             <typeparam name="K3">Key3 type</typeparam>
         </member>
-        <member name="F:WojciechMikołajewicz.SortedList.SortedReadOnlyList`4._Array">
-            <summary>
-            Internal sorted array
-            </summary>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`4.Item(System.Int32)">
-            <summary>
-            Returns an item of <paramref name="index"/>
-            </summary>
-            <param name="index">Index of the item to return</param>
-            <returns>Item of specified <paramref name="index"/></returns>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`4.Count">
-            <summary>
-            Number of items
-            </summary>
-        </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`4.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@)">
             <summary>
             Constructor
@@ -11132,31 +11209,6 @@
             </summary>
             <param name="collection">Collection base on which array is created</param>
             <param name="keysData">Keys data</param>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`4.AsMemory">
-            <summary>
-            Get ReadOnlyMemory from internal array
-            </summary>
-            <returns>ReadOnlyMemory from internal array</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`4.GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`4.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`4.ItemRef(System.Int32)">
-            <summary>
-            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
-            </summary>
-            <param name="index">The zero-based index of the element to get a reference to</param>
-            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`4.BinaryFindEqual(`1)">
             <summary>
@@ -11423,23 +11475,6 @@
             <typeparam name="K3">Key3 type</typeparam>
             <typeparam name="K4">Key4 type</typeparam>
         </member>
-        <member name="F:WojciechMikołajewicz.SortedList.SortedReadOnlyList`5._Array">
-            <summary>
-            Internal sorted array
-            </summary>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`5.Item(System.Int32)">
-            <summary>
-            Returns an item of <paramref name="index"/>
-            </summary>
-            <param name="index">Index of the item to return</param>
-            <returns>Item of specified <paramref name="index"/></returns>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`5.Count">
-            <summary>
-            Number of items
-            </summary>
-        </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`5.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@)">
             <summary>
             Constructor
@@ -11456,31 +11491,6 @@
             </summary>
             <param name="collection">Collection base on which array is created</param>
             <param name="keysData">Keys data</param>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`5.AsMemory">
-            <summary>
-            Get ReadOnlyMemory from internal array
-            </summary>
-            <returns>ReadOnlyMemory from internal array</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`5.GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`5.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`5.ItemRef(System.Int32)">
-            <summary>
-            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
-            </summary>
-            <param name="index">The zero-based index of the element to get a reference to</param>
-            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`5.BinaryFindEqual(`1)">
             <summary>
@@ -11853,23 +11863,6 @@
             <typeparam name="K4">Key4 type</typeparam>
             <typeparam name="K5">Key5 type</typeparam>
         </member>
-        <member name="F:WojciechMikołajewicz.SortedList.SortedReadOnlyList`6._Array">
-            <summary>
-            Internal sorted array
-            </summary>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`6.Item(System.Int32)">
-            <summary>
-            Returns an item of <paramref name="index"/>
-            </summary>
-            <param name="index">Index of the item to return</param>
-            <returns>Item of specified <paramref name="index"/></returns>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`6.Count">
-            <summary>
-            Number of items
-            </summary>
-        </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`6.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@)">
             <summary>
             Constructor
@@ -11887,31 +11880,6 @@
             </summary>
             <param name="collection">Collection base on which array is created</param>
             <param name="keysData">Keys data</param>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`6.AsMemory">
-            <summary>
-            Get ReadOnlyMemory from internal array
-            </summary>
-            <returns>ReadOnlyMemory from internal array</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`6.GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`6.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`6.ItemRef(System.Int32)">
-            <summary>
-            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
-            </summary>
-            <param name="index">The zero-based index of the element to get a reference to</param>
-            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`6.BinaryFindEqual(`1)">
             <summary>
@@ -12400,23 +12368,6 @@
             <typeparam name="K5">Key5 type</typeparam>
             <typeparam name="K6">Key6 type</typeparam>
         </member>
-        <member name="F:WojciechMikołajewicz.SortedList.SortedReadOnlyList`7._Array">
-            <summary>
-            Internal sorted array
-            </summary>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`7.Item(System.Int32)">
-            <summary>
-            Returns an item of <paramref name="index"/>
-            </summary>
-            <param name="index">Index of the item to return</param>
-            <returns>Item of specified <paramref name="index"/></returns>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`7.Count">
-            <summary>
-            Number of items
-            </summary>
-        </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`7.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@)">
             <summary>
             Constructor
@@ -12435,31 +12386,6 @@
             </summary>
             <param name="collection">Collection base on which array is created</param>
             <param name="keysData">Keys data</param>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`7.AsMemory">
-            <summary>
-            Get ReadOnlyMemory from internal array
-            </summary>
-            <returns>ReadOnlyMemory from internal array</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`7.GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`7.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`7.ItemRef(System.Int32)">
-            <summary>
-            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
-            </summary>
-            <param name="index">The zero-based index of the element to get a reference to</param>
-            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`7.BinaryFindEqual(`1)">
             <summary>
@@ -13074,23 +13000,6 @@
             <typeparam name="K6">Key6 type</typeparam>
             <typeparam name="K7">Key7 type</typeparam>
         </member>
-        <member name="F:WojciechMikołajewicz.SortedList.SortedReadOnlyList`8._Array">
-            <summary>
-            Internal sorted array
-            </summary>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`8.Item(System.Int32)">
-            <summary>
-            Returns an item of <paramref name="index"/>
-            </summary>
-            <param name="index">Index of the item to return</param>
-            <returns>Item of specified <paramref name="index"/></returns>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`8.Count">
-            <summary>
-            Number of items
-            </summary>
-        </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`8.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@)">
             <summary>
             Constructor
@@ -13110,31 +13019,6 @@
             </summary>
             <param name="collection">Collection base on which array is created</param>
             <param name="keysData">Keys data</param>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`8.AsMemory">
-            <summary>
-            Get ReadOnlyMemory from internal array
-            </summary>
-            <returns>ReadOnlyMemory from internal array</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`8.GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`8.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`8.ItemRef(System.Int32)">
-            <summary>
-            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
-            </summary>
-            <param name="index">The zero-based index of the element to get a reference to</param>
-            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`8.BinaryFindEqual(`1)">
             <summary>
@@ -13885,23 +13769,6 @@
             <typeparam name="K7">Key7 type</typeparam>
             <typeparam name="K8">Key8 type</typeparam>
         </member>
-        <member name="F:WojciechMikołajewicz.SortedList.SortedReadOnlyList`9._Array">
-            <summary>
-            Internal sorted array
-            </summary>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`9.Item(System.Int32)">
-            <summary>
-            Returns an item of <paramref name="index"/>
-            </summary>
-            <param name="index">Index of the item to return</param>
-            <returns>Item of specified <paramref name="index"/></returns>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`9.Count">
-            <summary>
-            Number of items
-            </summary>
-        </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`9.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@)">
             <summary>
             Constructor
@@ -13922,31 +13789,6 @@
             </summary>
             <param name="collection">Collection base on which array is created</param>
             <param name="keysData">Keys data</param>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`9.AsMemory">
-            <summary>
-            Get ReadOnlyMemory from internal array
-            </summary>
-            <returns>ReadOnlyMemory from internal array</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`9.GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`9.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`9.ItemRef(System.Int32)">
-            <summary>
-            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
-            </summary>
-            <param name="index">The zero-based index of the element to get a reference to</param>
-            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`9.BinaryFindEqual(`1)">
             <summary>
@@ -14843,23 +14685,6 @@
             <typeparam name="K8">Key8 type</typeparam>
             <typeparam name="K9">Key9 type</typeparam>
         </member>
-        <member name="F:WojciechMikołajewicz.SortedList.SortedReadOnlyList`10._Array">
-            <summary>
-            Internal sorted array
-            </summary>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`10.Item(System.Int32)">
-            <summary>
-            Returns an item of <paramref name="index"/>
-            </summary>
-            <param name="index">Index of the item to return</param>
-            <returns>Item of specified <paramref name="index"/></returns>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`10.Count">
-            <summary>
-            Number of items
-            </summary>
-        </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`10.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@)">
             <summary>
             Constructor
@@ -14881,31 +14706,6 @@
             </summary>
             <param name="collection">Collection base on which array is created</param>
             <param name="keysData">Keys data</param>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`10.AsMemory">
-            <summary>
-            Get ReadOnlyMemory from internal array
-            </summary>
-            <returns>ReadOnlyMemory from internal array</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`10.GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`10.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`10.ItemRef(System.Int32)">
-            <summary>
-            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
-            </summary>
-            <param name="index">The zero-based index of the element to get a reference to</param>
-            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`10.BinaryFindEqual(`1)">
             <summary>
@@ -15958,23 +15758,6 @@
             <typeparam name="K9">Key9 type</typeparam>
             <typeparam name="K10">Key10 type</typeparam>
         </member>
-        <member name="F:WojciechMikołajewicz.SortedList.SortedReadOnlyList`11._Array">
-            <summary>
-            Internal sorted array
-            </summary>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`11.Item(System.Int32)">
-            <summary>
-            Returns an item of <paramref name="index"/>
-            </summary>
-            <param name="index">Index of the item to return</param>
-            <returns>Item of specified <paramref name="index"/></returns>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`11.Count">
-            <summary>
-            Number of items
-            </summary>
-        </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`11.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.KeyData{`0,`10}@)">
             <summary>
             Constructor
@@ -15997,31 +15780,6 @@
             </summary>
             <param name="collection">Collection base on which array is created</param>
             <param name="keysData">Keys data</param>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`11.AsMemory">
-            <summary>
-            Get ReadOnlyMemory from internal array
-            </summary>
-            <returns>ReadOnlyMemory from internal array</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`11.GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`11.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`11.ItemRef(System.Int32)">
-            <summary>
-            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
-            </summary>
-            <param name="index">The zero-based index of the element to get a reference to</param>
-            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`11.BinaryFindEqual(`1)">
             <summary>
@@ -17240,23 +16998,6 @@
             <typeparam name="K10">Key10 type</typeparam>
             <typeparam name="K11">Key11 type</typeparam>
         </member>
-        <member name="F:WojciechMikołajewicz.SortedList.SortedReadOnlyList`12._Array">
-            <summary>
-            Internal sorted array
-            </summary>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`12.Item(System.Int32)">
-            <summary>
-            Returns an item of <paramref name="index"/>
-            </summary>
-            <param name="index">Index of the item to return</param>
-            <returns>Item of specified <paramref name="index"/></returns>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`12.Count">
-            <summary>
-            Number of items
-            </summary>
-        </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`12.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.KeyData{`0,`11}@)">
             <summary>
             Constructor
@@ -17280,31 +17021,6 @@
             </summary>
             <param name="collection">Collection base on which array is created</param>
             <param name="keysData">Keys data</param>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`12.AsMemory">
-            <summary>
-            Get ReadOnlyMemory from internal array
-            </summary>
-            <returns>ReadOnlyMemory from internal array</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`12.GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`12.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`12.ItemRef(System.Int32)">
-            <summary>
-            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
-            </summary>
-            <param name="index">The zero-based index of the element to get a reference to</param>
-            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`12.BinaryFindEqual(`1)">
             <summary>
@@ -18699,23 +18415,6 @@
             <typeparam name="K11">Key11 type</typeparam>
             <typeparam name="K12">Key12 type</typeparam>
         </member>
-        <member name="F:WojciechMikołajewicz.SortedList.SortedReadOnlyList`13._Array">
-            <summary>
-            Internal sorted array
-            </summary>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`13.Item(System.Int32)">
-            <summary>
-            Returns an item of <paramref name="index"/>
-            </summary>
-            <param name="index">Index of the item to return</param>
-            <returns>Item of specified <paramref name="index"/></returns>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`13.Count">
-            <summary>
-            Number of items
-            </summary>
-        </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`13.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.KeyData{`0,`12}@)">
             <summary>
             Constructor
@@ -18740,31 +18439,6 @@
             </summary>
             <param name="collection">Collection base on which array is created</param>
             <param name="keysData">Keys data</param>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`13.AsMemory">
-            <summary>
-            Get ReadOnlyMemory from internal array
-            </summary>
-            <returns>ReadOnlyMemory from internal array</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`13.GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`13.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`13.ItemRef(System.Int32)">
-            <summary>
-            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
-            </summary>
-            <param name="index">The zero-based index of the element to get a reference to</param>
-            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`13.BinaryFindEqual(`1)">
             <summary>
@@ -20345,23 +20019,6 @@
             <typeparam name="K12">Key12 type</typeparam>
             <typeparam name="K13">Key13 type</typeparam>
         </member>
-        <member name="F:WojciechMikołajewicz.SortedList.SortedReadOnlyList`14._Array">
-            <summary>
-            Internal sorted array
-            </summary>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`14.Item(System.Int32)">
-            <summary>
-            Returns an item of <paramref name="index"/>
-            </summary>
-            <param name="index">Index of the item to return</param>
-            <returns>Item of specified <paramref name="index"/></returns>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`14.Count">
-            <summary>
-            Number of items
-            </summary>
-        </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`14.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.KeyData{`0,`12}@,WojciechMikołajewicz.SortedList.KeyData{`0,`13}@)">
             <summary>
             Constructor
@@ -20387,31 +20044,6 @@
             </summary>
             <param name="collection">Collection base on which array is created</param>
             <param name="keysData">Keys data</param>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`14.AsMemory">
-            <summary>
-            Get ReadOnlyMemory from internal array
-            </summary>
-            <returns>ReadOnlyMemory from internal array</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`14.GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`14.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`14.ItemRef(System.Int32)">
-            <summary>
-            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
-            </summary>
-            <param name="index">The zero-based index of the element to get a reference to</param>
-            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`14.BinaryFindEqual(`1)">
             <summary>
@@ -22188,23 +21820,6 @@
             <typeparam name="K13">Key13 type</typeparam>
             <typeparam name="K14">Key14 type</typeparam>
         </member>
-        <member name="F:WojciechMikołajewicz.SortedList.SortedReadOnlyList`15._Array">
-            <summary>
-            Internal sorted array
-            </summary>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`15.Item(System.Int32)">
-            <summary>
-            Returns an item of <paramref name="index"/>
-            </summary>
-            <param name="index">Index of the item to return</param>
-            <returns>Item of specified <paramref name="index"/></returns>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`15.Count">
-            <summary>
-            Number of items
-            </summary>
-        </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`15.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.KeyData{`0,`12}@,WojciechMikołajewicz.SortedList.KeyData{`0,`13}@,WojciechMikołajewicz.SortedList.KeyData{`0,`14}@)">
             <summary>
             Constructor
@@ -22231,31 +21846,6 @@
             </summary>
             <param name="collection">Collection base on which array is created</param>
             <param name="keysData">Keys data</param>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`15.AsMemory">
-            <summary>
-            Get ReadOnlyMemory from internal array
-            </summary>
-            <returns>ReadOnlyMemory from internal array</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`15.GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`15.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`15.ItemRef(System.Int32)">
-            <summary>
-            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
-            </summary>
-            <param name="index">The zero-based index of the element to get a reference to</param>
-            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`15.BinaryFindEqual(`1)">
             <summary>
@@ -24238,23 +23828,6 @@
             <typeparam name="K14">Key14 type</typeparam>
             <typeparam name="K15">Key15 type</typeparam>
         </member>
-        <member name="F:WojciechMikołajewicz.SortedList.SortedReadOnlyList`16._Array">
-            <summary>
-            Internal sorted array
-            </summary>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`16.Item(System.Int32)">
-            <summary>
-            Returns an item of <paramref name="index"/>
-            </summary>
-            <param name="index">Index of the item to return</param>
-            <returns>Item of specified <paramref name="index"/></returns>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`16.Count">
-            <summary>
-            Number of items
-            </summary>
-        </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`16.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.KeyData{`0,`12}@,WojciechMikołajewicz.SortedList.KeyData{`0,`13}@,WojciechMikołajewicz.SortedList.KeyData{`0,`14}@,WojciechMikołajewicz.SortedList.KeyData{`0,`15}@)">
             <summary>
             Constructor
@@ -24282,31 +23855,6 @@
             </summary>
             <param name="collection">Collection base on which array is created</param>
             <param name="keysData">Keys data</param>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`16.AsMemory">
-            <summary>
-            Get ReadOnlyMemory from internal array
-            </summary>
-            <returns>ReadOnlyMemory from internal array</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`16.GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`16.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`16.ItemRef(System.Int32)">
-            <summary>
-            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
-            </summary>
-            <param name="index">The zero-based index of the element to get a reference to</param>
-            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`16.BinaryFindEqual(`1)">
             <summary>
@@ -26505,23 +26053,6 @@
             <typeparam name="K15">Key15 type</typeparam>
             <typeparam name="K16">Key16 type</typeparam>
         </member>
-        <member name="F:WojciechMikołajewicz.SortedList.SortedReadOnlyList`17._Array">
-            <summary>
-            Internal sorted array
-            </summary>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`17.Item(System.Int32)">
-            <summary>
-            Returns an item of <paramref name="index"/>
-            </summary>
-            <param name="index">Index of the item to return</param>
-            <returns>Item of specified <paramref name="index"/></returns>
-        </member>
-        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyList`17.Count">
-            <summary>
-            Number of items
-            </summary>
-        </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`17.#ctor(System.Collections.Generic.IEnumerable{`0},WojciechMikołajewicz.SortedList.KeyData{`0,`1}@,WojciechMikołajewicz.SortedList.KeyData{`0,`2}@,WojciechMikołajewicz.SortedList.KeyData{`0,`3}@,WojciechMikołajewicz.SortedList.KeyData{`0,`4}@,WojciechMikołajewicz.SortedList.KeyData{`0,`5}@,WojciechMikołajewicz.SortedList.KeyData{`0,`6}@,WojciechMikołajewicz.SortedList.KeyData{`0,`7}@,WojciechMikołajewicz.SortedList.KeyData{`0,`8}@,WojciechMikołajewicz.SortedList.KeyData{`0,`9}@,WojciechMikołajewicz.SortedList.KeyData{`0,`10}@,WojciechMikołajewicz.SortedList.KeyData{`0,`11}@,WojciechMikołajewicz.SortedList.KeyData{`0,`12}@,WojciechMikołajewicz.SortedList.KeyData{`0,`13}@,WojciechMikołajewicz.SortedList.KeyData{`0,`14}@,WojciechMikołajewicz.SortedList.KeyData{`0,`15}@,WojciechMikołajewicz.SortedList.KeyData{`0,`16}@)">
             <summary>
             Constructor
@@ -26550,31 +26081,6 @@
             </summary>
             <param name="collection">Collection base on which array is created</param>
             <param name="keysData">Keys data</param>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`17.AsMemory">
-            <summary>
-            Get ReadOnlyMemory from internal array
-            </summary>
-            <returns>ReadOnlyMemory from internal array</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`17.GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`17.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            Get enumerator
-            </summary>
-            <returns>Enumerator</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`17.ItemRef(System.Int32)">
-            <summary>
-            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
-            </summary>
-            <param name="index">The zero-based index of the element to get a reference to</param>
-            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyList`17.BinaryFindEqual(`1)">
             <summary>
@@ -28975,6 +28481,72 @@
             <param name="key15">Key 15 value</param>
             <param name="key16">Key 16 value</param>
             <returns>Range in which items are greater than specified keys values</returns>
+        </member>
+        <member name="T:WojciechMikołajewicz.SortedList.SortedReadOnlyListBase`2">
+            <summary>
+            Sorted read only list with binary search based on items compare (not items equality)
+            </summary>
+            <typeparam name="T">Items type</typeparam>
+            <typeparam name="TKeysData">Sorting keys type</typeparam>
+        </member>
+        <member name="F:WojciechMikołajewicz.SortedList.SortedReadOnlyListBase`2._Array">
+            <summary>
+            Internal sorted array
+            </summary>
+        </member>
+        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyListBase`2.KeysData">
+            <summary>
+            Sorting keys
+            </summary>
+        </member>
+        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyListBase`2.Count">
+            <summary>
+            Number of items
+            </summary>
+        </member>
+        <member name="P:WojciechMikołajewicz.SortedList.SortedReadOnlyListBase`2.Item(System.Int32)">
+            <summary>
+            Returns an item of <paramref name="index"/>
+            </summary>
+            <param name="index">Index of the item to return</param>
+            <returns>Item of specified <paramref name="index"/></returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListBase`2.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListBase`2.#ctor(System.Collections.Generic.IEnumerable{`0},`1)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="collection">Collection base on which array is created</param>
+            <param name="keysData">Keys data</param>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListBase`2.ItemRef(System.Int32)">
+            <summary>
+            Gets a read-only reference to the element at the specified <paramref name="index"/> in the read-only list
+            </summary>
+            <param name="index">The zero-based index of the element to get a reference to</param>
+            <returns>A read-only reference to the element at the specified <paramref name="index"/> in the read-only list</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListBase`2.AsMemory">
+            <summary>
+            Get ReadOnlyMemory from internal array
+            </summary>
+            <returns>ReadOnlyMemory from internal array</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListBase`2.GetEnumerator">
+            <summary>
+            Get enumerator
+            </summary>
+            <returns>Enumerator</returns>
+        </member>
+        <member name="M:WojciechMikołajewicz.SortedList.SortedReadOnlyListBase`2.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Get enumerator
+            </summary>
+            <returns>Enumerator</returns>
         </member>
         <member name="T:System.Index">
             <summary>

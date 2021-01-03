@@ -63,7 +63,7 @@ namespace WojciechMikołajewicz.SortedList
 		public SortedReadOnlyListRange(SortedReadOnlyList<T, K1, K2, K3, K4, K5, K6, K7, K8, K9> orderedList, Range range)
 		{
 			(int start, int count) = range.GetOffsetAndLength(orderedList.Count);
-			this.KeysData=orderedList;
+			this.KeysData=orderedList.KeysData;
 			this.Memory=orderedList.AsMemory().Slice(start, count);
 		}
 
