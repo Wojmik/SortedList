@@ -63,3 +63,66 @@ var anchorageMeasuresForDate = measures
 And we have it. This was two searches by all – two keys.
 
 It's worth mentioned that those searches are extremally fast and with zero allocation. The result list is only range in source SortedReadOnlyList so there is no items coping.
+
+SortedReadOnlyList type is suitable when you have huge, non changing list in witch you want to search many times.
+
+# Binary searching extension methods
+
+In WojciechMikołajewicz.SortedList namespace there are binary search extension methods also. They extend ordinary IReadOnlyList&lt;T&gt;, Memory&lt;T&gt;, ReadOnlyMemory&lt;T&gt;, Span&lt;T&gt; and ReadOnlySpan&lt;T&gt;.
+
+Let's see the example:
+
+```c#
+//Suppose we have List of WeatherMeasure
+List<WeatherMeasure> weatherMeasures;
+
+//We need to sort that list in order to binary search it
+weatherMeasures.Sort(Comparer);
+
+//Comparing method
+private int Comparer(WeatherMeasure x, WeatherMeasure y)
+{
+	int cmp;
+
+	if(0==(cmp=StringComparer.InvariantCultureIgnoreCase.Compare(x.MeasureStationCode, y.MeasureStationCode)))
+		cmp=x.MeasureDate.CompareTo(y.MeasureDate);		
+	return cmp;
+}
+```
+
+Now we are ready to binary search. Suppose we want all measures from "Anchorage-2BA":
+
+```c#
+var range = weatherMeasures.BinaryFindEqual(Range.All, measure => StringComparer.InvariantCultureIgnoreCase.Compare(measure.MeasureStationCode, "Anchorage-2BA"));
+```
+
+And there you have it. In "range" we have position of all "Anchorage-2BA" measures.
+
+And what if we want to search "Anchorage-2BA" measures but only from 2020-09-18?  We can use BinaryFindGreaterOrEqual with range calculated above and comparing only measure date to calculate new range (all "Anchorage-2BA" measures from 2020-09-18 and above), then use BinaryFindLess with this new range and 2020-09-19 date.
+
+But it is more efficient to skip BinaryFindEqual step and use only BinaryFindGreaterOrEqual and BinaryFindLess comparing two conditions (station code and measure date) at once:
+
+```c#
+var range = weatherMeasures.BinaryFindGreaterOrEqual(Range.All, measure =>
+{
+	int cmp;
+
+	if(0==(cmp=StringComparer.InvariantCultureIgnoreCase.Compare(measure.MeasureStationCode, "Anchorage-2BA")))
+		cmp=measure.MeasureDate.CompareTo(new DateTime(2020, 9, 18));
+	return cmp;
+});
+
+range = weatherMeasures.BinaryFindLess(range, measure =>
+{
+	int cmp;
+
+	if(0==(cmp=StringComparer.InvariantCultureIgnoreCase.Compare(measure.MeasureStationCode, "Anchorage-2BA")))
+		cmp=measure.MeasureDate.CompareTo(new DateTime(2020, 9, 19));
+	return cmp;
+});
+```
+
+Now in "range" we have position of all "Anchorage-2BA" measures from 2020-09-18.
+
+Those extension methods approach can be used on ordinary lists directly but it is your duty to sort the list before searching and use the same sorting and properties order in lambda comparisons used in search methods. So make sure you do it right. On the other hand in SortedReadOnlyList approach everything is done for you and you can't mess up anything – so it is safer but it creates a copy of original list internally, to guarantee immutability of the list.
+

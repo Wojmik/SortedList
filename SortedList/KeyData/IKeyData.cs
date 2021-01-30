@@ -8,7 +8,7 @@ namespace WojciechMikołajewicz.SortedList
 	/// Key data interface
 	/// </summary>
 	/// <typeparam name="T">Type of item</typeparam>
-	public interface IKeyData<T>
+	public interface IKeyData<in T>
 	{
 		/// <summary>
 		/// Compare item's keys
