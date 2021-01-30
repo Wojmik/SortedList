@@ -2,6 +2,8 @@
 
 Repository for extremally fast binary searching in sorted list for .Net. It is like database clustered index.
 
+NuGet: https://www.nuget.org/packages/SortedList
+
 Regular .Net searchable lists like HasSet&lt;T&gt; or Dictionary&lt;T&gt; – based on equality, are able to search only by equality condition. Grater or less conditions are impossible. Searching by part of the key is impossible also.
 
 Sorted list on the other hand, can be searched by equal, greater, greater or equal, less and less or equal conditions. It is also possible to search by part of the key under certain conditions.

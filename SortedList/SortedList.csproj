@@ -5,6 +5,9 @@
     <RootNamespace>WojciechMikołajewicz.SortedList</RootNamespace>
     <Company>Wojciech Mikołajewicz</Company>
     <Authors>Wojciech Mikołajewicz</Authors>
+    <PackageProjectUrl>https://github.com/Wojmik/SortedList</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Wojmik/SortedList</RepositoryUrl>
+    <PackageTags>sorted list binary search</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
