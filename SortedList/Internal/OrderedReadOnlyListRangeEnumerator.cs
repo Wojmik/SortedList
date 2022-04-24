@@ -13,17 +13,17 @@ namespace WojciechMikołajewicz.SortedList.Internal
 
 		public T Current { get => Memory.Span[Index]; }
 
-		object IEnumerator.Current { get => this.Current; }
+		object? IEnumerator.Current { get => Current; }
 
 		public OrderedReadOnlyListRangeEnumerator(in ReadOnlyMemory<T> memory)
 		{
-			this.Memory=memory;
-			this.Index=-1;
+			Memory = memory;
+			Index = -1;
 		}
 
 		public bool MoveNext()
 		{
-			Index=Math.Min(Index+1, Memory.Length);
+			Index = Math.Min(Index+1, Memory.Length);
 
 			return Index<Memory.Length;
 		}

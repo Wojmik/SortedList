@@ -39,12 +39,6 @@ namespace WojciechMikołajewicz.SortedList
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		private SortedReadOnlyListBase()
-		{ }
-
-		/// <summary>
-		/// Constructor
-		/// </summary>
 		/// <param name="collection">Collection base on which array is created</param>
 		/// <param name="keysData">Keys data</param>
 		protected SortedReadOnlyListBase(IEnumerable<T> collection, TKeysData keysData)

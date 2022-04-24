@@ -100,7 +100,7 @@ namespace WojciechMikołajewicz.SortedList
 		}
 		#endregion
 
-		#region Equal
+		#region 1 key
 		/// <summary>
 		/// Get part of the list of elements equal to specified keys values
 		/// </summary>
@@ -110,16 +110,79 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(Comparison);
+			var newMemory = Memory.BinaryFindEqual(
+				(orderedList, key1),
+				(item, s) => s.orderedList.Compare(item, s.key1));
 
 			return new SortedReadOnlyListRange<T, K1, K2>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1);
-			}
 		}
 
+		/// <summary>
+		/// Get part of the list of elements less or equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <returns>Part of the list of elements less or equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2> BinaryFindLessOrEqual(K1 key1)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindLessOrEqual(
+				(orderedList, key1),
+				(item, s) => s.orderedList.Compare(item, s.key1));
+
+			return new SortedReadOnlyListRange<T, K1, K2>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements less than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <returns>Part of the list of elements less than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2> BinaryFindLess(K1 key1)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindLess(
+				(orderedList, key1),
+				(item, s) => s.orderedList.Compare(item, s.key1));
+
+			return new SortedReadOnlyListRange<T, K1, K2>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater or equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2> BinaryFindGreaterOrEqual(K1 key1)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreaterOrEqual(
+				(orderedList, key1),
+				(item, s) => s.orderedList.Compare(item, s.key1));
+
+			return new SortedReadOnlyListRange<T, K1, K2>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <returns>Part of the list of elements greater than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2> BinaryFindGreater(K1 key1)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreater(
+				(orderedList, key1),
+				(item, s) => s.orderedList.Compare(item, s.key1));
+
+			return new SortedReadOnlyListRange<T, K1, K2>(orderedList, newMemory);
+		}
+		#endregion
+
+		#region 2 keys
 		/// <summary>
 		/// Get part of the list of elements equal to specified keys values
 		/// </summary>
@@ -130,35 +193,11 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(Comparison);
+			var newMemory = Memory.BinaryFindEqual(
+				(orderedList, key1, key2),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2));
 
 			return new SortedReadOnlyListRange<T, K1, K2>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2);
-			}
-		}
-		#endregion
-
-		#region LessOrEqual
-		/// <summary>
-		/// Get part of the list of elements less or equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <returns>Part of the list of elements less or equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2> BinaryFindLessOrEqual(K1 key1)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindLessOrEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1);
-			}
 		}
 
 		/// <summary>
@@ -171,35 +210,11 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(Comparison);
+			var newMemory = Memory.BinaryFindLessOrEqual(
+				(orderedList, key1, key2),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2));
 
 			return new SortedReadOnlyListRange<T, K1, K2>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2);
-			}
-		}
-		#endregion
-
-		#region Less
-		/// <summary>
-		/// Get part of the list of elements less than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <returns>Part of the list of elements less than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2> BinaryFindLess(K1 key1)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindLess(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1);
-			}
 		}
 
 		/// <summary>
@@ -212,35 +227,11 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLess(Comparison);
+			var newMemory = Memory.BinaryFindLess(
+				(orderedList, key1, key2),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2));
 
 			return new SortedReadOnlyListRange<T, K1, K2>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2);
-			}
-		}
-		#endregion
-
-		#region GreaterOrEqual
-		/// <summary>
-		/// Get part of the list of elements greater or equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2> BinaryFindGreaterOrEqual(K1 key1)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreaterOrEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1);
-			}
 		}
 
 		/// <summary>
@@ -253,35 +244,11 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreaterOrEqual(Comparison);
+			var newMemory = Memory.BinaryFindGreaterOrEqual(
+				(orderedList, key1, key2),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2));
 
 			return new SortedReadOnlyListRange<T, K1, K2>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2);
-			}
-		}
-		#endregion
-
-		#region Greater
-		/// <summary>
-		/// Get part of the list of elements greater than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <returns>Part of the list of elements greater than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2> BinaryFindGreater(K1 key1)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreater(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1);
-			}
 		}
 
 		/// <summary>
@@ -294,14 +261,11 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreater(Comparison);
+			var newMemory = Memory.BinaryFindGreater(
+				(orderedList, key1, key2),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2));
 
 			return new SortedReadOnlyListRange<T, K1, K2>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2);
-			}
 		}
 		#endregion
 	}

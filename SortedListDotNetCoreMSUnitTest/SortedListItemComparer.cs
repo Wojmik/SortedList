@@ -17,14 +17,14 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 			this.Depth=depth;
 		}
 
-		public override int Compare([AllowNull] SortedListItem x, [AllowNull] SortedListItem y)
+		public override int Compare(SortedListItem? x, SortedListItem? y)
 		{
 			int cmp = 0, i;
 
 			for(i=0; i<this.Depth; i++)
 			{
-				cmp=SortedReadOnlyListSampleSourceArray.AllKeysDataList[i].Compare(x, y);
-				if(cmp!=0)
+				cmp = SortedReadOnlyListSampleSourceArray.AllKeysDataList[i].Compare(x, y);
+				if (cmp!=0)
 					break;
 			}
 

@@ -99,7 +99,7 @@ namespace WojciechMikołajewicz.SortedList
 		}
 		#endregion
 
-		#region Equal
+		#region 1 key
 		/// <summary>
 		/// Get part of the list of elements equal to specified keys values
 		/// </summary>
@@ -109,18 +109,13 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(Comparison);
+			var newMemory = Memory.BinaryFindEqual(
+				(orderedList, key1),
+				(item, s) => s.orderedList.Compare(item, s.key1));
 
 			return new SortedReadOnlyListRange<T, K1>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1);
-			}
 		}
-		#endregion
-
-		#region LessOrEqual
+		
 		/// <summary>
 		/// Get part of the list of elements less or equal to specified keys values
 		/// </summary>
@@ -130,18 +125,13 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(Comparison);
+			var newMemory = Memory.BinaryFindLessOrEqual(
+				(orderedList, key1),
+				(item, s) => s.orderedList.Compare(item, s.key1));
 
 			return new SortedReadOnlyListRange<T, K1>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1);
-			}
 		}
-		#endregion
-
-		#region Less
+		
 		/// <summary>
 		/// Get part of the list of elements less than specified keys values
 		/// </summary>
@@ -151,18 +141,13 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLess(Comparison);
+			var newMemory = Memory.BinaryFindLess(
+				(orderedList, key1),
+				(item, s) => s.orderedList.Compare(item, s.key1));
 
 			return new SortedReadOnlyListRange<T, K1>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1);
-			}
 		}
-		#endregion
-
-		#region GreaterOrEqual
+		
 		/// <summary>
 		/// Get part of the list of elements greater or equal to specified keys values
 		/// </summary>
@@ -172,18 +157,13 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreaterOrEqual(Comparison);
+			var newMemory = Memory.BinaryFindGreaterOrEqual(
+				(orderedList, key1),
+				(item, s) => s.orderedList.Compare(item, s.key1));
 
 			return new SortedReadOnlyListRange<T, K1>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1);
-			}
 		}
-		#endregion
-
-		#region Greater
+		
 		/// <summary>
 		/// Get part of the list of elements greater than specified keys values
 		/// </summary>
@@ -193,14 +173,11 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreater(Comparison);
+			var newMemory = Memory.BinaryFindGreater(
+				(orderedList, key1),
+				(item, s) => s.orderedList.Compare(item, s.key1));
 
 			return new SortedReadOnlyListRange<T, K1>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1);
-			}
 		}
 		#endregion
 	}

@@ -12,14 +12,14 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 	{
 		const int KeysCount = 5;
 
-		private static SortedReadOnlyList<SortedListItem, string, int, double, decimal, short> CreateSortedReadOnlyList(IEnumerable<SortedListItem> list)
+		private static SortedReadOnlyList<SortedListItem, string?, int, double, decimal, short> CreateSortedReadOnlyList(IEnumerable<SortedListItem> list)
 		{
-			return new SortedReadOnlyList<SortedListItem, string, int, double, decimal, short>(list, SortedReadOnlyListSampleSourceArray.AllKeysData);
+			return new SortedReadOnlyList<SortedListItem, string?, int, double, decimal, short>(list, SortedReadOnlyListSampleSourceArray.AllKeysData);
 		}
 
-		private static SortedReadOnlyList<SortedListItem, string, int, double, decimal, short> SampleList { get; set; }
+		private static SortedReadOnlyList<SortedListItem, string?, int, double, decimal, short> SampleList { get; set; } = default!;
 
-		private static SortedListTestHelper SortedListTestHelper { get; set; }
+		private static SortedListTestHelper SortedListTestHelper { get; set; } = default!;
 
 		[ClassInitialize]
 		public static void Init(TestContext testContext)
@@ -31,8 +31,8 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		[ClassCleanup]
 		public static void Destroy()
 		{
-			SortedListTestHelper=null;
-			SampleList=null;
+			SortedListTestHelper=null!;
+			SampleList=null!;
 		}
 
 		#region Sorting

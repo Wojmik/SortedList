@@ -10,9 +10,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 	{
 		public static IReadOnlyList<SortedListItem> SampleArray { get; }
 
-		public static IEnumerable<SortedListItem> SampleEnumerable { get; }
-
-		public static KeyData<SortedListItem, string> Key1Data { get; }
+		public static KeyData<SortedListItem, string?> Key1Data { get; }
 
 		public static KeyData<SortedListItem, int> Key2Data { get; }
 
@@ -44,9 +42,9 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 
 		public static KeyData<SortedListItem, Guid> Key16Data { get; }
 
-		public static KeyData<SortedListItem, Version> Key17Data { get; }
+		public static KeyData<SortedListItem, Version?> Key17Data { get; }
 
-		public static KeysData<SortedListItem, string, int, double, decimal, short, float, long, byte, char, sbyte, DateTime, TimeSpan, ulong, uint, ushort, Guid> AllKeysData { get; }
+		public static KeysData<SortedListItem, string?, int, double, decimal, short, float, long, byte, char, sbyte, DateTime, TimeSpan, ulong, uint, ushort, Guid> AllKeysData { get; }
 
 		public static IReadOnlyList<IKeyData<SortedListItem>> AllKeysDataList { get; }
 
@@ -115,7 +113,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 			SampleArray=sampleArray;
 
 
-			Key1Data = new KeyData<SortedListItem, string>(item => item.Key1, StringComparer.InvariantCultureIgnoreCase.Compare);
+			Key1Data = new KeyData<SortedListItem, string?>(item => item.Key1, StringComparer.InvariantCultureIgnoreCase.Compare);
 			Key2Data = new KeyData<SortedListItem, int>(item => item.Key2, Comparer<int>.Default.Compare);
 			Key3Data = new KeyData<SortedListItem, double>(item => item.Key3, Comparer<double>.Default.Compare);
 			Key4Data = new KeyData<SortedListItem, decimal>(item => item.Key4, Comparer<decimal>.Default.Compare);
@@ -131,9 +129,9 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 			Key14Data = new KeyData<SortedListItem, uint>(item => item.Key14, Comparer<uint>.Default.Compare);
 			Key15Data = new KeyData<SortedListItem, ushort>(item => item.Key15, Comparer<ushort>.Default.Compare);
 			Key16Data = new KeyData<SortedListItem, Guid>(item => item.Key16, Comparer<Guid>.Default.Compare);
-			Key17Data = new KeyData<SortedListItem, Version>(item => item.Key17, Comparer<Version>.Default.Compare);
+			Key17Data = new KeyData<SortedListItem, Version?>(item => item.Key17, Comparer<Version?>.Default.Compare);
 
-			AllKeysData=new KeysData<SortedListItem, string, int, double, decimal, short, float, long, byte, char, sbyte, DateTime, TimeSpan, ulong, uint, ushort, Guid>(
+			AllKeysData=new KeysData<SortedListItem, string?, int, double, decimal, short, float, long, byte, char, sbyte, DateTime, TimeSpan, ulong, uint, ushort, Guid>(
 				Key1Data,
 				Key2Data,
 				Key3Data,
