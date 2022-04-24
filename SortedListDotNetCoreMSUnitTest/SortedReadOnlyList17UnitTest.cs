@@ -10,7 +10,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 	//[TestClass]
 	//public class SortedReadOnlyList17UnitTest
 	//{
-	//	public static SortedReadOnlyList<SortedListItem> SampleList { get; set; }
+	//	public static SortedReadOnlyList<SortedListItem> SampleList { get; set; } = default!;
 
 	//	[ClassInitialize]
 	//	public static void Init(TestContext testContext)
@@ -21,7 +21,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 	//	[ClassCleanup]
 	//	public static void Destroy()
 	//	{
-	//		SampleList=null;
+	//		SampleList=null!;
 	//	}
 
 	//	[TestMethod]

@@ -17,11 +17,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			//Preparing testing table
 			Datas=Enumerable.Range((int)'A', (int)'Z'-(int)'A'+1)
-				.SelectMany(ch => Enumerable.Range(0, NumberCount), (ch, nmbr) => new Data()
-				{
-					Code=new string((char)ch, 3),
-					Number=nmbr/Divider,
-				})
+				.SelectMany(ch => Enumerable.Range(0, NumberCount), (ch, nmbr) => new Data(new string((char)ch, 3), nmbr/Divider))
 				.ToArray();
 		}
 
@@ -30,7 +26,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		public void TestFindCode()
 		{
 			const string SeekCode = "FFF";
-			Data dFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, };
+			Data dFirst = new Data(SeekCode, 0/Divider), dLast = new Data(SeekCode, (NumberCount-1)/Divider);
 
 			var range=FindCode(seekCode: SeekCode);
 			Test(firstExpected: dFirst, lastExpected: dLast, lengthExpected: NumberCount, datas: Datas, range: range);
@@ -40,7 +36,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		public void TestFindCodeLeft()
 		{
 			const string SeekCode = "AAA";
-			Data dFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, };
+			Data dFirst = new Data(SeekCode, 0/Divider), dLast = new Data(SeekCode, (NumberCount-1)/Divider);
 
 			var range = FindCode(seekCode: SeekCode);
 			Test(firstExpected: dFirst, lastExpected: dLast, lengthExpected: NumberCount, datas: Datas, range: range);
@@ -50,7 +46,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		public void TestFindCodeRight()
 		{
 			const string SeekCode = "ZZZ";
-			Data dFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, };
+			Data dFirst = new Data(SeekCode, 0/Divider), dLast = new Data(SeekCode, (NumberCount-1)/Divider);
 
 			var range = FindCode(seekCode: SeekCode);
 			Test(firstExpected: dFirst, lastExpected: dLast, lengthExpected: NumberCount, datas: Datas, range: range);
@@ -60,7 +56,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		public void TestFindCodeNotFoundLeft()
 		{
 			const string SeekCode = "AA";
-			Data dFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, };
+			Data dFirst = new Data(SeekCode, 0/Divider), dLast = new Data(SeekCode, (NumberCount-1)/Divider);
 
 			var range = FindCode(seekCode: SeekCode);
 			(_, int length)=range.GetOffsetAndLength(Datas.Count);
@@ -71,7 +67,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		public void TestFindCodeNotFoundRight()
 		{
 			const string SeekCode = "ZZZZ";
-			Data dFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, };
+			Data dFirst = new Data(SeekCode, 0/Divider), dLast = new Data(SeekCode, (NumberCount-1)/Divider);
 
 			var range = FindCode(seekCode: SeekCode);
 			(_, int length)=range.GetOffsetAndLength(Datas.Count);
@@ -85,7 +81,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "PPP";
 			const int LessOrEquals = 17537;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, }, dLast = new Data() { Code=SeekCode, Number=LessOrEquals, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider), dLast = new Data(SeekCode, LessOrEquals);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -101,7 +97,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "YYY";
 			const int LessOrEquals = NumberCount/Divider-1;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, }, dLast = new Data() { Code=SeekCode, Number=LessOrEquals, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider), dLast = new Data(SeekCode, LessOrEquals);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -117,7 +113,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "DDD";
 			const int LessOrEquals = int.MaxValue;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, }, dLast = new Data() { Code=SeekCode, Number=NumberCount/Divider-1, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider), dLast = new Data(SeekCode, NumberCount/Divider-1);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -133,7 +129,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "ZZZ";
 			const int LessOrEquals = NumberCount/Divider-1;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, }, dLast = new Data() { Code=SeekCode, Number=LessOrEquals, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider), dLast = new Data(SeekCode, LessOrEquals);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -149,7 +145,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "ZZZ";
 			const int LessOrEquals = int.MaxValue;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, }, dLast = new Data() { Code=SeekCode, Number=NumberCount/Divider-1, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider), dLast = new Data(SeekCode, NumberCount/Divider-1);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -165,7 +161,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "BBB";
 			const int LessOrEquals = -1;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -181,7 +177,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "AAA";
 			const int LessOrEquals = -1;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -200,7 +196,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "UUU";
 			const int Less = 17537;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, }, dLast = new Data() { Code=SeekCode, Number=Less-1, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider), dLast = new Data(SeekCode, Less-1);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -215,7 +211,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "JJJ";
 			const int Less = int.MaxValue;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, }, dLast = new Data() { Code=SeekCode, Number=NumberCount/Divider-1, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider), dLast = new Data(SeekCode, NumberCount/Divider-1);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -230,7 +226,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "ZZZ";
 			const int Less = int.MaxValue;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, }, dLast = new Data() { Code=SeekCode, Number=NumberCount/Divider-1, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider), dLast = new Data(SeekCode, NumberCount/Divider-1);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -245,7 +241,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "KKK";
 			const int Less = 0;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -261,7 +257,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "AAA";
 			const int Less = 0;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -280,7 +276,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "TTT";
 			const int GreaterOrEquals = 17537;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, }, dFirst = new Data() { Code=SeekCode, Number=GreaterOrEquals, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider), dFirst = new Data(SeekCode, GreaterOrEquals);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -295,7 +291,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "XXX";
 			const int GreaterOrEquals = 0;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, }, dFirst = new Data() { Code=SeekCode, Number=GreaterOrEquals, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider), dFirst = new Data(SeekCode, GreaterOrEquals);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -310,7 +306,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "CCC";
 			const int GreaterOrEquals = int.MinValue;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, }, dFirst = new Data() { Code=SeekCode, Number=0, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider), dFirst = new Data(SeekCode, 0);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -325,7 +321,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "AAA";
 			const int GreaterOrEquals = 0;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, }, dFirst = new Data() { Code=SeekCode, Number=GreaterOrEquals, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider), dFirst = new Data(SeekCode, GreaterOrEquals);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -340,7 +336,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "AAA";
 			const int GreaterOrEquals = int.MinValue;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, }, dFirst = new Data() { Code=SeekCode, Number=0, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider), dFirst = new Data(SeekCode, 0);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -355,7 +351,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "PPP";
 			const int GreaterOrEquals = int.MaxValue;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -371,7 +367,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "ZZZ";
 			const int GreaterOrEquals = int.MaxValue;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -390,7 +386,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "LLL";
 			const int Greater = 17537;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, }, dFirst = new Data() { Code=SeekCode, Number=Greater+1, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider), dFirst = new Data(SeekCode, Greater+1);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -405,7 +401,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "FFF";
 			const int Greater = int.MinValue;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, }, dFirst = new Data() { Code=SeekCode, Number=0, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider), dFirst = new Data(SeekCode, 0);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -420,7 +416,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "AAA";
 			const int Greater = int.MinValue;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, }, dFirst = new Data() { Code=SeekCode, Number=0, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider), dFirst = new Data(SeekCode, 0);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -435,7 +431,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "VVV";
 			const int Greater = int.MaxValue;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -451,7 +447,7 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			const string SeekCode = "ZZZ";
 			const int Greater = int.MaxValue;
-			Data dCodeFirst = new Data() { Code=SeekCode, Number=0/Divider, }, dCodeLast = new Data() { Code=SeekCode, Number=(NumberCount-1)/Divider, };
+			Data dCodeFirst = new Data(SeekCode, 0/Divider), dCodeLast = new Data(SeekCode, (NumberCount-1)/Divider);
 
 			//First search code only
 			var range1 = FindCode(seekCode: SeekCode);
@@ -470,13 +466,14 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data first, beforeFirst, last, afterLast;
 			bool bLength, bFirst, bLast, bBeforeFirst = true, bAfterLast = true;
 
-			first=datas[range.Start];
+			var (offset, length) = range.GetOffsetAndLength(datas.Count);
+			first = datas[offset];
 			Assert.IsTrue(bFirst=(0==DataCompare(first, firstExpected)), "The first item should be: {0} {1}, and is: {2} {3}", firstExpected.Code, firstExpected.Number, first.Code, first.Number);
 
 			last=datas[range.End.GetOffset(datas.Count)-1];
 			Assert.IsTrue(bLast=(0==DataCompare(last, lastExpected)), "The last item should be: {0} {1}, and is: {2} {3}", lastExpected.Code, lastExpected.Number, last.Code, last.Number);
 
-			(int offset, int length)=range.GetOffsetAndLength(datas.Count);
+			(offset, length) = range.GetOffsetAndLength(datas.Count);
 
 			if(offset>0)
 			{
@@ -518,8 +515,14 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		#region Helper classes
 		class Data
 		{
-			public string Code { get; set; }
-			public int Number { get; set; }
+			public string Code { get; }
+			public int Number { get; }
+		
+			public Data(string code, int number)
+			{
+				Code = code;
+				Number = number;
+			}
 		}
 		#endregion
 	}

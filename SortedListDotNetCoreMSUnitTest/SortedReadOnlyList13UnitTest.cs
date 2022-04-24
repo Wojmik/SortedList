@@ -12,14 +12,14 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 	{
 		const int KeysCount = 13;
 
-		private static SortedReadOnlyList<SortedListItem, string, int, double, decimal, short, float, long, byte, char, sbyte, DateTime, TimeSpan, ulong> CreateSortedReadOnlyList(IEnumerable<SortedListItem> list)
+		private static SortedReadOnlyList<SortedListItem, string?, int, double, decimal, short, float, long, byte, char, sbyte, DateTime, TimeSpan, ulong> CreateSortedReadOnlyList(IEnumerable<SortedListItem> list)
 		{
-			return new SortedReadOnlyList<SortedListItem, string, int, double, decimal, short, float, long, byte, char, sbyte, DateTime, TimeSpan, ulong>(list, SortedReadOnlyListSampleSourceArray.AllKeysData);
+			return new SortedReadOnlyList<SortedListItem, string?, int, double, decimal, short, float, long, byte, char, sbyte, DateTime, TimeSpan, ulong>(list, SortedReadOnlyListSampleSourceArray.AllKeysData);
 		}
 
-		private static SortedReadOnlyList<SortedListItem, string, int, double, decimal, short, float, long, byte, char, sbyte, DateTime, TimeSpan, ulong> SampleList { get; set; }
+		private static SortedReadOnlyList<SortedListItem, string?, int, double, decimal, short, float, long, byte, char, sbyte, DateTime, TimeSpan, ulong> SampleList { get; set; } = default!;
 
-		private static SortedListTestHelper SortedListTestHelper { get; set; }
+		private static SortedListTestHelper SortedListTestHelper { get; set; } = default!;
 
 		[ClassInitialize]
 		public static void Init(TestContext testContext)
@@ -31,8 +31,8 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		[ClassCleanup]
 		public static void Destroy()
 		{
-			SortedListTestHelper=null;
-			SampleList=null;
+			SortedListTestHelper=null!;
+			SampleList=null!;
 		}
 
 		#region Sorting

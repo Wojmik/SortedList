@@ -5,11 +5,18 @@
     <RootNamespace>WojciechMikołajewicz.SortedList</RootNamespace>
     <Company>Wojciech Mikołajewicz</Company>
     <Authors>Wojciech Mikołajewicz</Authors>
+		<Nullable>enable</Nullable>
     <PackageProjectUrl>https://github.com/Wojmik/SortedList</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Wojmik/SortedList</RepositoryUrl>
     <PackageTags>sorted list binary search</PackageTags>
+		<VersionPrefix>1.1.0</VersionPrefix>
+    <Copyright>Wojciech Mikołajewicz</Copyright>
   </PropertyGroup>
 
+	<!--For nullable to work with netstandard2.0-->
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+		<LangVersion>8.0</LangVersion>
+	</PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
     <DocumentationFile>C:\Users\wmiko\Source\Repos\SortedList\SortedList\SortedList.xml</DocumentationFile>
   </PropertyGroup>

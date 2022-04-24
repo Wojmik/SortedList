@@ -6,7 +6,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 {
 	public class SortedListItem
 	{
-		public string Key1 { get; set; }
+		public string? Key1 { get; set; }
 
 		public int Key2 { get; set; }
 
@@ -38,6 +38,6 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 
 		public Guid Key16 { get; set; }
 
-		public Version Key17 { get; set; }
+		public Version? Key17 { get; set; }
 	}
 }

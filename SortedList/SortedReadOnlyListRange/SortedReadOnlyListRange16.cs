@@ -114,7 +114,7 @@ namespace WojciechMikołajewicz.SortedList
 		}
 		#endregion
 
-		#region Equal
+		#region 1 key
 		/// <summary>
 		/// Get part of the list of elements equal to specified keys values
 		/// </summary>
@@ -124,16 +124,79 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(Comparison);
+			var newMemory = Memory.BinaryFindEqual(
+				(orderedList, key1),
+				(item, s) => s.orderedList.Compare(item, s.key1));
 
 			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1);
-			}
 		}
 
+		/// <summary>
+		/// Get part of the list of elements less or equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <returns>Part of the list of elements less or equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLessOrEqual(K1 key1)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindLessOrEqual(
+				(orderedList, key1),
+				(item, s) => s.orderedList.Compare(item, s.key1));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements less than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <returns>Part of the list of elements less than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindLess(
+				(orderedList, key1),
+				(item, s) => s.orderedList.Compare(item, s.key1));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater or equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreaterOrEqual(
+				(orderedList, key1),
+				(item, s) => s.orderedList.Compare(item, s.key1));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <returns>Part of the list of elements greater than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreater(
+				(orderedList, key1),
+				(item, s) => s.orderedList.Compare(item, s.key1));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+		#endregion
+
+		#region 2 keys
 		/// <summary>
 		/// Get part of the list of elements equal to specified keys values
 		/// </summary>
@@ -144,420 +207,11 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(Comparison);
+			var newMemory = Memory.BinaryFindEqual(
+				(orderedList, key1, key2),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2));
 
 			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <returns>Part of the list of elements equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <returns>Part of the list of elements equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <returns>Part of the list of elements equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <returns>Part of the list of elements equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <returns>Part of the list of elements equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <returns>Part of the list of elements equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <returns>Part of the list of elements equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <returns>Part of the list of elements equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <param name="key11">Key 11 value</param>
-		/// <returns>Part of the list of elements equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <param name="key11">Key 11 value</param>
-		/// <param name="key12">Key 12 value</param>
-		/// <returns>Part of the list of elements equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <param name="key11">Key 11 value</param>
-		/// <param name="key12">Key 12 value</param>
-		/// <param name="key13">Key 13 value</param>
-		/// <returns>Part of the list of elements equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <param name="key11">Key 11 value</param>
-		/// <param name="key12">Key 12 value</param>
-		/// <param name="key13">Key 13 value</param>
-		/// <param name="key14">Key 14 value</param>
-		/// <returns>Part of the list of elements equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <param name="key11">Key 11 value</param>
-		/// <param name="key12">Key 12 value</param>
-		/// <param name="key13">Key 13 value</param>
-		/// <param name="key14">Key 14 value</param>
-		/// <param name="key15">Key 15 value</param>
-		/// <returns>Part of the list of elements equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <param name="key11">Key 11 value</param>
-		/// <param name="key12">Key 12 value</param>
-		/// <param name="key13">Key 13 value</param>
-		/// <param name="key14">Key 14 value</param>
-		/// <param name="key15">Key 15 value</param>
-		/// <param name="key16">Key 16 value</param>
-		/// <returns>Part of the list of elements equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15, K16 key16)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15, key16);
-			}
-		}
-		#endregion
-
-		#region LessOrEqual
-		/// <summary>
-		/// Get part of the list of elements less or equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <returns>Part of the list of elements less or equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLessOrEqual(K1 key1)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindLessOrEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1);
-			}
 		}
 
 		/// <summary>
@@ -570,14 +224,82 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(Comparison);
+			var newMemory = Memory.BinaryFindLessOrEqual(
+				(orderedList, key1, key2),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2));
 
 			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
 
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2);
-			}
+		/// <summary>
+		/// Get part of the list of elements less than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <returns>Part of the list of elements less than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindLess(
+				(orderedList, key1, key2),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater or equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreaterOrEqual(
+				(orderedList, key1, key2),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <returns>Part of the list of elements greater than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreater(
+				(orderedList, key1, key2),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+		#endregion
+
+		#region 3 keys
+		/// <summary>
+		/// Get part of the list of elements equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <returns>Part of the list of elements equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindEqual(
+				(orderedList, key1, key2, key3),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
 		}
 
 		/// <summary>
@@ -591,14 +313,86 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(Comparison);
+			var newMemory = Memory.BinaryFindLessOrEqual(
+				(orderedList, key1, key2, key3),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3));
 
 			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
 
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3);
-			}
+		/// <summary>
+		/// Get part of the list of elements less than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <returns>Part of the list of elements less than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindLess(
+				(orderedList, key1, key2, key3),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater or equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreaterOrEqual(
+				(orderedList, key1, key2, key3),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <returns>Part of the list of elements greater than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreater(
+				(orderedList, key1, key2, key3),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+		#endregion
+
+		#region 4 keys
+		/// <summary>
+		/// Get part of the list of elements equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <returns>Part of the list of elements equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindEqual(
+				(orderedList, key1, key2, key3, key4),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
 		}
 
 		/// <summary>
@@ -613,14 +407,90 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(Comparison);
+			var newMemory = Memory.BinaryFindLessOrEqual(
+				(orderedList, key1, key2, key3, key4),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4));
 
 			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
 
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4);
-			}
+		/// <summary>
+		/// Get part of the list of elements less than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <returns>Part of the list of elements less than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindLess(
+				(orderedList, key1, key2, key3, key4),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater or equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreaterOrEqual(
+				(orderedList, key1, key2, key3, key4),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <returns>Part of the list of elements greater than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreater(
+				(orderedList, key1, key2, key3, key4),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+		#endregion
+
+		#region 5 keys
+		/// <summary>
+		/// Get part of the list of elements equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <returns>Part of the list of elements equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindEqual(
+				(orderedList, key1, key2, key3, key4, key5),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
 		}
 
 		/// <summary>
@@ -636,14 +506,94 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(Comparison);
+			var newMemory = Memory.BinaryFindLessOrEqual(
+				(orderedList, key1, key2, key3, key4, key5),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5));
 
 			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
 
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5);
-			}
+		/// <summary>
+		/// Get part of the list of elements less than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <returns>Part of the list of elements less than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindLess(
+				(orderedList, key1, key2, key3, key4, key5),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater or equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreaterOrEqual(
+				(orderedList, key1, key2, key3, key4, key5),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <returns>Part of the list of elements greater than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreater(
+				(orderedList, key1, key2, key3, key4, key5),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+		#endregion
+
+		#region 6 keys
+		/// <summary>
+		/// Get part of the list of elements equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <returns>Part of the list of elements equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
 		}
 
 		/// <summary>
@@ -660,14 +610,98 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(Comparison);
+			var newMemory = Memory.BinaryFindLessOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6));
 
 			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
 
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6);
-			}
+		/// <summary>
+		/// Get part of the list of elements less than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <returns>Part of the list of elements less than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindLess(
+				(orderedList, key1, key2, key3, key4, key5, key6),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater or equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreaterOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <returns>Part of the list of elements greater than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreater(
+				(orderedList, key1, key2, key3, key4, key5, key6),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+		#endregion
+
+		#region 7 keys
+		/// <summary>
+		/// Get part of the list of elements equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <returns>Part of the list of elements equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
 		}
 
 		/// <summary>
@@ -685,14 +719,102 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(Comparison);
+			var newMemory = Memory.BinaryFindLessOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7));
 
 			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
 
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7);
-			}
+		/// <summary>
+		/// Get part of the list of elements less than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <returns>Part of the list of elements less than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindLess(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater or equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreaterOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <returns>Part of the list of elements greater than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreater(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+		#endregion
+
+		#region 8 keys
+		/// <summary>
+		/// Get part of the list of elements equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <returns>Part of the list of elements equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
 		}
 
 		/// <summary>
@@ -711,14 +833,106 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(Comparison);
+			var newMemory = Memory.BinaryFindLessOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8));
 
 			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
 
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8);
-			}
+		/// <summary>
+		/// Get part of the list of elements less than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <returns>Part of the list of elements less than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindLess(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater or equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreaterOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <returns>Part of the list of elements greater than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreater(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+		#endregion
+
+		#region 9 keys
+		/// <summary>
+		/// Get part of the list of elements equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <returns>Part of the list of elements equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
 		}
 
 		/// <summary>
@@ -738,14 +952,110 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(Comparison);
+			var newMemory = Memory.BinaryFindLessOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9));
 
 			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
 
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9);
-			}
+		/// <summary>
+		/// Get part of the list of elements less than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <returns>Part of the list of elements less than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindLess(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater or equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreaterOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <returns>Part of the list of elements greater than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreater(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+		#endregion
+
+		#region 10 keys
+		/// <summary>
+		/// Get part of the list of elements equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <returns>Part of the list of elements equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
 		}
 
 		/// <summary>
@@ -766,14 +1076,114 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(Comparison);
+			var newMemory = Memory.BinaryFindLessOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10));
 
 			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
 
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10);
-			}
+		/// <summary>
+		/// Get part of the list of elements less than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <returns>Part of the list of elements less than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindLess(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater or equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreaterOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <returns>Part of the list of elements greater than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreater(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+		#endregion
+
+		#region 11 keys
+		/// <summary>
+		/// Get part of the list of elements equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <param name="key11">Key 11 value</param>
+		/// <returns>Part of the list of elements equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
 		}
 
 		/// <summary>
@@ -795,14 +1205,118 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(Comparison);
+			var newMemory = Memory.BinaryFindLessOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11));
 
 			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
 
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11);
-			}
+		/// <summary>
+		/// Get part of the list of elements less than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <param name="key11">Key 11 value</param>
+		/// <returns>Part of the list of elements less than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindLess(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater or equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <param name="key11">Key 11 value</param>
+		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreaterOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <param name="key11">Key 11 value</param>
+		/// <returns>Part of the list of elements greater than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreater(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+		#endregion
+
+		#region 12 keys
+		/// <summary>
+		/// Get part of the list of elements equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <param name="key11">Key 11 value</param>
+		/// <param name="key12">Key 12 value</param>
+		/// <returns>Part of the list of elements equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
 		}
 
 		/// <summary>
@@ -825,14 +1339,122 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(Comparison);
+			var newMemory = Memory.BinaryFindLessOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12));
 
 			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
 
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12);
-			}
+		/// <summary>
+		/// Get part of the list of elements less than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <param name="key11">Key 11 value</param>
+		/// <param name="key12">Key 12 value</param>
+		/// <returns>Part of the list of elements less than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindLess(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater or equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <param name="key11">Key 11 value</param>
+		/// <param name="key12">Key 12 value</param>
+		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreaterOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <param name="key11">Key 11 value</param>
+		/// <param name="key12">Key 12 value</param>
+		/// <returns>Part of the list of elements greater than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreater(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+		#endregion
+
+		#region 13 keys
+		/// <summary>
+		/// Get part of the list of elements equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <param name="key11">Key 11 value</param>
+		/// <param name="key12">Key 12 value</param>
+		/// <param name="key13">Key 13 value</param>
+		/// <returns>Part of the list of elements equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
 		}
 
 		/// <summary>
@@ -856,14 +1478,126 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(Comparison);
+			var newMemory = Memory.BinaryFindLessOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13));
 
 			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
 
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13);
-			}
+		/// <summary>
+		/// Get part of the list of elements less than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <param name="key11">Key 11 value</param>
+		/// <param name="key12">Key 12 value</param>
+		/// <param name="key13">Key 13 value</param>
+		/// <returns>Part of the list of elements less than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindLess(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater or equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <param name="key11">Key 11 value</param>
+		/// <param name="key12">Key 12 value</param>
+		/// <param name="key13">Key 13 value</param>
+		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreaterOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <param name="key11">Key 11 value</param>
+		/// <param name="key12">Key 12 value</param>
+		/// <param name="key13">Key 13 value</param>
+		/// <returns>Part of the list of elements greater than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreater(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+		#endregion
+
+		#region 14 keys
+		/// <summary>
+		/// Get part of the list of elements equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <param name="key11">Key 11 value</param>
+		/// <param name="key12">Key 12 value</param>
+		/// <param name="key13">Key 13 value</param>
+		/// <param name="key14">Key 14 value</param>
+		/// <returns>Part of the list of elements equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
 		}
 
 		/// <summary>
@@ -888,14 +1622,130 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(Comparison);
+			var newMemory = Memory.BinaryFindLessOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14));
 
 			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
 
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14);
-			}
+		/// <summary>
+		/// Get part of the list of elements less than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <param name="key11">Key 11 value</param>
+		/// <param name="key12">Key 12 value</param>
+		/// <param name="key13">Key 13 value</param>
+		/// <param name="key14">Key 14 value</param>
+		/// <returns>Part of the list of elements less than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindLess(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater or equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <param name="key11">Key 11 value</param>
+		/// <param name="key12">Key 12 value</param>
+		/// <param name="key13">Key 13 value</param>
+		/// <param name="key14">Key 14 value</param>
+		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreaterOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <param name="key11">Key 11 value</param>
+		/// <param name="key12">Key 12 value</param>
+		/// <param name="key13">Key 13 value</param>
+		/// <param name="key14">Key 14 value</param>
+		/// <returns>Part of the list of elements greater than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreater(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+		#endregion
+
+		#region 15 keys
+		/// <summary>
+		/// Get part of the list of elements equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <param name="key11">Key 11 value</param>
+		/// <param name="key12">Key 12 value</param>
+		/// <param name="key13">Key 13 value</param>
+		/// <param name="key14">Key 14 value</param>
+		/// <param name="key15">Key 15 value</param>
+		/// <returns>Part of the list of elements equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
 		}
 
 		/// <summary>
@@ -921,14 +1771,134 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(Comparison);
+			var newMemory = Memory.BinaryFindLessOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15));
 
 			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
 
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15);
-			}
+		/// <summary>
+		/// Get part of the list of elements less than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <param name="key11">Key 11 value</param>
+		/// <param name="key12">Key 12 value</param>
+		/// <param name="key13">Key 13 value</param>
+		/// <param name="key14">Key 14 value</param>
+		/// <param name="key15">Key 15 value</param>
+		/// <returns>Part of the list of elements less than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindLess(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater or equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <param name="key11">Key 11 value</param>
+		/// <param name="key12">Key 12 value</param>
+		/// <param name="key13">Key 13 value</param>
+		/// <param name="key14">Key 14 value</param>
+		/// <param name="key15">Key 15 value</param>
+		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreaterOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+
+		/// <summary>
+		/// Get part of the list of elements greater than specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <param name="key11">Key 11 value</param>
+		/// <param name="key12">Key 12 value</param>
+		/// <param name="key13">Key 13 value</param>
+		/// <param name="key14">Key 14 value</param>
+		/// <param name="key15">Key 15 value</param>
+		/// <returns>Part of the list of elements greater than specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindGreater(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+		}
+		#endregion
+
+		#region 16 keys
+		/// <summary>
+		/// Get part of the list of elements equal to specified keys values
+		/// </summary>
+		/// <param name="key1">Key 1 value</param>
+		/// <param name="key2">Key 2 value</param>
+		/// <param name="key3">Key 3 value</param>
+		/// <param name="key4">Key 4 value</param>
+		/// <param name="key5">Key 5 value</param>
+		/// <param name="key6">Key 6 value</param>
+		/// <param name="key7">Key 7 value</param>
+		/// <param name="key8">Key 8 value</param>
+		/// <param name="key9">Key 9 value</param>
+		/// <param name="key10">Key 10 value</param>
+		/// <param name="key11">Key 11 value</param>
+		/// <param name="key12">Key 12 value</param>
+		/// <param name="key13">Key 13 value</param>
+		/// <param name="key14">Key 14 value</param>
+		/// <param name="key15">Key 15 value</param>
+		/// <param name="key16">Key 16 value</param>
+		/// <returns>Part of the list of elements equal to specified keys values</returns>
+		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15, K16 key16)
+		{
+			var orderedList = this.KeysData;
+
+			var newMemory = Memory.BinaryFindEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15, key16),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15, s.key16));
+
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
 		}
 
 		/// <summary>
@@ -955,406 +1925,11 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(Comparison);
+			var newMemory = Memory.BinaryFindLessOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15, key16),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15, s.key16));
 
 			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15, key16);
-			}
-		}
-		#endregion
-
-		#region Less
-		/// <summary>
-		/// Get part of the list of elements less than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <returns>Part of the list of elements less than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindLess(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements less than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <returns>Part of the list of elements less than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindLess(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements less than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <returns>Part of the list of elements less than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindLess(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements less than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <returns>Part of the list of elements less than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindLess(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements less than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <returns>Part of the list of elements less than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindLess(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements less than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <returns>Part of the list of elements less than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindLess(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements less than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <returns>Part of the list of elements less than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindLess(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements less than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <returns>Part of the list of elements less than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindLess(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements less than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <returns>Part of the list of elements less than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindLess(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements less than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <returns>Part of the list of elements less than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindLess(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements less than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <param name="key11">Key 11 value</param>
-		/// <returns>Part of the list of elements less than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindLess(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements less than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <param name="key11">Key 11 value</param>
-		/// <param name="key12">Key 12 value</param>
-		/// <returns>Part of the list of elements less than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindLess(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements less than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <param name="key11">Key 11 value</param>
-		/// <param name="key12">Key 12 value</param>
-		/// <param name="key13">Key 13 value</param>
-		/// <returns>Part of the list of elements less than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindLess(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements less than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <param name="key11">Key 11 value</param>
-		/// <param name="key12">Key 12 value</param>
-		/// <param name="key13">Key 13 value</param>
-		/// <param name="key14">Key 14 value</param>
-		/// <returns>Part of the list of elements less than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindLess(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements less than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <param name="key11">Key 11 value</param>
-		/// <param name="key12">Key 12 value</param>
-		/// <param name="key13">Key 13 value</param>
-		/// <param name="key14">Key 14 value</param>
-		/// <param name="key15">Key 15 value</param>
-		/// <returns>Part of the list of elements less than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindLess(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindLess(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15);
-			}
 		}
 
 		/// <summary>
@@ -1381,406 +1956,11 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLess(Comparison);
+			var newMemory = Memory.BinaryFindLess(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15, key16),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15, s.key16));
 
 			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15, key16);
-			}
-		}
-		#endregion
-
-		#region GreaterOrEqual
-		/// <summary>
-		/// Get part of the list of elements greater or equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreaterOrEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater or equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreaterOrEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater or equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreaterOrEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater or equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreaterOrEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater or equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreaterOrEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater or equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreaterOrEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater or equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreaterOrEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater or equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreaterOrEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater or equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreaterOrEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater or equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreaterOrEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater or equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <param name="key11">Key 11 value</param>
-		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreaterOrEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater or equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <param name="key11">Key 11 value</param>
-		/// <param name="key12">Key 12 value</param>
-		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreaterOrEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater or equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <param name="key11">Key 11 value</param>
-		/// <param name="key12">Key 12 value</param>
-		/// <param name="key13">Key 13 value</param>
-		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreaterOrEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater or equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <param name="key11">Key 11 value</param>
-		/// <param name="key12">Key 12 value</param>
-		/// <param name="key13">Key 13 value</param>
-		/// <param name="key14">Key 14 value</param>
-		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreaterOrEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater or equal to specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <param name="key11">Key 11 value</param>
-		/// <param name="key12">Key 12 value</param>
-		/// <param name="key13">Key 13 value</param>
-		/// <param name="key14">Key 14 value</param>
-		/// <param name="key15">Key 15 value</param>
-		/// <returns>Part of the list of elements greater or equal to specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreaterOrEqual(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreaterOrEqual(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15);
-			}
 		}
 
 		/// <summary>
@@ -1807,406 +1987,11 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreaterOrEqual(Comparison);
+			var newMemory = Memory.BinaryFindGreaterOrEqual(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15, key16),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15, s.key16));
 
 			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15, key16);
-			}
-		}
-		#endregion
-
-		#region Greater
-		/// <summary>
-		/// Get part of the list of elements greater than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <returns>Part of the list of elements greater than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreater(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <returns>Part of the list of elements greater than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreater(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <returns>Part of the list of elements greater than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreater(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <returns>Part of the list of elements greater than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreater(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <returns>Part of the list of elements greater than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreater(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <returns>Part of the list of elements greater than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreater(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <returns>Part of the list of elements greater than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreater(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <returns>Part of the list of elements greater than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreater(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <returns>Part of the list of elements greater than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreater(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <returns>Part of the list of elements greater than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreater(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <param name="key11">Key 11 value</param>
-		/// <returns>Part of the list of elements greater than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreater(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <param name="key11">Key 11 value</param>
-		/// <param name="key12">Key 12 value</param>
-		/// <returns>Part of the list of elements greater than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreater(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <param name="key11">Key 11 value</param>
-		/// <param name="key12">Key 12 value</param>
-		/// <param name="key13">Key 13 value</param>
-		/// <returns>Part of the list of elements greater than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreater(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <param name="key11">Key 11 value</param>
-		/// <param name="key12">Key 12 value</param>
-		/// <param name="key13">Key 13 value</param>
-		/// <param name="key14">Key 14 value</param>
-		/// <returns>Part of the list of elements greater than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreater(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14);
-			}
-		}
-
-		/// <summary>
-		/// Get part of the list of elements greater than specified keys values
-		/// </summary>
-		/// <param name="key1">Key 1 value</param>
-		/// <param name="key2">Key 2 value</param>
-		/// <param name="key3">Key 3 value</param>
-		/// <param name="key4">Key 4 value</param>
-		/// <param name="key5">Key 5 value</param>
-		/// <param name="key6">Key 6 value</param>
-		/// <param name="key7">Key 7 value</param>
-		/// <param name="key8">Key 8 value</param>
-		/// <param name="key9">Key 9 value</param>
-		/// <param name="key10">Key 10 value</param>
-		/// <param name="key11">Key 11 value</param>
-		/// <param name="key12">Key 12 value</param>
-		/// <param name="key13">Key 13 value</param>
-		/// <param name="key14">Key 14 value</param>
-		/// <param name="key15">Key 15 value</param>
-		/// <returns>Part of the list of elements greater than specified keys values</returns>
-		public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindGreater(K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15)
-		{
-			var orderedList = this.KeysData;
-
-			var newMemory = Memory.BinaryFindGreater(Comparison);
-
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15);
-			}
 		}
 
 		/// <summary>
@@ -2233,92 +2018,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreater(Comparison);
+			var newMemory = Memory.BinaryFindGreater(
+				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15, key16),
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15, s.key16));
 
 			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
-
-			int Comparison(T item)
-			{
-				return orderedList.Compare(item, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15, key16);
-			}
 		}
 		#endregion
-
-		//#region EqualTuple
-		//public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(in (K1 key1, K2 key2) keys)
-		//{
-		//	return BinaryFindEqual(keys.key1, keys.key2);
-		//}
-
-		//public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(in (K1 key1, K2 key2, K3 key3) keys)
-		//{
-		//	return BinaryFindEqual(keys.key1, keys.key2, keys.key3);
-		//}
-
-		//public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(in (K1 key1, K2 key2, K3 key3, K4 key4) keys)
-		//{
-		//	return BinaryFindEqual(keys.key1, keys.key2, keys.key3, keys.key4);
-		//}
-
-		//public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(in (K1 key1, K2 key2, K3 key3, K4 key4, K5 key5) keys)
-		//{
-		//	return BinaryFindEqual(keys.key1, keys.key2, keys.key3, keys.key4, keys.key5);
-		//}
-
-		//public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(in (K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6) keys)
-		//{
-		//	return BinaryFindEqual(keys.key1, keys.key2, keys.key3, keys.key4, keys.key5, keys.key6);
-		//}
-
-		//public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(in (K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7) keys)
-		//{
-		//	return BinaryFindEqual(keys.key1, keys.key2, keys.key3, keys.key4, keys.key5, keys.key6, keys.key7);
-		//}
-
-		//public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(in (K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8) keys)
-		//{
-		//	return BinaryFindEqual(keys.key1, keys.key2, keys.key3, keys.key4, keys.key5, keys.key6, keys.key7, keys.key8);
-		//}
-
-		//public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(in (K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9) keys)
-		//{
-		//	return BinaryFindEqual(keys.key1, keys.key2, keys.key3, keys.key4, keys.key5, keys.key6, keys.key7, keys.key8, keys.key9);
-		//}
-
-		//public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(in (K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10) keys)
-		//{
-		//	return BinaryFindEqual(keys.key1, keys.key2, keys.key3, keys.key4, keys.key5, keys.key6, keys.key7, keys.key8, keys.key9, keys.key10);
-		//}
-
-		//public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(in (K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11) keys)
-		//{
-		//	return BinaryFindEqual(keys.key1, keys.key2, keys.key3, keys.key4, keys.key5, keys.key6, keys.key7, keys.key8, keys.key9, keys.key10, keys.key11);
-		//}
-
-		//public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(in (K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12) keys)
-		//{
-		//	return BinaryFindEqual(keys.key1, keys.key2, keys.key3, keys.key4, keys.key5, keys.key6, keys.key7, keys.key8, keys.key9, keys.key10, keys.key11, keys.key12);
-		//}
-
-		//public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(in (K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13) keys)
-		//{
-		//	return BinaryFindEqual(keys.key1, keys.key2, keys.key3, keys.key4, keys.key5, keys.key6, keys.key7, keys.key8, keys.key9, keys.key10, keys.key11, keys.key12, keys.key13);
-		//}
-
-		//public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(in (K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14) keys)
-		//{
-		//	return BinaryFindEqual(keys.key1, keys.key2, keys.key3, keys.key4, keys.key5, keys.key6, keys.key7, keys.key8, keys.key9, keys.key10, keys.key11, keys.key12, keys.key13, keys.key14);
-		//}
-
-		//public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(in (K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15) keys)
-		//{
-		//	return BinaryFindEqual(keys.key1, keys.key2, keys.key3, keys.key4, keys.key5, keys.key6, keys.key7, keys.key8, keys.key9, keys.key10, keys.key11, keys.key12, keys.key13, keys.key14, keys.key15);
-		//}
-
-		//public SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> BinaryFindEqual(in (K1 key1, K2 key2, K3 key3, K4 key4, K5 key5, K6 key6, K7 key7, K8 key8, K9 key9, K10 key10, K11 key11, K12 key12, K13 key13, K14 key14, K15 key15, K16 key16) keys)
-		//{
-		//	return BinaryFindEqual(keys.key1, keys.key2, keys.key3, keys.key4, keys.key5, keys.key6, keys.key7, keys.key8, keys.key9, keys.key10, keys.key11, keys.key12, keys.key13, keys.key14, keys.key15, keys.key16);
-		//}
-		//#endregion
 	}
 }
