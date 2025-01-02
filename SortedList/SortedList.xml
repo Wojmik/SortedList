@@ -129,226 +129,6 @@
             <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
             <returns>Range of items in <paramref name="list"/> greater than serched one</returns>
         </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindEqual``2(System.Memory{``0}@,``1@,System.Func{``0,``1,System.Int32})">
-            <summary>
-            Return memory of items equal to searched one.
-            <paramref name="memory"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <typeparam name="TState">Type of state parameter</typeparam>
-            <param name="memory">Sorted memory</param>
-            <param name="state">State parameter - goes to <paramref name="comparison"/> mathod as second parameter</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Memory of items in <paramref name="memory"/> equals to serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindEqual``1(System.Memory{``0}@,System.Func{``0,System.Int32})">
-            <summary>
-            Return memory of items equal to searched one.
-            <paramref name="memory"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <param name="memory">Sorted memory</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Memory of items in <paramref name="memory"/> equals to serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindLessOrEqual``2(System.Memory{``0}@,``1@,System.Func{``0,``1,System.Int32})">
-            <summary>
-            Return memory of items less or equal to searched one.
-            <paramref name="memory"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <typeparam name="TState">Type of state parameter</typeparam>
-            <param name="memory">Sorted memory</param>
-            <param name="state">State parameter - goes to <paramref name="comparison"/> mathod as second parameter</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Memory of items in <paramref name="memory"/> less or equals to serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindLessOrEqual``1(System.Memory{``0}@,System.Func{``0,System.Int32})">
-            <summary>
-            Return memory of items less or equal to searched one.
-            <paramref name="memory"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <param name="memory">Sorted memory</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Memory of items in <paramref name="memory"/> less or equals to serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindLess``2(System.Memory{``0}@,``1@,System.Func{``0,``1,System.Int32})">
-            <summary>
-            Return memory of items less than searched one.
-            <paramref name="memory"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <typeparam name="TState">Type of state parameter</typeparam>
-            <param name="memory">Sorted memory</param>
-            <param name="state">State parameter - goes to <paramref name="comparison"/> mathod as second parameter</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Memory of items in <paramref name="memory"/> less than serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindLess``1(System.Memory{``0}@,System.Func{``0,System.Int32})">
-            <summary>
-            Return memory of items less than searched one.
-            <paramref name="memory"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <param name="memory">Sorted memory</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Memory of items in <paramref name="memory"/> less than serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindGreaterOrEqual``2(System.Memory{``0}@,``1@,System.Func{``0,``1,System.Int32})">
-            <summary>
-            Return memory of items greater or equal to searched one.
-            <paramref name="memory"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <typeparam name="TState">Type of state parameter</typeparam>
-            <param name="memory">Sorted memory</param>
-            <param name="state">State parameter - goes to <paramref name="comparison"/> mathod as second parameter</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Memory of items in <paramref name="memory"/> greater or equals to serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindGreaterOrEqual``1(System.Memory{``0}@,System.Func{``0,System.Int32})">
-            <summary>
-            Return memory of items greater or equal to searched one.
-            <paramref name="memory"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <param name="memory">Sorted memory</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Memory of items in <paramref name="memory"/> greater or equals to serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindGreater``2(System.Memory{``0}@,``1@,System.Func{``0,``1,System.Int32})">
-            <summary>
-            Return memory of items greater than searched one.
-            <paramref name="memory"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <typeparam name="TState">Type of state parameter</typeparam>
-            <param name="memory">Sorted memory</param>
-            <param name="state">State parameter - goes to <paramref name="comparison"/> mathod as second parameter</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Memory of items in <paramref name="memory"/> greater than serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindGreater``1(System.Memory{``0}@,System.Func{``0,System.Int32})">
-            <summary>
-            Return memory of items greater than searched one.
-            <paramref name="memory"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <param name="memory">Sorted memory</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Memory of items in <paramref name="memory"/> greater than serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindEqual``2(System.ReadOnlyMemory{``0}@,``1@,System.Func{``0,``1,System.Int32})">
-            <summary>
-            Return memory of items equal to searched one.
-            <paramref name="memory"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <typeparam name="TState">Type of state parameter</typeparam>
-            <param name="memory">Sorted memory</param>
-            <param name="state">State parameter - goes to <paramref name="comparison"/> mathod as second parameter</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Memory of items in <paramref name="memory"/> equals to serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindEqual``1(System.ReadOnlyMemory{``0}@,System.Func{``0,System.Int32})">
-            <summary>
-            Return memory of items equal to searched one.
-            <paramref name="memory"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <param name="memory">Sorted memory</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Memory of items in <paramref name="memory"/> equals to serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindLessOrEqual``2(System.ReadOnlyMemory{``0}@,``1@,System.Func{``0,``1,System.Int32})">
-            <summary>
-            Return memory of items less or equal to searched one.
-            <paramref name="memory"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <typeparam name="TState">Type of state parameter</typeparam>
-            <param name="memory">Sorted memory</param>
-            <param name="state">State parameter - goes to <paramref name="comparison"/> mathod as second parameter</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Memory of items in <paramref name="memory"/> less or equals to serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindLessOrEqual``1(System.ReadOnlyMemory{``0}@,System.Func{``0,System.Int32})">
-            <summary>
-            Return memory of items less or equal to searched one.
-            <paramref name="memory"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <param name="memory">Sorted memory</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Memory of items in <paramref name="memory"/> less or equals to serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindLess``2(System.ReadOnlyMemory{``0}@,``1@,System.Func{``0,``1,System.Int32})">
-            <summary>
-            Return memory of items less than searched one.
-            <paramref name="memory"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <typeparam name="TState">Type of state parameter</typeparam>
-            <param name="memory">Sorted memory</param>
-            <param name="state">State parameter - goes to <paramref name="comparison"/> mathod as second parameter</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Memory of items in <paramref name="memory"/> less than serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindLess``1(System.ReadOnlyMemory{``0}@,System.Func{``0,System.Int32})">
-            <summary>
-            Return memory of items less than searched one.
-            <paramref name="memory"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <param name="memory">Sorted memory</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Memory of items in <paramref name="memory"/> less than serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindGreaterOrEqual``2(System.ReadOnlyMemory{``0}@,``1@,System.Func{``0,``1,System.Int32})">
-            <summary>
-            Return memory of items greater or equal to searched one.
-            <paramref name="memory"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <typeparam name="TState">Type of state parameter</typeparam>
-            <param name="memory">Sorted memory</param>
-            <param name="state">State parameter - goes to <paramref name="comparison"/> mathod as second parameter</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Memory of items in <paramref name="memory"/> greater or equals to serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindGreaterOrEqual``1(System.ReadOnlyMemory{``0}@,System.Func{``0,System.Int32})">
-            <summary>
-            Return memory of items greater or equal to searched one.
-            <paramref name="memory"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <param name="memory">Sorted memory</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Memory of items in <paramref name="memory"/> greater or equals to serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindGreater``2(System.ReadOnlyMemory{``0}@,``1@,System.Func{``0,``1,System.Int32})">
-            <summary>
-            Return memory of items greater than searched one.
-            <paramref name="memory"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <typeparam name="TState">Type of state parameter</typeparam>
-            <param name="memory">Sorted memory</param>
-            <param name="state">State parameter - goes to <paramref name="comparison"/> mathod as second parameter</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Memory of items in <paramref name="memory"/> greater than serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindGreater``1(System.ReadOnlyMemory{``0}@,System.Func{``0,System.Int32})">
-            <summary>
-            Return memory of items greater than searched one.
-            <paramref name="memory"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <param name="memory">Sorted memory</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Memory of items in <paramref name="memory"/> greater than serched one</returns>
-        </member>
         <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindEqual``2(System.ReadOnlySpan{``0}@,``1@,System.Func{``0,``1,System.Int32})">
             <summary>
             Return span of items equal to searched one.
@@ -359,7 +139,7 @@
             <param name="span">Sorted span</param>
             <param name="state">State parameter - goes to <paramref name="comparison"/> mathod as second parameter</param>
             <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Span of items in <paramref name="span"/> equals to serched one</returns>
+            <returns><see cref="T:System.Range"/> of items in <paramref name="span"/> equals to serched one</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindEqual``1(System.ReadOnlySpan{``0}@,System.Func{``0,System.Int32})">
             <summary>
@@ -369,7 +149,7 @@
             <typeparam name="T">Type of items</typeparam>
             <param name="span">Sorted span</param>
             <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Span of items in <paramref name="span"/> equals to serched one</returns>
+            <returns><see cref="T:System.Range"/> of items in <paramref name="span"/> equals to serched one</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindLessOrEqual``2(System.ReadOnlySpan{``0}@,``1@,System.Func{``0,``1,System.Int32})">
             <summary>
@@ -381,7 +161,7 @@
             <param name="span">Sorted span</param>
             <param name="state">State parameter - goes to <paramref name="comparison"/> mathod as second parameter</param>
             <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Span of items in <paramref name="span"/> less or equals to serched one</returns>
+            <returns><see cref="T:System.Range"/> of items in <paramref name="span"/> less or equals to serched one</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindLessOrEqual``1(System.ReadOnlySpan{``0}@,System.Func{``0,System.Int32})">
             <summary>
@@ -391,7 +171,7 @@
             <typeparam name="T">Type of items</typeparam>
             <param name="span">Sorted span</param>
             <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Span of items in <paramref name="span"/> less or equals to serched one</returns>
+            <returns><see cref="T:System.Range"/> of items in <paramref name="span"/> less or equals to serched one</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindLess``2(System.ReadOnlySpan{``0}@,``1@,System.Func{``0,``1,System.Int32})">
             <summary>
@@ -403,7 +183,7 @@
             <param name="span">Sorted span</param>
             <param name="state">State parameter - goes to <paramref name="comparison"/> mathod as second parameter</param>
             <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Span of items in <paramref name="span"/> less than serched one</returns>
+            <returns><see cref="T:System.Range"/> of items in <paramref name="span"/> less than serched one</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindLess``1(System.ReadOnlySpan{``0}@,System.Func{``0,System.Int32})">
             <summary>
@@ -413,7 +193,7 @@
             <typeparam name="T">Type of items</typeparam>
             <param name="span">Sorted span</param>
             <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Span of items in <paramref name="span"/> less than serched one</returns>
+            <returns><see cref="T:System.Range"/> of items in <paramref name="span"/> less than serched one</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindGreaterOrEqual``2(System.ReadOnlySpan{``0}@,``1@,System.Func{``0,``1,System.Int32})">
             <summary>
@@ -425,7 +205,7 @@
             <param name="span">Sorted span</param>
             <param name="state">State parameter - goes to <paramref name="comparison"/> mathod as second parameter</param>
             <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Span of items in <paramref name="span"/> greater or equals to serched one</returns>
+            <returns><see cref="T:System.Range"/> of items in <paramref name="span"/> greater or equals to serched one</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindGreaterOrEqual``1(System.ReadOnlySpan{``0}@,System.Func{``0,System.Int32})">
             <summary>
@@ -435,7 +215,7 @@
             <typeparam name="T">Type of items</typeparam>
             <param name="span">Sorted span</param>
             <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Span of items in <paramref name="span"/> greater or equals to serched one</returns>
+            <returns><see cref="T:System.Range"/> of items in <paramref name="span"/> greater or equals to serched one</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindGreater``2(System.ReadOnlySpan{``0}@,``1@,System.Func{``0,``1,System.Int32})">
             <summary>
@@ -447,7 +227,7 @@
             <param name="span">Sorted span</param>
             <param name="state">State parameter - goes to <paramref name="comparison"/> mathod as second parameter</param>
             <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Span of items in <paramref name="span"/> greater than serched one</returns>
+            <returns><see cref="T:System.Range"/> of items in <paramref name="span"/> greater than serched one</returns>
         </member>
         <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindGreater``1(System.ReadOnlySpan{``0}@,System.Func{``0,System.Int32})">
             <summary>
@@ -457,117 +237,7 @@
             <typeparam name="T">Type of items</typeparam>
             <param name="span">Sorted span</param>
             <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Span of items in <paramref name="span"/> greater than serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindEqual``2(System.Span{``0}@,``1@,System.Func{``0,``1,System.Int32})">
-            <summary>
-            Return span of items equal to searched one.
-            <paramref name="span"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <typeparam name="TState">Type of state parameter</typeparam>
-            <param name="span">Sorted span</param>
-            <param name="state">State parameter - goes to <paramref name="comparison"/> mathod as second parameter</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Span of items in <paramref name="span"/> equals to serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindEqual``1(System.Span{``0}@,System.Func{``0,System.Int32})">
-            <summary>
-            Return span of items equal to searched one.
-            <paramref name="span"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <param name="span">Sorted span</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Span of items in <paramref name="span"/> equals to serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindLessOrEqual``2(System.Span{``0}@,``1@,System.Func{``0,``1,System.Int32})">
-            <summary>
-            Return span of items less or equal to searched one.
-            <paramref name="span"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <typeparam name="TState">Type of state parameter</typeparam>
-            <param name="span">Sorted span</param>
-            <param name="state">State parameter - goes to <paramref name="comparison"/> mathod as second parameter</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Span of items in <paramref name="span"/> less or equals to serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindLessOrEqual``1(System.Span{``0}@,System.Func{``0,System.Int32})">
-            <summary>
-            Return span of items less or equal to searched one.
-            <paramref name="span"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <param name="span">Sorted span</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Span of items in <paramref name="span"/> less or equals to serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindLess``2(System.Span{``0}@,``1@,System.Func{``0,``1,System.Int32})">
-            <summary>
-            Return span of items less than searched one.
-            <paramref name="span"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <typeparam name="TState">Type of state parameter</typeparam>
-            <param name="span">Sorted span</param>
-            <param name="state">State parameter - goes to <paramref name="comparison"/> mathod as second parameter</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Span of items in <paramref name="span"/> less than serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindLess``1(System.Span{``0}@,System.Func{``0,System.Int32})">
-            <summary>
-            Return span of items less than searched one.
-            <paramref name="span"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <param name="span">Sorted span</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Span of items in <paramref name="span"/> less than serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindGreaterOrEqual``2(System.Span{``0}@,``1@,System.Func{``0,``1,System.Int32})">
-            <summary>
-            Return span of items greater or equal to searched one.
-            <paramref name="span"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <typeparam name="TState">Type of state parameter</typeparam>
-            <param name="span">Sorted span</param>
-            <param name="state">State parameter - goes to <paramref name="comparison"/> mathod as second parameter</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Span of items in <paramref name="span"/> greater or equals to serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindGreaterOrEqual``1(System.Span{``0}@,System.Func{``0,System.Int32})">
-            <summary>
-            Return span of items greater or equal to searched one.
-            <paramref name="span"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <param name="span">Sorted span</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Span of items in <paramref name="span"/> greater or equals to serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindGreater``2(System.Span{``0}@,``1@,System.Func{``0,``1,System.Int32})">
-            <summary>
-            Return span of items greater than searched one.
-            <paramref name="span"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <typeparam name="TState">Type of state parameter</typeparam>
-            <param name="span">Sorted span</param>
-            <param name="state">State parameter - goes to <paramref name="comparison"/> mathod as second parameter</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Span of items in <paramref name="span"/> greater than serched one</returns>
-        </member>
-        <member name="M:WojciechMikołajewicz.SortedList.BinarySearchers.BinaryFindGreater``1(System.Span{``0}@,System.Func{``0,System.Int32})">
-            <summary>
-            Return span of items greater than searched one.
-            <paramref name="span"/> has to be sorted and <paramref name="comparison"/> method has to use same sorting.
-            </summary>
-            <typeparam name="T">Type of items</typeparam>
-            <param name="span">Sorted span</param>
-            <param name="comparison">Method should determine whether the passed item is less (-1), equal (0) or greater (1) than searching one (item.CompareTo(SearchingItem))</param>
-            <returns>Span of items in <paramref name="span"/> greater than serched one</returns>
+            <returns><see cref="T:System.Range"/> of items in <paramref name="span"/> greater than serched one</returns>
         </member>
         <member name="T:WojciechMikołajewicz.SortedList.IKeyData`1">
             <summary>
@@ -28661,89 +28331,6 @@
             Get enumerator
             </summary>
             <returns>Enumerator</returns>
-        </member>
-        <member name="T:System.Index">
-            <summary>
-            Index
-            </summary>
-        </member>
-        <member name="M:System.Index.op_Implicit(System.Int32)~System.Index">
-            <summary>
-            Implicit operator
-            </summary>
-            <param name="value">Index</param>
-        </member>
-        <member name="P:System.Index.Value">
-            <summary>
-            Index value
-            </summary>
-        </member>
-        <member name="P:System.Index.IsFromEnd">
-            <summary>
-            Is from end
-            </summary>
-        </member>
-        <member name="M:System.Index.#ctor(System.Int32,System.Boolean)">
-            <summary>
-            Constructor
-            </summary>
-            <param name="value">Index value</param>
-            <param name="fromEnd">Is from end</param>
-        </member>
-        <member name="M:System.Index.Deconstruct(System.Int32@,System.Boolean@)">
-            <summary>
-            Deconstructor
-            </summary>
-            <param name="value">Index value</param>
-            <param name="fromEnd">Is from end</param>
-        </member>
-        <member name="M:System.Index.GetOffset(System.Int32)">
-            <summary>
-            Gets offset
-            </summary>
-            <param name="length">Length of the list</param>
-            <returns>Offset</returns>
-        </member>
-        <member name="T:System.Range">
-            <summary>
-            Range
-            </summary>
-        </member>
-        <member name="P:System.Range.All">
-            <summary>
-            Returns range covering whole collection
-            </summary>
-        </member>
-        <member name="P:System.Range.Start">
-            <summary>
-            Start index
-            </summary>
-        </member>
-        <member name="P:System.Range.End">
-            <summary>
-            End index
-            </summary>
-        </member>
-        <member name="M:System.Range.#ctor(System.Index,System.Index)">
-            <summary>
-            Constructor
-            </summary>
-            <param name="start">Start index</param>
-            <param name="end">End index</param>
-        </member>
-        <member name="M:System.Range.Deconstruct(System.Index@,System.Index@)">
-            <summary>
-            Deconstructor
-            </summary>
-            <param name="start">Start index</param>
-            <param name="end">End index</param>
-        </member>
-        <member name="M:System.Range.GetOffsetAndLength(System.Int32)">
-            <summary>
-            Get offser and length of the range
-            </summary>
-            <param name="length">Length of the list</param>
-            <returns>Offset and length of the range</returns>
         </member>
     </members>
 </doc>
