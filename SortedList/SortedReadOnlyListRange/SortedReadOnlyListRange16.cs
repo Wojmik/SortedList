@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using WojciechMikołajewicz.SortedList.KeysData;
 
 namespace WojciechMikołajewicz.SortedList
@@ -70,8 +69,8 @@ namespace WojciechMikołajewicz.SortedList
 		public SortedReadOnlyListRange(SortedReadOnlyList<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> orderedList, Range range)
 		{
 			(int start, int count) = range.GetOffsetAndLength(orderedList.Count);
-			this.KeysData=orderedList.KeysData;
-			this.Memory=orderedList.AsMemory().Slice(start, count);
+			this.KeysData = orderedList.KeysData;
+			this.Memory = orderedList.AsMemory().Slice(start, count);
 		}
 
 		/// <summary>
@@ -81,8 +80,8 @@ namespace WojciechMikołajewicz.SortedList
 		/// <param name="memory">Read only memory of sorted read only list</param>
 		private SortedReadOnlyListRange(KeysData<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16> keysData, ReadOnlyMemory<T> memory)
 		{
-			this.KeysData=keysData;
-			this.Memory=memory;
+			this.KeysData = keysData;
+			this.Memory = memory;
 		}
 
 		/// <summary>
@@ -124,11 +123,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(
+			var range = Memory.Span.BinaryFindEqual(
 				(orderedList, key1),
-				(item, s) => s.orderedList.Compare(item, s.key1));
+				(item, s) => s.orderedList.Compare(item, s.key1))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -140,11 +140,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(
+			var range = Memory.Span.BinaryFindLessOrEqual(
 				(orderedList, key1),
-				(item, s) => s.orderedList.Compare(item, s.key1));
+				(item, s) => s.orderedList.Compare(item, s.key1))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -156,11 +157,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLess(
+			var range = Memory.Span.BinaryFindLess(
 				(orderedList, key1),
-				(item, s) => s.orderedList.Compare(item, s.key1));
+				(item, s) => s.orderedList.Compare(item, s.key1))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -172,11 +174,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreaterOrEqual(
+			var range = Memory.Span.BinaryFindGreaterOrEqual(
 				(orderedList, key1),
-				(item, s) => s.orderedList.Compare(item, s.key1));
+				(item, s) => s.orderedList.Compare(item, s.key1))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -188,11 +191,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreater(
+			var range = Memory.Span.BinaryFindGreater(
 				(orderedList, key1),
-				(item, s) => s.orderedList.Compare(item, s.key1));
+				(item, s) => s.orderedList.Compare(item, s.key1))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 		#endregion
 
@@ -207,11 +211,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(
+			var range = Memory.Span.BinaryFindEqual(
 				(orderedList, key1, key2),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -224,11 +229,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(
+			var range = Memory.Span.BinaryFindLessOrEqual(
 				(orderedList, key1, key2),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -241,11 +247,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLess(
+			var range = Memory.Span.BinaryFindLess(
 				(orderedList, key1, key2),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -258,11 +265,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreaterOrEqual(
+			var range = Memory.Span.BinaryFindGreaterOrEqual(
 				(orderedList, key1, key2),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -275,11 +283,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreater(
+			var range = Memory.Span.BinaryFindGreater(
 				(orderedList, key1, key2),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 		#endregion
 
@@ -295,11 +304,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(
+			var range = Memory.Span.BinaryFindEqual(
 				(orderedList, key1, key2, key3),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -313,11 +323,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(
+			var range = Memory.Span.BinaryFindLessOrEqual(
 				(orderedList, key1, key2, key3),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -331,11 +342,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLess(
+			var range = Memory.Span.BinaryFindLess(
 				(orderedList, key1, key2, key3),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -349,11 +361,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreaterOrEqual(
+			var range = Memory.Span.BinaryFindGreaterOrEqual(
 				(orderedList, key1, key2, key3),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -367,11 +380,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreater(
+			var range = Memory.Span.BinaryFindGreater(
 				(orderedList, key1, key2, key3),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 		#endregion
 
@@ -388,11 +402,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(
+			var range = Memory.Span.BinaryFindEqual(
 				(orderedList, key1, key2, key3, key4),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -407,11 +422,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(
+			var range = Memory.Span.BinaryFindLessOrEqual(
 				(orderedList, key1, key2, key3, key4),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -426,11 +442,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLess(
+			var range = Memory.Span.BinaryFindLess(
 				(orderedList, key1, key2, key3, key4),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -445,11 +462,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreaterOrEqual(
+			var range = Memory.Span.BinaryFindGreaterOrEqual(
 				(orderedList, key1, key2, key3, key4),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -464,11 +482,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreater(
+			var range = Memory.Span.BinaryFindGreater(
 				(orderedList, key1, key2, key3, key4),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 		#endregion
 
@@ -486,11 +505,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(
+			var range = Memory.Span.BinaryFindEqual(
 				(orderedList, key1, key2, key3, key4, key5),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -506,11 +526,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(
+			var range = Memory.Span.BinaryFindLessOrEqual(
 				(orderedList, key1, key2, key3, key4, key5),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -526,11 +547,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLess(
+			var range = Memory.Span.BinaryFindLess(
 				(orderedList, key1, key2, key3, key4, key5),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -546,11 +568,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreaterOrEqual(
+			var range = Memory.Span.BinaryFindGreaterOrEqual(
 				(orderedList, key1, key2, key3, key4, key5),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -566,11 +589,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreater(
+			var range = Memory.Span.BinaryFindGreater(
 				(orderedList, key1, key2, key3, key4, key5),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 		#endregion
 
@@ -589,11 +613,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(
+			var range = Memory.Span.BinaryFindEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -610,11 +635,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(
+			var range = Memory.Span.BinaryFindLessOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -631,11 +657,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLess(
+			var range = Memory.Span.BinaryFindLess(
 				(orderedList, key1, key2, key3, key4, key5, key6),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -652,11 +679,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreaterOrEqual(
+			var range = Memory.Span.BinaryFindGreaterOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -673,11 +701,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreater(
+			var range = Memory.Span.BinaryFindGreater(
 				(orderedList, key1, key2, key3, key4, key5, key6),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 		#endregion
 
@@ -697,11 +726,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(
+			var range = Memory.Span.BinaryFindEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -719,11 +749,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(
+			var range = Memory.Span.BinaryFindLessOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -741,11 +772,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLess(
+			var range = Memory.Span.BinaryFindLess(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -763,11 +795,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreaterOrEqual(
+			var range = Memory.Span.BinaryFindGreaterOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -785,11 +818,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreater(
+			var range = Memory.Span.BinaryFindGreater(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 		#endregion
 
@@ -810,11 +844,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(
+			var range = Memory.Span.BinaryFindEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -833,11 +868,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(
+			var range = Memory.Span.BinaryFindLessOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -856,11 +892,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLess(
+			var range = Memory.Span.BinaryFindLess(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -879,11 +916,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreaterOrEqual(
+			var range = Memory.Span.BinaryFindGreaterOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -902,11 +940,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreater(
+			var range = Memory.Span.BinaryFindGreater(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 		#endregion
 
@@ -928,11 +967,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(
+			var range = Memory.Span.BinaryFindEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -952,11 +992,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(
+			var range = Memory.Span.BinaryFindLessOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -976,11 +1017,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLess(
+			var range = Memory.Span.BinaryFindLess(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1000,11 +1042,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreaterOrEqual(
+			var range = Memory.Span.BinaryFindGreaterOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1024,11 +1067,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreater(
+			var range = Memory.Span.BinaryFindGreater(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 		#endregion
 
@@ -1051,11 +1095,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(
+			var range = Memory.Span.BinaryFindEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1076,11 +1121,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(
+			var range = Memory.Span.BinaryFindLessOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1101,11 +1147,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLess(
+			var range = Memory.Span.BinaryFindLess(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1126,11 +1173,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreaterOrEqual(
+			var range = Memory.Span.BinaryFindGreaterOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1151,11 +1199,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreater(
+			var range = Memory.Span.BinaryFindGreater(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 		#endregion
 
@@ -1179,11 +1228,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(
+			var range = Memory.Span.BinaryFindEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1205,11 +1255,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(
+			var range = Memory.Span.BinaryFindLessOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1231,11 +1282,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLess(
+			var range = Memory.Span.BinaryFindLess(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1257,11 +1309,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreaterOrEqual(
+			var range = Memory.Span.BinaryFindGreaterOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1283,11 +1336,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreater(
+			var range = Memory.Span.BinaryFindGreater(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 		#endregion
 
@@ -1312,11 +1366,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(
+			var range = Memory.Span.BinaryFindEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1339,11 +1394,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(
+			var range = Memory.Span.BinaryFindLessOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1366,11 +1422,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLess(
+			var range = Memory.Span.BinaryFindLess(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1393,11 +1450,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreaterOrEqual(
+			var range = Memory.Span.BinaryFindGreaterOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1420,11 +1478,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreater(
+			var range = Memory.Span.BinaryFindGreater(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 		#endregion
 
@@ -1450,11 +1509,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(
+			var range = Memory.Span.BinaryFindEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1478,11 +1538,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(
+			var range = Memory.Span.BinaryFindLessOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1506,11 +1567,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLess(
+			var range = Memory.Span.BinaryFindLess(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1534,11 +1596,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreaterOrEqual(
+			var range = Memory.Span.BinaryFindGreaterOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1562,11 +1625,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreater(
+			var range = Memory.Span.BinaryFindGreater(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 		#endregion
 
@@ -1593,11 +1657,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(
+			var range = Memory.Span.BinaryFindEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1622,11 +1687,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(
+			var range = Memory.Span.BinaryFindLessOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1651,11 +1717,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLess(
+			var range = Memory.Span.BinaryFindLess(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1680,11 +1747,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreaterOrEqual(
+			var range = Memory.Span.BinaryFindGreaterOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1709,11 +1777,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreater(
+			var range = Memory.Span.BinaryFindGreater(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 		#endregion
 
@@ -1741,11 +1810,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(
+			var range = Memory.Span.BinaryFindEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1771,11 +1841,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(
+			var range = Memory.Span.BinaryFindLessOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1801,11 +1872,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLess(
+			var range = Memory.Span.BinaryFindLess(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1831,11 +1903,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreaterOrEqual(
+			var range = Memory.Span.BinaryFindGreaterOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1861,11 +1934,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreater(
+			var range = Memory.Span.BinaryFindGreater(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 		#endregion
 
@@ -1894,11 +1968,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(
+			var range = Memory.Span.BinaryFindEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15, key16),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15, s.key16));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15, s.key16))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1925,11 +2000,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(
+			var range = Memory.Span.BinaryFindLessOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15, key16),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15, s.key16));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15, s.key16))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1956,11 +2032,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLess(
+			var range = Memory.Span.BinaryFindLess(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15, key16),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15, s.key16));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15, s.key16))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -1987,11 +2064,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreaterOrEqual(
+			var range = Memory.Span.BinaryFindGreaterOrEqual(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15, key16),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15, s.key16));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15, s.key16))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 
 		/// <summary>
@@ -2018,11 +2096,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreater(
+			var range = Memory.Span.BinaryFindGreater(
 				(orderedList, key1, key2, key3, key4, key5, key6, key7, key8, key9, key10, key11, key12, key13, key14, key15, key16),
-				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15, s.key16));
+				(item, s) => s.orderedList.Compare(item, s.key1, s.key2, s.key3, s.key4, s.key5, s.key6, s.key7, s.key8, s.key9, s.key10, s.key11, s.key12, s.key13, s.key14, s.key15, s.key16))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14, K15, K16>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 		#endregion
 	}

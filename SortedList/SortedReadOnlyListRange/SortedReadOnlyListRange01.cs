@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using WojciechMikołajewicz.SortedList.KeysData;
 
 namespace WojciechMikołajewicz.SortedList
@@ -55,8 +54,8 @@ namespace WojciechMikołajewicz.SortedList
 		public SortedReadOnlyListRange(SortedReadOnlyList<T, K1> orderedList, Range range)
 		{
 			(int start, int count) = range.GetOffsetAndLength(orderedList.Count);
-			this.KeysData=orderedList.KeysData;
-			this.Memory=orderedList.AsMemory().Slice(start, count);
+			this.KeysData = orderedList.KeysData;
+			this.Memory = orderedList.AsMemory().Slice(start, count);
 		}
 
 		/// <summary>
@@ -66,8 +65,8 @@ namespace WojciechMikołajewicz.SortedList
 		/// <param name="memory">Read only memory of sorted read only list</param>
 		private SortedReadOnlyListRange(KeysData<T, K1> keysData, ReadOnlyMemory<T> memory)
 		{
-			this.KeysData=keysData;
-			this.Memory=memory;
+			this.KeysData = keysData;
+			this.Memory = memory;
 		}
 
 		/// <summary>
@@ -109,13 +108,14 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindEqual(
+			var range = Memory.Span.BinaryFindEqual(
 				(orderedList, key1),
-				(item, s) => s.orderedList.Compare(item, s.key1));
+				(item, s) => s.orderedList.Compare(item, s.key1))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
-		
+
 		/// <summary>
 		/// Get part of the list of elements less or equal to specified keys values
 		/// </summary>
@@ -125,13 +125,14 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLessOrEqual(
+			var range = Memory.Span.BinaryFindLessOrEqual(
 				(orderedList, key1),
-				(item, s) => s.orderedList.Compare(item, s.key1));
+				(item, s) => s.orderedList.Compare(item, s.key1))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
-		
+
 		/// <summary>
 		/// Get part of the list of elements less than specified keys values
 		/// </summary>
@@ -141,13 +142,14 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindLess(
+			var range = Memory.Span.BinaryFindLess(
 				(orderedList, key1),
-				(item, s) => s.orderedList.Compare(item, s.key1));
+				(item, s) => s.orderedList.Compare(item, s.key1))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
-		
+
 		/// <summary>
 		/// Get part of the list of elements greater or equal to specified keys values
 		/// </summary>
@@ -157,13 +159,14 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreaterOrEqual(
+			var range = Memory.Span.BinaryFindGreaterOrEqual(
 				(orderedList, key1),
-				(item, s) => s.orderedList.Compare(item, s.key1));
+				(item, s) => s.orderedList.Compare(item, s.key1))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
-		
+
 		/// <summary>
 		/// Get part of the list of elements greater than specified keys values
 		/// </summary>
@@ -173,11 +176,12 @@ namespace WojciechMikołajewicz.SortedList
 		{
 			var orderedList = this.KeysData;
 
-			var newMemory = Memory.BinaryFindGreater(
+			var range = Memory.Span.BinaryFindGreater(
 				(orderedList, key1),
-				(item, s) => s.orderedList.Compare(item, s.key1));
+				(item, s) => s.orderedList.Compare(item, s.key1))
+				.GetOffsetAndLength(Memory.Length);
 
-			return new SortedReadOnlyListRange<T, K1>(orderedList, newMemory);
+			return new SortedReadOnlyListRange<T, K1>(orderedList, Memory.Slice(range.Offset, range.Length));
 		}
 		#endregion
 	}

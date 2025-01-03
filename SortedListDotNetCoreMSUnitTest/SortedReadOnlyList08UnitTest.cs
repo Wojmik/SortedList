@@ -24,15 +24,15 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		[ClassInitialize]
 		public static void Init(TestContext testContext)
 		{
-			SampleList=CreateSortedReadOnlyList(SortedReadOnlyListSampleSourceArray.SampleArray);
-			SortedListTestHelper=new SortedListTestHelper(sampleList: SampleList);
+			SampleList = CreateSortedReadOnlyList(SortedReadOnlyListSampleSourceArray.SampleArray);
+			SortedListTestHelper = new SortedListTestHelper(sampleList: SampleList);
 		}
 
 		[ClassCleanup]
 		public static void Destroy()
 		{
-			SortedListTestHelper=null!;
-			SampleList=null!;
+			SortedListTestHelper = null!;
+			SampleList = null!;
 		}
 
 		#region Sorting
@@ -43,8 +43,8 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 
 			Assert.AreEqual(SortedReadOnlyListSampleSourceArray.SampleArray.Count, SampleList.Count, "{0} shoud have {1} count and is {2} count", nameof(SampleList), SortedReadOnlyListSampleSourceArray.SampleArray.Count, SampleList.Count);
 
-			for(int i = 1; i<SampleList.Count; i++)
-				if(0<comparer.Compare(SampleList[i-1], SampleList[i]))
+			for (int i = 1; i < SampleList.Count; i++)
+				if (0 < comparer.Compare(SampleList[i - 1], SampleList[i]))
 				{
 					Assert.Fail("Sorted list should be sorted and is not");
 					break;
@@ -60,8 +60,8 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 
 			Assert.AreEqual(SortedReadOnlyListSampleSourceArray.SampleArray.Count, sampleList.Count, "{0} shoud have {1} count and is {2} count", nameof(sampleList), SortedReadOnlyListSampleSourceArray.SampleArray.Count, sampleList.Count);
 
-			for(int i = 1; i<sampleList.Count; i++)
-				if(0<comparer.Compare(sampleList[i-1], sampleList[i]))
+			for (int i = 1; i < sampleList.Count; i++)
+				if (0 < comparer.Compare(sampleList[i - 1], sampleList[i]))
 				{
 					Assert.Fail("Sorted list should be sorted and is not");
 					break;
@@ -79,8 +79,8 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 
 			Assert.AreEqual(SortedReadOnlyListSampleSourceArray.SampleArray.Count, sampleList.Count, "{0} shoud have {1} count and is {2} count", nameof(sampleList), SortedReadOnlyListSampleSourceArray.SampleArray.Count, sampleList.Count);
 
-			for(int i = 1; i<sampleList.Count; i++)
-				if(0<comparer.Compare(sampleList[i-1], sampleList[i]))
+			for (int i = 1; i < sampleList.Count; i++)
+				if (0 < comparer.Compare(sampleList[i - 1], sampleList[i]))
 				{
 					Assert.Fail("Sorted list should be sorted and is not");
 					break;
@@ -98,8 +98,8 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 
 			Assert.AreEqual(SortedReadOnlyListSampleSourceArray.SampleArray.Count, sampleList.Count, "{0} shoud have {1} count and is {2} count", nameof(sampleList), SortedReadOnlyListSampleSourceArray.SampleArray.Count, sampleList.Count);
 
-			for(int i = 1; i<sampleList.Count; i++)
-				if(0<comparer.Compare(sampleList[i-1], sampleList[i]))
+			for (int i = 1; i < sampleList.Count; i++)
+				if (0 < comparer.Compare(sampleList[i - 1], sampleList[i]))
 				{
 					Assert.Fail("Sorted list should be sorted and is not");
 					break;
@@ -113,11 +113,11 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 1);
 
-			var equal=SampleList.BinaryFindEqual(
+			var equal = SampleList.BinaryFindEqual(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1
 				);
 
-			var equalRange=SampleList.BinaryFindEqualRange(
+			var equalRange = SampleList.BinaryFindEqualRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1
 				);
@@ -130,12 +130,12 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 2);
 
-			var equal=SampleList.BinaryFindEqual(
+			var equal = SampleList.BinaryFindEqual(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2
 				);
 
-			var equalRange=SampleList.BinaryFindEqualRange(
+			var equalRange = SampleList.BinaryFindEqualRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2
@@ -149,13 +149,13 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 3);
 
-			var equal=SampleList.BinaryFindEqual(
+			var equal = SampleList.BinaryFindEqual(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
 				key3: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key3
 				);
 
-			var equalRange=SampleList.BinaryFindEqualRange(
+			var equalRange = SampleList.BinaryFindEqualRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
@@ -170,14 +170,14 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 4);
 
-			var equal=SampleList.BinaryFindEqual(
+			var equal = SampleList.BinaryFindEqual(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
 				key3: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key3,
 				key4: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key4
 				);
 
-			var equalRange=SampleList.BinaryFindEqualRange(
+			var equalRange = SampleList.BinaryFindEqualRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
@@ -193,7 +193,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 5);
 
-			var equal=SampleList.BinaryFindEqual(
+			var equal = SampleList.BinaryFindEqual(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
 				key3: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key3,
@@ -201,7 +201,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 				key5: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key5
 				);
 
-			var equalRange=SampleList.BinaryFindEqualRange(
+			var equalRange = SampleList.BinaryFindEqualRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
@@ -218,7 +218,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 6);
 
-			var equal=SampleList.BinaryFindEqual(
+			var equal = SampleList.BinaryFindEqual(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
 				key3: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key3,
@@ -227,7 +227,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 				key6: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key6
 				);
 
-			var equalRange=SampleList.BinaryFindEqualRange(
+			var equalRange = SampleList.BinaryFindEqualRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
@@ -245,7 +245,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 7);
 
-			var equal=SampleList.BinaryFindEqual(
+			var equal = SampleList.BinaryFindEqual(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
 				key3: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key3,
@@ -255,7 +255,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 				key7: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key7
 				);
 
-			var equalRange=SampleList.BinaryFindEqualRange(
+			var equalRange = SampleList.BinaryFindEqualRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
@@ -274,7 +274,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 8);
 
-			var equal=SampleList.BinaryFindEqual(
+			var equal = SampleList.BinaryFindEqual(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
 				key3: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key3,
@@ -285,7 +285,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 				key8: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key8
 				);
 
-			var equalRange=SampleList.BinaryFindEqualRange(
+			var equalRange = SampleList.BinaryFindEqualRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
@@ -307,11 +307,11 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 1);
 
-			var equal=SampleList.BinaryFindLessOrEqual(
+			var equal = SampleList.BinaryFindLessOrEqual(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1
 				);
 
-			var equalRange=SampleList.BinaryFindLessOrEqualRange(
+			var equalRange = SampleList.BinaryFindLessOrEqualRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1
 				);
@@ -324,12 +324,12 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 2);
 
-			var equal=SampleList.BinaryFindLessOrEqual(
+			var equal = SampleList.BinaryFindLessOrEqual(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2
 				);
 
-			var equalRange=SampleList.BinaryFindLessOrEqualRange(
+			var equalRange = SampleList.BinaryFindLessOrEqualRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2
@@ -343,13 +343,13 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 3);
 
-			var equal=SampleList.BinaryFindLessOrEqual(
+			var equal = SampleList.BinaryFindLessOrEqual(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
 				key3: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key3
 				);
 
-			var equalRange=SampleList.BinaryFindLessOrEqualRange(
+			var equalRange = SampleList.BinaryFindLessOrEqualRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
@@ -364,14 +364,14 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 4);
 
-			var equal=SampleList.BinaryFindLessOrEqual(
+			var equal = SampleList.BinaryFindLessOrEqual(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
 				key3: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key3,
 				key4: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key4
 				);
 
-			var equalRange=SampleList.BinaryFindLessOrEqualRange(
+			var equalRange = SampleList.BinaryFindLessOrEqualRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
@@ -387,7 +387,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 5);
 
-			var equal=SampleList.BinaryFindLessOrEqual(
+			var equal = SampleList.BinaryFindLessOrEqual(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
 				key3: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key3,
@@ -395,7 +395,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 				key5: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key5
 				);
 
-			var equalRange=SampleList.BinaryFindLessOrEqualRange(
+			var equalRange = SampleList.BinaryFindLessOrEqualRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
@@ -412,7 +412,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 6);
 
-			var equal=SampleList.BinaryFindLessOrEqual(
+			var equal = SampleList.BinaryFindLessOrEqual(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
 				key3: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key3,
@@ -421,7 +421,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 				key6: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key6
 				);
 
-			var equalRange=SampleList.BinaryFindLessOrEqualRange(
+			var equalRange = SampleList.BinaryFindLessOrEqualRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
@@ -439,7 +439,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 7);
 
-			var equal=SampleList.BinaryFindLessOrEqual(
+			var equal = SampleList.BinaryFindLessOrEqual(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
 				key3: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key3,
@@ -449,7 +449,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 				key7: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key7
 				);
 
-			var equalRange=SampleList.BinaryFindLessOrEqualRange(
+			var equalRange = SampleList.BinaryFindLessOrEqualRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
@@ -468,7 +468,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 8);
 
-			var equal=SampleList.BinaryFindLessOrEqual(
+			var equal = SampleList.BinaryFindLessOrEqual(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
 				key3: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key3,
@@ -479,7 +479,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 				key8: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key8
 				);
 
-			var equalRange=SampleList.BinaryFindLessOrEqualRange(
+			var equalRange = SampleList.BinaryFindLessOrEqualRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
@@ -501,11 +501,11 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 1);
 
-			var equal=SampleList.BinaryFindLess(
+			var equal = SampleList.BinaryFindLess(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1
 				);
 
-			var equalRange=SampleList.BinaryFindLessRange(
+			var equalRange = SampleList.BinaryFindLessRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1
 				);
@@ -518,12 +518,12 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 2);
 
-			var equal=SampleList.BinaryFindLess(
+			var equal = SampleList.BinaryFindLess(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2
 				);
 
-			var equalRange=SampleList.BinaryFindLessRange(
+			var equalRange = SampleList.BinaryFindLessRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2
@@ -537,13 +537,13 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 3);
 
-			var equal=SampleList.BinaryFindLess(
+			var equal = SampleList.BinaryFindLess(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
 				key3: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key3
 				);
 
-			var equalRange=SampleList.BinaryFindLessRange(
+			var equalRange = SampleList.BinaryFindLessRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
@@ -558,14 +558,14 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 4);
 
-			var equal=SampleList.BinaryFindLess(
+			var equal = SampleList.BinaryFindLess(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
 				key3: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key3,
 				key4: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key4
 				);
 
-			var equalRange=SampleList.BinaryFindLessRange(
+			var equalRange = SampleList.BinaryFindLessRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
@@ -581,7 +581,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 5);
 
-			var equal=SampleList.BinaryFindLess(
+			var equal = SampleList.BinaryFindLess(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
 				key3: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key3,
@@ -589,7 +589,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 				key5: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key5
 				);
 
-			var equalRange=SampleList.BinaryFindLessRange(
+			var equalRange = SampleList.BinaryFindLessRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
@@ -606,7 +606,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 6);
 
-			var equal=SampleList.BinaryFindLess(
+			var equal = SampleList.BinaryFindLess(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
 				key3: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key3,
@@ -615,7 +615,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 				key6: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key6
 				);
 
-			var equalRange=SampleList.BinaryFindLessRange(
+			var equalRange = SampleList.BinaryFindLessRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
@@ -633,7 +633,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 7);
 
-			var equal=SampleList.BinaryFindLess(
+			var equal = SampleList.BinaryFindLess(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
 				key3: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key3,
@@ -643,7 +643,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 				key7: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key7
 				);
 
-			var equalRange=SampleList.BinaryFindLessRange(
+			var equalRange = SampleList.BinaryFindLessRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
@@ -662,7 +662,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		{
 			var comparer = new SortedListItemComparer(depth: 8);
 
-			var equal=SampleList.BinaryFindLess(
+			var equal = SampleList.BinaryFindLess(
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,
 				key3: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key3,
@@ -673,7 +673,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 				key8: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key8
 				);
 
-			var equalRange=SampleList.BinaryFindLessRange(
+			var equalRange = SampleList.BinaryFindLessRange(
 				range: Range.All,
 				key1: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key1,
 				key2: SortedReadOnlyListSampleSourceArray.ExistingItemExample.Key2,

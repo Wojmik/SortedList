@@ -25,8 +25,11 @@
     <DocumentationFile>C:\Users\wmiko\Source\Repos\SortedList\SortedList\SortedList.xml</DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <PackageReference Include="Microsoft.Bcl.Memory" Version="9.0.0" />
+  </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="System.Memory" Version="4.5.4" />
+    <PackageReference Include="System.Memory" Version="4.6.0" />
   </ItemGroup>
 
 </Project>
