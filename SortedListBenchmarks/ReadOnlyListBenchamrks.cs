@@ -19,7 +19,7 @@ public class ReadOnlyListBenchamrks
 
 	[Benchmark(Baseline = true)]
 	[Arguments(557)]
-	public Range StateParameter(int searchingValue)
+	public Range StateParameterLambda(int searchingValue)
 	{
 		var range = SampleList.BinaryFindEqual(Range.All, searchingValue, (item, searching) => item.CompareTo(searching));
 
@@ -42,7 +42,7 @@ public class ReadOnlyListBenchamrks
 
 	[Benchmark]
 	[Arguments(557)]
-	public Range CapturedContext(int searchingValue)
+	public Range CapturedContextLambda(int searchingValue)
 	{
 		var range = SampleList.BinaryFindEqual(Range.All, item => item.CompareTo(searchingValue));
 
@@ -60,6 +60,30 @@ public class ReadOnlyListBenchamrks
 		int Comparison(int item)
 		{
 			return item.CompareTo(searchingValue);
+		}
+	}
+
+	const int SearchingValue = 557;
+	[Benchmark]
+	[Arguments(SearchingValue)]
+	public Range ConstantLambda(int searchingValue)
+	{
+		var range = SampleList.BinaryFindEqual(Range.All, item => item.CompareTo(SearchingValue));
+
+		return range;
+	}
+
+	[Benchmark(Description = "ConstantLclFnc")]
+	[Arguments(SearchingValue)]
+	public Range ConstantLocalFunction(int searchingValue)
+	{
+		var range = SampleList.BinaryFindEqual(Range.All, Comparison);
+
+		return range;
+
+		static int Comparison(int item)
+		{
+			return item.CompareTo(SearchingValue);
 		}
 	}
 }
