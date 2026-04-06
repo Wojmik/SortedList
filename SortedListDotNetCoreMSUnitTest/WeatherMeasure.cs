@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using WojciechMikołajewicz.SortedList;
 
 namespace WojciechMikołajewicz.SortedListDotNetCoreMSUnitTest
@@ -40,8 +39,8 @@ namespace WojciechMikołajewicz.SortedListDotNetCoreMSUnitTest
 			{
 				int cmp;
 
-				if(0==(cmp=StringComparer.InvariantCultureIgnoreCase.Compare(measure.MeasureStationCode, "Anchorage-2BA")))
-					cmp=measure.MeasureDate.CompareTo(new DateTime(2020, 9, 18));
+				if (0 == (cmp = StringComparer.InvariantCultureIgnoreCase.Compare(measure.MeasureStationCode, "Anchorage-2BA")))
+					cmp = measure.MeasureDate.CompareTo(new DateTime(2020, 9, 18));
 				return cmp;
 			});
 
@@ -49,8 +48,8 @@ namespace WojciechMikołajewicz.SortedListDotNetCoreMSUnitTest
 			{
 				int cmp;
 
-				if(0==(cmp=StringComparer.InvariantCultureIgnoreCase.Compare(measure.MeasureStationCode, "Anchorage-2BA")))
-					cmp=measure.MeasureDate.CompareTo(new DateTime(2020, 9, 19));
+				if (0 == (cmp = StringComparer.InvariantCultureIgnoreCase.Compare(measure.MeasureStationCode, "Anchorage-2BA")))
+					cmp = measure.MeasureDate.CompareTo(new DateTime(2020, 9, 19));
 				return cmp;
 			});
 		}
@@ -60,8 +59,8 @@ namespace WojciechMikołajewicz.SortedListDotNetCoreMSUnitTest
 		{
 			int cmp;
 
-			if(0==(cmp=StringComparer.InvariantCultureIgnoreCase.Compare(x.MeasureStationCode, y.MeasureStationCode)))
-				cmp=x.MeasureDate.CompareTo(y.MeasureDate);
+			if (0 == (cmp = StringComparer.InvariantCultureIgnoreCase.Compare(x.MeasureStationCode, y.MeasureStationCode)))
+				cmp = x.MeasureDate.CompareTo(y.MeasureDate);
 			return cmp;
 		}
 	}

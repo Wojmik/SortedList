@@ -25,7 +25,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		public static void Init(TestContext testContext)
 		{
 			SampleList = CreateSortedReadOnlyList(SortedReadOnlyListSampleSourceArray.SampleArray);
-			SortedListTestHelper = new SortedListTestHelper(sampleList: SampleList);
+			SortedListTestHelper = new SortedListTestHelper(SampleList);
 		}
 
 		[ClassCleanup]
@@ -39,9 +39,9 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		[TestMethod]
 		public void CheckOrderUnitTest()
 		{
-			var comparer = new SortedListItemComparer(depth: KeysCount);
+			var comparer = new SortedListItemComparer(KeysCount);
 
-			Assert.AreEqual(SortedReadOnlyListSampleSourceArray.SampleArray.Count, SampleList.Count, "{0} shoud have {1} count and is {2} count", nameof(SampleList), SortedReadOnlyListSampleSourceArray.SampleArray.Count, SampleList.Count);
+			Assert.HasCount(SortedReadOnlyListSampleSourceArray.SampleArray.Count, SampleList);
 
 			for (int i = 1; i < SampleList.Count; i++)
 				if (0 < comparer.Compare(SampleList[i - 1], SampleList[i]))
@@ -54,11 +54,11 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		[TestMethod]
 		public void CheckOrderFromEnumerableUnitTest()
 		{
-			var comparer = new SortedListItemComparer(depth: KeysCount);
+			var comparer = new SortedListItemComparer(KeysCount);
 
 			var sampleList = CreateSortedReadOnlyList(new EnumerableOnly<SortedListItem>(SortedReadOnlyListSampleSourceArray.SampleArray));
 
-			Assert.AreEqual(SortedReadOnlyListSampleSourceArray.SampleArray.Count, sampleList.Count, "{0} shoud have {1} count and is {2} count", nameof(sampleList), SortedReadOnlyListSampleSourceArray.SampleArray.Count, sampleList.Count);
+			Assert.HasCount(SortedReadOnlyListSampleSourceArray.SampleArray.Count, sampleList);
 
 			for (int i = 1; i < sampleList.Count; i++)
 				if (0 < comparer.Compare(sampleList[i - 1], sampleList[i]))
@@ -72,12 +72,12 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		public void CheckOrderSourceSortedUnitTest()
 		{
 			var sortedArray = SortedReadOnlyListSampleSourceArray.SampleArray.ToArray();
-			var comparer = new SortedListItemComparer(depth: KeysCount);
+			var comparer = new SortedListItemComparer(KeysCount);
 
 			Array.Sort(sortedArray, comparer);
 			var sampleList = CreateSortedReadOnlyList(sortedArray);
 
-			Assert.AreEqual(SortedReadOnlyListSampleSourceArray.SampleArray.Count, sampleList.Count, "{0} shoud have {1} count and is {2} count", nameof(sampleList), SortedReadOnlyListSampleSourceArray.SampleArray.Count, sampleList.Count);
+			Assert.HasCount(SortedReadOnlyListSampleSourceArray.SampleArray.Count, sampleList);
 
 			for (int i = 1; i < sampleList.Count; i++)
 				if (0 < comparer.Compare(sampleList[i - 1], sampleList[i]))
@@ -91,12 +91,12 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 		public void CheckOrderSourceSortedFromEnumerableUnitTest()
 		{
 			var sortedArray = SortedReadOnlyListSampleSourceArray.SampleArray.ToArray();
-			var comparer = new SortedListItemComparer(depth: KeysCount);
+			var comparer = new SortedListItemComparer(KeysCount);
 
 			Array.Sort(sortedArray, comparer);
 			var sampleList = CreateSortedReadOnlyList(new EnumerableOnly<SortedListItem>(sortedArray));
 
-			Assert.AreEqual(SortedReadOnlyListSampleSourceArray.SampleArray.Count, sampleList.Count, "{0} shoud have {1} count and is {2} count", nameof(sampleList), SortedReadOnlyListSampleSourceArray.SampleArray.Count, sampleList.Count);
+			Assert.HasCount(SortedReadOnlyListSampleSourceArray.SampleArray.Count, sampleList);
 
 			for (int i = 1; i < sampleList.Count; i++)
 				if (0 < comparer.Compare(sampleList[i - 1], sampleList[i]))
