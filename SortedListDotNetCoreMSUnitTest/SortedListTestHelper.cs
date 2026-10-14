@@ -10,7 +10,7 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 
 		public SortedListTestHelper(IReadOnlyList<SortedListItem> sampleList)
 		{
-			this.SampleList = sampleList;
+			SampleList = sampleList;
 		}
 
 		public void EqualTest(SortedListItemComparer comparer, IReadOnlyList<SortedListItem> resultList, Range resultRange)

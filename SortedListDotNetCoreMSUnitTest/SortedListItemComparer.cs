@@ -12,14 +12,14 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 			if (depth <= 0 || depth > SortedReadOnlyListSampleSourceArray.AllKeysDataList.Count)
 				throw new ArgumentOutOfRangeException(nameof(depth), depth, $"{nameof(depth)} has to be greater than 0 and less or equal to {SortedReadOnlyListSampleSourceArray.AllKeysDataList.Count}");
 
-			this.Depth = depth;
+			Depth = depth;
 		}
 
 		public override int Compare(SortedListItem? x, SortedListItem? y)
 		{
 			int cmp = 0, i;
 
-			for (i = 0; i < this.Depth; i++)
+			for (i = 0; i < Depth; i++)
 			{
 				cmp = SortedReadOnlyListSampleSourceArray.AllKeysDataList[i].Compare(x, y);
 				if (cmp != 0)
