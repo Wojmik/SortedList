@@ -5,21 +5,21 @@ namespace WojciechMikołajewicz.AdvancedListDotNetCoreMSUnitTest
 {
 	class EnumerableOnly<T> : IEnumerable<T>
 	{
-		public IEnumerable<T> Enumerable { get; }
+		private IEnumerable<T> Enumerable { get; }
 
 		public EnumerableOnly(IEnumerable<T> enumerable)
 		{
-			this.Enumerable=enumerable;
+			Enumerable = enumerable;
 		}
 
 		public IEnumerator<T> GetEnumerator()
 		{
-			return this.Enumerable.GetEnumerator();
+			return Enumerable.GetEnumerator();
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			return this.GetEnumerator();
+			return GetEnumerator();
 		}
 	}
 }

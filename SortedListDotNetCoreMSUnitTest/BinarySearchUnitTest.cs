@@ -26,39 +26,38 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		public void TestFindCode()
 		{
 			const string SeekCode = "FFF";
-			Data dFirst = new Data(SeekCode, 0 / Divider), dLast = new Data(SeekCode, (NumberCount - 1) / Divider);
+			Data firstExpected = new Data(SeekCode, 0 / Divider), lastExpected = new Data(SeekCode, (NumberCount - 1) / Divider);
 
-			var range = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dFirst, lastExpected: dLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range);
+			var range = FindCode(SeekCode);
+			Test(firstExpected, lastExpected, NumberCount, DataSamples, range);
 		}
 
 		[TestMethod]
 		public void TestFindCodeLeft()
 		{
 			const string SeekCode = "AAA";
-			Data dFirst = new Data(SeekCode, 0 / Divider), dLast = new Data(SeekCode, (NumberCount - 1) / Divider);
+			Data firstExpected = new Data(SeekCode, 0 / Divider), lastExpected = new Data(SeekCode, (NumberCount - 1) / Divider);
 
-			var range = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dFirst, lastExpected: dLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range);
+			var range = FindCode(SeekCode);
+			Test(firstExpected, lastExpected, NumberCount, DataSamples, range);
 		}
 
 		[TestMethod]
 		public void TestFindCodeRight()
 		{
 			const string SeekCode = "ZZZ";
-			Data dFirst = new Data(SeekCode, 0 / Divider), dLast = new Data(SeekCode, (NumberCount - 1) / Divider);
+			Data firstExpected = new Data(SeekCode, 0 / Divider), lastExpected = new Data(SeekCode, (NumberCount - 1) / Divider);
 
-			var range = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dFirst, lastExpected: dLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range);
+			var range = FindCode(SeekCode);
+			Test(firstExpected, lastExpected, NumberCount, DataSamples, range);
 		}
 
 		[TestMethod]
 		public void TestFindCodeNotFoundLeft()
 		{
 			const string SeekCode = "AA";
-			Data dFirst = new Data(SeekCode, 0 / Divider), dLast = new Data(SeekCode, (NumberCount - 1) / Divider);
 
-			var range = FindCode(seekCode: SeekCode);
+			var range = FindCode(SeekCode);
 			(_, int length) = range.GetOffsetAndLength(DataSamples.Count);
 			Assert.AreEqual(0, length);
 		}
@@ -67,16 +66,143 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		public void TestFindCodeNotFoundRight()
 		{
 			const string SeekCode = "ZZZZ";
-			Data dFirst = new Data(SeekCode, 0 / Divider), dLast = new Data(SeekCode, (NumberCount - 1) / Divider);
 
-			var range = FindCode(seekCode: SeekCode);
+			var range = FindCode(SeekCode);
+			(_, int length) = range.GetOffsetAndLength(DataSamples.Count);
+			Assert.AreEqual(0, length);
+		}
+
+		[TestMethod]
+		public void TestFindCodeNotFoundMiddle()
+		{
+			const string SeekCode = "PP";
+
+			var range = FindCode(SeekCode);
 			(_, int length) = range.GetOffsetAndLength(DataSamples.Count);
 			Assert.AreEqual(0, length);
 		}
 		#endregion
 
-		#region BinaryFindLessOrEqual
+		#region BinarySearchEqualFirstIndex
 		[TestMethod]
+		public void TestFindCodeFirstIndex()
+		{
+			const string SeekCode = "FFF";
+			Data firstExpected = new Data(SeekCode, 0 / Divider);
+
+			var actualIndexOfFirst = FindCodeFirstIndex(SeekCode);
+			TestFirst(firstExpected, DataSamples, actualIndexOfFirst);
+		}
+
+		[TestMethod]
+		public void TestFindCodeFirstIndexLeft()
+		{
+			const string SeekCode = "AAA";
+            Data firstExpected = new Data(SeekCode, 0 / Divider);
+
+            var actualIndexOfFirst = FindCodeFirstIndex(SeekCode);
+            TestFirst(firstExpected, DataSamples, actualIndexOfFirst);
+        }
+
+		[TestMethod]
+		public void TestFindCodeFirstIndexRight()
+		{
+			const string SeekCode = "ZZZ";
+            Data firstExpected = new Data(SeekCode, 0 / Divider);
+
+            var actualIndexOfFirst = FindCodeFirstIndex(SeekCode);
+            TestFirst(firstExpected, DataSamples, actualIndexOfFirst);
+        }
+
+		[TestMethod]
+		public void TestFindCodeFirstIndexNotFoundLeft()
+		{
+			const string SeekCode = "AA";
+
+			var actualIndexOfFirst = FindCodeFirstIndex(SeekCode);
+			Assert.AreEqual(-1, actualIndexOfFirst);
+		}
+
+		[TestMethod]
+		public void TestFindCodeFirstIndexNotFoundRight()
+		{
+			const string SeekCode = "ZZZZ";
+
+            var actualIndexOfFirst = FindCodeFirstIndex(SeekCode);
+            Assert.AreEqual(-1, actualIndexOfFirst);
+        }
+
+		[TestMethod]
+		public void TestFindCodeFirstIndexNotFoundMiddle()
+		{
+			const string SeekCode = "PP";
+
+            var actualIndexOfFirst = FindCodeFirstIndex(SeekCode);
+            Assert.AreEqual(-1, actualIndexOfFirst);
+        }
+        #endregion
+
+        #region BinarySearchEqualLastIndex
+        [TestMethod]
+        public void TestFindCodeLastIndex()
+        {
+            const string SeekCode = "FFF";
+            Data lastExpected = new Data(SeekCode, (NumberCount - 1) / Divider);
+
+            var actualIndexOfLast = FindCodeLastIndex(SeekCode);
+            TestLast(lastExpected, DataSamples, actualIndexOfLast);
+        }
+
+        [TestMethod]
+        public void TestFindCodeLastIndexLeft()
+        {
+            const string SeekCode = "AAA";
+            Data lastExpected = new Data(SeekCode, (NumberCount - 1) / Divider);
+
+            var actualIndexOfLast = FindCodeLastIndex(SeekCode);
+            TestLast(lastExpected, DataSamples, actualIndexOfLast);
+        }
+
+        [TestMethod]
+        public void TestFindCodeLastIndexRight()
+        {
+            const string SeekCode = "ZZZ";
+            Data lastExpected = new Data(SeekCode, (NumberCount - 1) / Divider);
+
+            var actualIndexOfLast = FindCodeLastIndex(SeekCode);
+            TestLast(lastExpected, DataSamples, actualIndexOfLast);
+        }
+
+        [TestMethod]
+        public void TestFindCodeLastIndexNotFoundLeft()
+        {
+            const string SeekCode = "AA";
+
+            var actualIndexOfLast = FindCodeLastIndex(SeekCode);
+            Assert.AreEqual(-1, actualIndexOfLast);
+        }
+
+        [TestMethod]
+        public void TestFindCodeLastIndexNotFoundRight()
+        {
+            const string SeekCode = "ZZZZ";
+
+            var actualIndexOfLast = FindCodeLastIndex(SeekCode);
+            Assert.AreEqual(-1, actualIndexOfLast);
+        }
+
+        [TestMethod]
+        public void TestFindCodeLastIndexNotFoundMiddle()
+        {
+            const string SeekCode = "PP";
+
+            var actualIndexOfLast = FindCodeLastIndex(SeekCode);
+            Assert.AreEqual(-1, actualIndexOfLast);
+        }
+        #endregion
+
+        #region BinaryFindLessOrEqual
+        [TestMethod]
 		public void TestFindLessOrEquals()
 		{
 			const string SeekCode = "PPP";
@@ -84,12 +210,12 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider), dLast = new Data(SeekCode, LessOrEquals);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//LessOrEquals
 			var range2 = DataSamples.BinaryFindLessOrEqual(range: range1, comparison: data => data.Number.CompareTo(LessOrEquals));
-			Test(firstExpected: dCodeFirst, lastExpected: dLast, lengthExpected: (LessOrEquals + 1) * Divider, dataSamples: DataSamples, range: range2);
+			Test(dCodeFirst, dLast, (LessOrEquals + 1) * Divider, DataSamples, range2);
 		}
 
 		[TestMethod]
@@ -100,12 +226,12 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider), dLast = new Data(SeekCode, LessOrEquals);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//LessOrEquals
 			var range2 = DataSamples.BinaryFindLessOrEqual(range: range1, comparison: data => data.Number.CompareTo(LessOrEquals));
-			Test(firstExpected: dCodeFirst, lastExpected: dLast, lengthExpected: (LessOrEquals + 1) * Divider, dataSamples: DataSamples, range: range2);
+			Test(dCodeFirst, dLast, (LessOrEquals + 1) * Divider, DataSamples, range2);
 		}
 
 		[TestMethod]
@@ -116,12 +242,12 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider), dLast = new Data(SeekCode, NumberCount / Divider - 1);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//LessOrEquals
 			var range2 = DataSamples.BinaryFindLessOrEqual(range: range1, comparison: data => data.Number.CompareTo(LessOrEquals));
-			Test(firstExpected: dCodeFirst, lastExpected: dLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range2);
+			Test(dCodeFirst, dLast, NumberCount, DataSamples, range2);
 		}
 
 		[TestMethod]
@@ -132,12 +258,12 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider), dLast = new Data(SeekCode, LessOrEquals);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//LessOrEquals
 			var range2 = DataSamples.BinaryFindLessOrEqual(range: range1, comparison: data => data.Number.CompareTo(LessOrEquals));
-			Test(firstExpected: dCodeFirst, lastExpected: dLast, lengthExpected: (LessOrEquals + 1) * Divider, dataSamples: DataSamples, range: range2);
+			Test(dCodeFirst, dLast, (LessOrEquals + 1) * Divider, DataSamples, range2);
 		}
 
 		[TestMethod]
@@ -148,12 +274,12 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider), dLast = new Data(SeekCode, NumberCount / Divider - 1);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//LessOrEquals
 			var range2 = DataSamples.BinaryFindLessOrEqual(range: range1, comparison: data => data.Number.CompareTo(LessOrEquals));
-			Test(firstExpected: dCodeFirst, lastExpected: dLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range2);
+			Test(dCodeFirst, dLast, NumberCount, DataSamples, range2);
 		}
 
 		[TestMethod]
@@ -164,8 +290,8 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//LessOrEquals
 			var range2 = DataSamples.BinaryFindLessOrEqual(range: range1, comparison: data => data.Number.CompareTo(LessOrEquals));
@@ -180,8 +306,8 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//LessOrEquals
 			var range2 = DataSamples.BinaryFindLessOrEqual(range: range1, comparison: data => data.Number.CompareTo(LessOrEquals));
@@ -199,12 +325,12 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider), dLast = new Data(SeekCode, Less - 1);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//Less
 			var range2 = DataSamples.BinaryFindLess(range: range1, comparison: data => data.Number.CompareTo(Less));
-			Test(firstExpected: dCodeFirst, lastExpected: dLast, lengthExpected: Less * Divider, dataSamples: DataSamples, range: range2);
+			Test(dCodeFirst, dLast, Less * Divider, DataSamples, range2);
 		}
 		[TestMethod]
 		public void TestFindLessBoundRight2()
@@ -214,12 +340,12 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider), dLast = new Data(SeekCode, NumberCount / Divider - 1);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//LessOrEquals
 			var range2 = DataSamples.BinaryFindLess(range: range1, comparison: data => data.Number.CompareTo(Less));
-			Test(firstExpected: dCodeFirst, lastExpected: dLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range2);
+			Test(dCodeFirst, dLast, NumberCount, DataSamples, range2);
 		}
 		[TestMethod]
 		public void TestFindLessBoundRight4()
@@ -229,12 +355,12 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider), dLast = new Data(SeekCode, NumberCount / Divider - 1);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//Less
 			var range2 = DataSamples.BinaryFindLess(range: range1, comparison: data => data.Number.CompareTo(Less));
-			Test(firstExpected: dCodeFirst, lastExpected: dLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range2);
+			Test(dCodeFirst, dLast, NumberCount, DataSamples, range2);
 		}
 		[TestMethod]
 		public void TestFindLessBoundRightNotFound1()
@@ -244,8 +370,8 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//Less
 			var range2 = DataSamples.BinaryFindLess(range: range1, comparison: data => data.Number.CompareTo(Less));
@@ -260,8 +386,8 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//Less
 			var range2 = DataSamples.BinaryFindLess(range: range1, comparison: data => data.Number.CompareTo(Less));
@@ -279,12 +405,12 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider), dFirst = new Data(SeekCode, GreaterOrEquals);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//GreaterOrEquals
 			var range2 = DataSamples.BinaryFindGreaterOrEqual(range: range1, comparison: data => data.Number.CompareTo(GreaterOrEquals));
-			Test(firstExpected: dFirst, lastExpected: dCodeLast, lengthExpected: NumberCount - GreaterOrEquals * Divider, dataSamples: DataSamples, range: range2);
+			Test(dFirst, dCodeLast, NumberCount - GreaterOrEquals * Divider, DataSamples, range2);
 		}
 		[TestMethod]
 		public void TestFindGreaterOrEqualsBoundLeft1()
@@ -294,12 +420,12 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider), dFirst = new Data(SeekCode, GreaterOrEquals);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//GreaterOrEquals
 			var range2 = DataSamples.BinaryFindGreaterOrEqual(range: range1, comparison: data => data.Number.CompareTo(GreaterOrEquals));
-			Test(firstExpected: dFirst, lastExpected: dCodeLast, lengthExpected: NumberCount - GreaterOrEquals * Divider, dataSamples: DataSamples, range: range2);
+			Test(dFirst, dCodeLast, NumberCount - GreaterOrEquals * Divider, DataSamples, range2);
 		}
 		[TestMethod]
 		public void TestFindGreaterOrEqualsBoundLeft2()
@@ -309,12 +435,12 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider), dFirst = new Data(SeekCode, 0);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//GreaterOrEquals
 			var range2 = DataSamples.BinaryFindGreaterOrEqual(range: range1, comparison: data => data.Number.CompareTo(GreaterOrEquals));
-			Test(firstExpected: dFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range2);
+			Test(dFirst, dCodeLast, NumberCount, DataSamples, range2);
 		}
 		[TestMethod]
 		public void TestFindGreaterOrEqualsBoundLeft3()
@@ -324,12 +450,12 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider), dFirst = new Data(SeekCode, GreaterOrEquals);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//GreaterOrEquals
 			var range2 = DataSamples.BinaryFindGreaterOrEqual(range: range1, comparison: data => data.Number.CompareTo(GreaterOrEquals));
-			Test(firstExpected: dFirst, lastExpected: dCodeLast, lengthExpected: NumberCount - GreaterOrEquals * Divider, dataSamples: DataSamples, range: range2);
+			Test(dFirst, dCodeLast, NumberCount - GreaterOrEquals * Divider, DataSamples, range2);
 		}
 		[TestMethod]
 		public void TestFindGreaterOrEqualsBoundLeft4()
@@ -339,12 +465,12 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider), dFirst = new Data(SeekCode, 0);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//GreaterOrEquals
 			var range2 = DataSamples.BinaryFindGreaterOrEqual(range: range1, comparison: data => data.Number.CompareTo(GreaterOrEquals));
-			Test(firstExpected: dFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range2);
+			Test(dFirst, dCodeLast, NumberCount, DataSamples, range2);
 		}
 		[TestMethod]
 		public void TestFindGreaterOrEqualsBoundLeftNotFound1()
@@ -354,8 +480,8 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//GreaterOrEquals
 			var range2 = DataSamples.BinaryFindGreaterOrEqual(range: range1, comparison: data => data.Number.CompareTo(GreaterOrEquals));
@@ -370,8 +496,8 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//GreaterOrEquals
 			var range2 = DataSamples.BinaryFindGreaterOrEqual(range: range1, comparison: data => data.Number.CompareTo(GreaterOrEquals));
@@ -389,12 +515,12 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider), dFirst = new Data(SeekCode, Greater + 1);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//Greater
 			var range2 = DataSamples.BinaryFindGreater(range: range1, comparison: data => data.Number.CompareTo(Greater));
-			Test(firstExpected: dFirst, lastExpected: dCodeLast, lengthExpected: NumberCount - (Greater + 1) * Divider, dataSamples: DataSamples, range: range2);
+			Test(dFirst, dCodeLast, NumberCount - (Greater + 1) * Divider, DataSamples, range2);
 		}
 		[TestMethod]
 		public void TestFindGreaterBoundLeft2()
@@ -404,12 +530,12 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider), dFirst = new Data(SeekCode, 0);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//Greater
 			var range2 = DataSamples.BinaryFindGreater(range: range1, comparison: data => data.Number.CompareTo(Greater));
-			Test(firstExpected: dFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range2);
+			Test(dFirst, dCodeLast, NumberCount, DataSamples, range2);
 		}
 		[TestMethod]
 		public void TestFindGreaterBoundLeft4()
@@ -419,12 +545,12 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider), dFirst = new Data(SeekCode, 0);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//Greater
 			var range2 = DataSamples.BinaryFindGreater(range: range1, comparison: data => data.Number.CompareTo(Greater));
-			Test(firstExpected: dFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range2);
+			Test(dFirst, dCodeLast, NumberCount, DataSamples, range2);
 		}
 		[TestMethod]
 		public void TestFindGreaterBoundLeftNotFound1()
@@ -434,8 +560,8 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//Greater
 			var range2 = DataSamples.BinaryFindGreater(range: range1, comparison: data => data.Number.CompareTo(Greater));
@@ -450,8 +576,8 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 			Data dCodeFirst = new Data(SeekCode, 0 / Divider), dCodeLast = new Data(SeekCode, (NumberCount - 1) / Divider);
 
 			//First search code only
-			var range1 = FindCode(seekCode: SeekCode);
-			Test(firstExpected: dCodeFirst, lastExpected: dCodeLast, lengthExpected: NumberCount, dataSamples: DataSamples, range: range1);
+			var range1 = FindCode(SeekCode);
+			Test(dCodeFirst, dCodeLast, NumberCount, DataSamples, range1);
 
 			//Greater
 			var range2 = DataSamples.BinaryFindGreater(range: range1, comparison: data => data.Number.CompareTo(Greater));
@@ -461,47 +587,63 @@ namespace WojciechMiko³ajewicz.AdvancedListDotNetCoreMSUnitTest
 		#endregion
 
 		#region Helper methods
-		private bool Test(Data firstExpected, Data lastExpected, int lengthExpected, IReadOnlyList<Data> dataSamples, Range range)
+		private void Test(Data firstExpected, Data lastExpected, int lengthExpected, IReadOnlyList<Data> dataSamples, Range actualRange)
 		{
-			Data first, beforeFirst, last, afterLast;
-			bool bLength, bFirst, bLast, bBeforeFirst = true, bAfterLast = true;
+			var (offset, length) = actualRange.GetOffsetAndLength(dataSamples.Count);
 
-			var (offset, length) = range.GetOffsetAndLength(dataSamples.Count);
-			first = dataSamples[offset];
-			Assert.IsTrue(bFirst = (0 == DataCompare(first, firstExpected)), $"The first item should be: {firstExpected.Code} {firstExpected.Number}, and is: {first.Code} {first.Number}");
-
-			last = dataSamples[range.End.GetOffset(dataSamples.Count) - 1];
-			Assert.IsTrue(bLast = (0 == DataCompare(last, lastExpected)), $"The last item should be: {lastExpected.Code} {lastExpected.Number}, and is: {last.Code} {last.Number}");
-
-			(offset, length) = range.GetOffsetAndLength(dataSamples.Count);
-
-			if (offset > 0)
-			{
-				beforeFirst = dataSamples[offset - 1];
-				Assert.IsTrue(bBeforeFirst = (0 > DataCompare(beforeFirst, firstExpected)), $"Item before the first one should be less than: {firstExpected.Code} {firstExpected.Number}, and is: {beforeFirst.Code} {beforeFirst.Number}");
-			}
-
-			if (offset + length < dataSamples.Count)
-			{
-				afterLast = dataSamples[offset + length];
-				Assert.IsTrue(bAfterLast = (0 > DataCompare(lastExpected, afterLast)), $"Item after the last one should be greater than: {lastExpected.Code} {lastExpected.Number}, and is: {afterLast.Code} {afterLast.Number}");
-			}
-
-			Assert.IsTrue(bLength = (lengthExpected == length), $"Bad count of array items. Should be: {lengthExpected}, and is: {length}");
-
-			return bLength && bFirst && bLast && bBeforeFirst && bAfterLast;
+			TestFirst(firstExpected, dataSamples, offset);
+			TestLast(lastExpected, dataSamples, offset + length - 1);
+			Assert.IsTrue(lengthExpected == length, $"Bad count of array items. Should be: {lengthExpected}, and is: {length}");
 		}
 
-		protected Range FindCode(string seekCode)
+		private void TestFirst(Data firstExpected, IReadOnlyList<Data> dataSamples, int actualIndex)
+        {
+            //First
+            var actualFirst = dataSamples[actualIndex];
+            Assert.IsTrue(0 == DataCompare(actualFirst, firstExpected), $"The first item should be: {firstExpected.Code} {firstExpected.Number}, and is: {actualFirst.Code} {actualFirst.Number}");
+
+            //Before first
+            if (actualIndex > 0)
+            {
+                var beforeFirst = dataSamples[actualIndex - 1];
+                Assert.IsTrue(0 > DataCompare(beforeFirst, firstExpected), $"Item before the first one should be less than: {firstExpected.Code} {firstExpected.Number}, and is: {beforeFirst.Code} {beforeFirst.Number}");
+            }
+        }
+
+		private void TestLast(Data lastExpected, IReadOnlyList<Data> dataSamples, int actualIndex)
 		{
-			return DataSamples.BinaryFindEqual(range: Range.All, comparison: data => string.Compare(data.Code, seekCode, StringComparison.InvariantCultureIgnoreCase));
+            //Last
+            var actualLast = dataSamples[actualIndex];
+            Assert.IsTrue(0 == DataCompare(actualLast, lastExpected), $"The last item should be: {lastExpected.Code} {lastExpected.Number}, and is: {actualLast.Code} {actualLast.Number}");
+
+            //After last
+            if (actualIndex + 1 < dataSamples.Count)
+            {
+                var afterLast = dataSamples[actualIndex + 1];
+                Assert.IsTrue(0 > DataCompare(lastExpected, afterLast), $"Item after the last one should be greater than: {lastExpected.Code} {lastExpected.Number}, and is: {afterLast.Code} {afterLast.Number}");
+            }
+        }
+
+        private Range FindCode(string seekCode)
+		{
+			return DataSamples.BinaryFindEqual(Range.All, data => string.Compare(data.Code, seekCode, StringComparison.OrdinalIgnoreCase));
 		}
 
-		private int DataCodeCompare(Data x, Data y)
+		private int FindCodeFirstIndex(string seekCode)
+        {
+            return DataSamples.BinaryFindEqualFirstIndex(Range.All, data => string.Compare(data.Code, seekCode, StringComparison.OrdinalIgnoreCase));
+        }
+
+		private int FindCodeLastIndex(string seekCode)
+        {
+            return DataSamples.BinaryFindEqualLastIndex(Range.All, data => string.Compare(data.Code, seekCode, StringComparison.OrdinalIgnoreCase));
+        }
+
+        private static int DataCodeCompare(Data x, Data y)
 		{
 			return string.Compare(x.Code, y.Code, StringComparison.CurrentCultureIgnoreCase);
 		}
-		private int DataCompare(Data x, Data y)
+		private static int DataCompare(Data x, Data y)
 		{
 			int iCmp;
 
